@@ -1171,6 +1171,189 @@ body { padding: 0; }
 
 .ds-cat-title { font-size:13px; font-weight:700; color:#e2e8f0; margin:20px 0 10px; display:flex; align-items:center; gap:8px; }
 .ds-cat-title::after { content:''; flex:1; height:1px; background:#2e3347; }
+
+/* ── Visual Demo ── */
+.demo-wrap { background:#f6f8fa; border-radius:10px; padding:16px; margin-top:10px; display:flex; flex-wrap:wrap; gap:10px; align-items:flex-start; }
+.demo-col { display:flex; flex-direction:column; gap:6px; align-items:flex-start; }
+.demo-label { font-size:9px; font-weight:700; color:#727c86; text-transform:uppercase; letter-spacing:.06em; }
+
+/* mbtp.button */
+.mbtp-btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; border-radius:8px; font-family:'IBM Plex Sans',sans-serif; font-weight:700; cursor:pointer; border:none; transition:all .15s; }
+.mbtp-btn.s { height:32px; padding:0 12px; font-size:12px; }
+.mbtp-btn.m { height:40px; padding:0 16px; font-size:14px; }
+.mbtp-btn.l { height:48px; padding:0 20px; font-size:16px; }
+.mbtp-btn.primary   { background:#e1251b; color:#fff; }
+.mbtp-btn.secondary { background:transparent; color:#e1251b; border:1.5px solid #e1251b; }
+.mbtp-btn.tertiary  { background:transparent; color:#e1251b; }
+.mbtp-btn.disabled  { opacity:.38; pointer-events:none; }
+.mbtp-btn.pressed   { filter:brightness(.85); }
+
+/* mbtp.buttonIcon */
+.mbtp-btn-icon { display:inline-flex; align-items:center; justify-content:center; border-radius:8px; font-family:'IBM Plex Sans',sans-serif; cursor:pointer; border:none; transition:all .15s; }
+.mbtp-btn-icon.s { width:32px; height:32px; font-size:16px; }
+.mbtp-btn-icon.m { width:40px; height:40px; font-size:20px; }
+.mbtp-btn-icon.l { width:48px; height:48px; font-size:24px; }
+.mbtp-btn-icon.primary   { background:#e1251b; color:#fff; }
+.mbtp-btn-icon.secondary { background:transparent; color:#e1251b; border:1.5px solid #e1251b; }
+.mbtp-btn-icon.tertiary  { background:transparent; color:#e1251b; }
+.mbtp-btn-icon.disabled  { opacity:.38; }
+
+/* mbtp.textButton */
+.mbtp-text-btn { display:inline-flex; align-items:center; gap:4px; font-family:'IBM Plex Sans',sans-serif; font-weight:600; cursor:pointer; background:none; border:none; color:#e1251b; padding:4px 0; font-size:14px; }
+.mbtp-text-btn.s { font-size:12px; }
+.mbtp-text-btn.disabled { opacity:.38; }
+
+/* mbtp.checkbox */
+.mbtp-cb { display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:14px; color:#292c30; }
+.mbtp-cb-box { width:20px; height:20px; border-radius:4px; border:2px solid #d1d5da; background:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all .15s; }
+.mbtp-cb-box.checked { background:#e1251b; border-color:#e1251b; }
+.mbtp-cb-box.indeterminate { background:#e1251b; border-color:#e1251b; }
+.mbtp-cb.disabled .mbtp-cb-box { border-color:#d1d5da; background:#f6f8fa; }
+.mbtp-cb.disabled { opacity:.38; }
+
+/* mbtp.toggle */
+.mbtp-toggle { display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:13px; color:#292c30; }
+.mbtp-toggle-track { width:44px; height:24px; border-radius:12px; background:#d1d5da; display:flex; align-items:center; padding:2px; transition:background .2s; }
+.mbtp-toggle-track.on { background:#e1251b; justify-content:flex-end; }
+.mbtp-toggle-thumb { width:20px; height:20px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.25); }
+.mbtp-toggle.disabled { opacity:.38; }
+
+/* mbtp.chips */
+.mbtp-chip { display:inline-flex; align-items:center; gap:4px; border-radius:99px; font-family:'IBM Plex Sans',sans-serif; font-weight:500; border:1.5px solid #d1d5da; background:#fff; color:#41474d; cursor:pointer; transition:all .15s; }
+.mbtp-chip.s { height:24px; padding:0 8px; font-size:11px; }
+.mbtp-chip.m { height:32px; padding:0 12px; font-size:13px; }
+.mbtp-chip.l { height:40px; padding:0 16px; font-size:15px; }
+.mbtp-chip.selected { background:#fff2f2; border-color:#e1251b; color:#e1251b; }
+.mbtp-chip.disabled { opacity:.38; }
+
+/* mbtp.textField */
+.mbtp-field { display:flex; align-items:center; gap:8px; height:48px; border-radius:8px; border:1.5px solid #d1d5da; background:#fff; padding:0 12px; font-family:'IBM Plex Sans',sans-serif; font-size:14px; color:#292c30; min-width:200px; }
+.mbtp-field .ph { color:#8b96a2; }
+.mbtp-field.focus { border-color:#e1251b; }
+.mbtp-field.error { border-color:#e32526; }
+.mbtp-field.disabled { background:#f6f8fa; color:#a2abb5; border-color:#e8eaec; }
+.mbtp-field.filled { color:#292c30; }
+
+/* mbtp.textArea */
+.mbtp-area { border-radius:8px; border:1.5px solid #d1d5da; background:#fff; padding:10px 12px; font-family:'IBM Plex Sans',sans-serif; font-size:14px; color:#8b96a2; min-width:200px; min-height:80px; resize:none; }
+.mbtp-area.focus { border-color:#e1251b; }
+.mbtp-area.error { border-color:#e32526; }
+.mbtp-area.disabled { background:#f6f8fa; color:#a2abb5; border-color:#e8eaec; }
+
+/* mbtp.searchContainer */
+.mbtp-search { display:flex; align-items:center; gap:8px; height:40px; border-radius:8px; border:1.5px solid #d1d5da; background:#fff; padding:0 12px; font-family:'IBM Plex Sans',sans-serif; font-size:14px; color:#8b96a2; min-width:200px; }
+.mbtp-search.focus { border-color:#e1251b; }
+.mbtp-search.filled { color:#292c30; }
+
+/* mbtp.tab */
+.mbtp-tabs { display:flex; border-bottom:2px solid #e8eaec; background:#fff; border-radius:8px 8px 0 0; overflow:hidden; }
+.mbtp-tab { padding:10px 20px; font-family:'IBM Plex Sans',sans-serif; font-size:14px; font-weight:500; color:#727c86; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; display:flex; align-items:center; gap:6px; }
+.mbtp-tab.active { color:#e1251b; border-bottom-color:#e1251b; font-weight:700; }
+
+/* mbtp.header */
+.mbtp-header { display:flex; align-items:center; justify-content:space-between; height:56px; padding:0 16px; border-radius:8px; width:280px; }
+.mbtp-header.white   { background:#fff; color:#292c30; }
+.mbtp-header.red     { background:#e1251b; color:#fff; }
+.mbtp-header.transp  { background:rgba(0,0,0,.05); color:#292c30; border:1px dashed #ccc; }
+.mbtp-header-title   { font-family:'IBM Plex Sans',sans-serif; font-size:16px; font-weight:700; }
+.mbtp-header-icon    { font-size:20px; }
+
+/* mbtp.navBarItem */
+.mbtp-navbar { display:flex; background:#fff; border-top:1px solid #e8eaec; border-radius:0 0 12px 12px; overflow:hidden; width:320px; }
+.mbtp-nav-item { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:8px 4px; gap:3px; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:10px; color:#8b96a2; position:relative; }
+.mbtp-nav-item.active { color:#e1251b; }
+.mbtp-nav-item .nav-icon { font-size:22px; }
+.mbtp-nav-badge { position:absolute; top:4px; right:calc(50% - 18px); background:#e1251b; color:#fff; font-size:9px; font-weight:700; border-radius:99px; min-width:16px; height:16px; padding:0 4px; display:flex; align-items:center; justify-content:center; }
+
+/* mbtp.stickyButton */
+.mbtp-sticky { background:#fff; border-top:1px solid #e8eaec; box-shadow:0 -4px 12px rgba(0,0,0,.12); padding:12px 16px; border-radius:8px; width:280px; display:flex; gap:8px; }
+
+/* mbtp.toast */
+.mbtp-toast { display:flex; align-items:flex-start; gap:10px; padding:12px 14px; border-radius:10px; min-width:240px; max-width:300px; font-family:'IBM Plex Sans',sans-serif; box-shadow:0 4px 12px rgba(0,0,0,.15); }
+.mbtp-toast.default { background:#292c30; color:#e2e8f0; }
+.mbtp-toast.success { background:#e9f6e8; color:#146110; border:1px solid #a6d9a3; }
+.mbtp-toast.warning { background:#fef8e7; color:#c4980a; border:1px solid #fbe59e; }
+.mbtp-toast.error   { background:#fce9e9; color:#881617; border:1px solid #f4a8a8; }
+.mbtp-toast-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+.mbtp-toast-body { flex:1; }
+.mbtp-toast-title { font-size:13px; font-weight:700; }
+.mbtp-toast-desc  { font-size:12px; margin-top:2px; opacity:.8; }
+
+/* mbtp.badge */
+.mbtp-badge { display:inline-flex; align-items:center; gap:4px; border-radius:99px; padding:3px 10px; font-family:'IBM Plex Sans',sans-serif; font-size:12px; font-weight:600; }
+.mbtp-badge.info    { background:#ebf2fe; color:#2f69c7; }
+.mbtp-badge.success { background:#e9f6e8; color:#146110; }
+.mbtp-badge.warning { background:#fef8e7; color:#c4980a; }
+.mbtp-badge.error   { background:#fce9e9; color:#881617; }
+.mbtp-badge.neutral { background:#f6f8fa; color:#41474d; border:1px solid #e8eaec; }
+.mbtp-badge.brand   { background:#fff2f2; color:#e1251b; }
+
+/* mbtp.badgeNoti */
+.mbtp-badge-noti { display:inline-flex; align-items:center; justify-content:center; background:#e1251b; color:#fff; font-family:'IBM Plex Sans',sans-serif; font-weight:700; border-radius:99px; }
+.mbtp-badge-noti.s  { min-width:16px; height:16px; font-size:9px; padding:0 4px; }
+.mbtp-badge-noti.m  { min-width:20px; height:20px; font-size:11px; padding:0 5px; }
+.mbtp-badge-noti.l  { min-width:24px; height:24px; font-size:13px; padding:0 6px; }
+.mbtp-badge-noti.dot { width:8px; height:8px; min-width:8px; padding:0; }
+
+/* progress indicator */
+.mbtp-progress { display:flex; align-items:center; gap:4px; }
+.mbtp-progress-dot { width:8px; height:8px; border-radius:50%; background:#d1d5da; }
+.mbtp-progress-dot.active { background:#e1251b; width:20px; border-radius:4px; }
+
+/* mbtp.listSelect */
+.mbtp-list-item { display:flex; align-items:center; gap:12px; padding:12px 16px; border-bottom:1px solid #f0f0f0; background:#fff; font-family:'IBM Plex Sans',sans-serif; font-size:14px; color:#292c30; min-width:240px; cursor:pointer; }
+.mbtp-list-item:last-child { border-bottom:none; }
+.mbtp-list-item.selected { color:#e1251b; }
+.mbtp-list-item.disabled { color:#a2abb5; }
+
+/* mbtp.stepperItem */
+.mbtp-stepper { display:flex; align-items:flex-start; gap:0; flex-direction:column; }
+.mbtp-step { display:flex; align-items:flex-start; gap:12px; }
+.mbtp-step-dot { width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; border:2px solid #d1d5da; color:#8b96a2; background:#fff; }
+.mbtp-step-dot.active { background:#e1251b; border-color:#e1251b; color:#fff; }
+.mbtp-step-dot.done  { background:#22a119; border-color:#22a119; color:#fff; }
+.mbtp-step-line { width:2px; height:24px; background:#e8eaec; margin:2px 0 2px 11px; }
+.mbtp-step-line.done { background:#22a119; }
+.mbtp-step-content { flex:1; }
+.mbtp-step-title { font-family:'IBM Plex Sans',sans-serif; font-size:13px; font-weight:600; color:#292c30; }
+.mbtp-step-desc  { font-family:'IBM Plex Sans',sans-serif; font-size:12px; color:#8b96a2; margin-top:2px; }
+
+/* mbtp.bottomSheet */
+.mbtp-sheet { background:#fff; border-radius:16px 16px 0 0; padding:16px; width:280px; box-shadow:0 -4px 24px rgba(0,0,0,.15); }
+.mbtp-sheet-handle { width:40px; height:4px; border-radius:2px; background:#d1d5da; margin:0 auto 14px; }
+.mbtp-sheet-title { font-family:'IBM Plex Sans',sans-serif; font-size:16px; font-weight:700; color:#292c30; margin-bottom:8px; }
+.mbtp-sheet-body  { font-family:'IBM Plex Sans',sans-serif; font-size:14px; color:#727c86; }
+
+/* mbtp.emptyState */
+.mbtp-empty { display:flex; flex-direction:column; align-items:center; gap:8px; padding:24px; text-align:center; background:#fff; border-radius:12px; }
+.mbtp-empty-icon { font-size:48px; }
+.mbtp-empty-title { font-family:'IBM Plex Sans',sans-serif; font-size:16px; font-weight:700; color:#292c30; }
+.mbtp-empty-desc  { font-family:'IBM Plex Sans',sans-serif; font-size:13px; color:#8b96a2; }
+
+/* mbtp.selector */
+.mbtp-selector { display:flex; align-items:center; justify-content:space-between; height:48px; border-radius:8px; border:1.5px solid #d1d5da; background:#fff; padding:0 12px; font-family:'IBM Plex Sans',sans-serif; font-size:14px; color:#8b96a2; min-width:200px; }
+.mbtp-selector.filled { color:#292c30; }
+.mbtp-selector.focus { border-color:#e1251b; }
+.mbtp-selector.error { border-color:#e32526; }
+.mbtp-selector.disabled { background:#f6f8fa; color:#a2abb5; }
+
+/* mbtp.cardInfo */
+.mbtp-card { background:#fff; border-radius:12px; padding:16px; width:280px; box-shadow:0 2px 8px rgba(0,0,0,.08); font-family:'IBM Plex Sans',sans-serif; }
+.mbtp-card-status { display:inline-flex; align-items:center; gap:6px; margin-bottom:8px; }
+.mbtp-card-title { font-size:14px; font-weight:700; color:#292c30; margin-bottom:4px; }
+.mbtp-card-sub   { font-size:12px; color:#8b96a2; }
+.mbtp-card-actions { display:flex; gap:8px; margin-top:12px; }
+
+/* mbtp.trackerItem */
+.mbtp-tracker { display:flex; align-items:flex-start; gap:12px; padding:8px 0; font-family:'IBM Plex Sans',sans-serif; min-width:240px; }
+.mbtp-tracker-line-wrap { display:flex; flex-direction:column; align-items:center; gap:0; }
+.mbtp-tracker-dot { width:16px; height:16px; border-radius:50%; flex-shrink:0; border:2px solid #d1d5da; background:#fff; }
+.mbtp-tracker-dot.active { background:#e1251b; border-color:#e1251b; }
+.mbtp-tracker-dot.done  { background:#22a119; border-color:#22a119; }
+.mbtp-tracker-vline { width:2px; height:28px; background:#e8eaec; }
+.mbtp-tracker-vline.done { background:#22a119; }
+.mbtp-tracker-title { font-size:13px; font-weight:600; color:#292c30; }
+.mbtp-tracker-time  { font-size:11px; color:#8b96a2; margin-top:2px; }
 </style>
 
   <!-- Hero -->
@@ -1244,84 +1427,840 @@ body { padding: 0; }
   <div class="ds-sec" id="chip">
     <div class="ds-sec-title">Component Sets · 86 sets · 651 singles · prefix mbtp.*</div>
 
+    <!-- ─ BUTTON ─ -->
     <div class="ds-cat-title">↳ Button</div>
-    <div class="ds-comp-grid">
-      <div class="ds-comp-card"><span class="ds-comp-variants">81 variants</span><div class="ds-comp-name">mbtp.button</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">Show icon left/right</span><span class="ds-comp-prop">Label text</span></div><div class="ds-comp-meta">Primary/Secondary/Tertiary · S/M/L</div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">90 variants</span><div class="ds-comp-name">mbtp.buttonIcon</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">Show badge</span></div><div class="ds-comp-meta">Icon-only button</div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">6 variants</span><div class="ds-comp-name">mbtp.textButton</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Show icon left/right</span><span class="ds-comp-prop">Label text</span></div><div class="ds-comp-meta">Text-only button</div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">3 variants</span><div class="ds-comp-name">mbtp.buttonMenu</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Show badge</span><span class="ds-comp-prop">Label text</span></div><div class="ds-comp-meta">Menu button</div></div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">81 variants</span>
+      <div class="ds-comp-name">mbtp.button</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Style</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Primary</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <button class="mbtp-btn l primary">Large</button>
+            <button class="mbtp-btn m primary">Medium</button>
+            <button class="mbtp-btn s primary">Small</button>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Secondary</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <button class="mbtp-btn m secondary">Medium</button>
+            <button class="mbtp-btn s secondary">Small</button>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Tertiary</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <button class="mbtp-btn m tertiary">Medium</button>
+            <button class="mbtp-btn s tertiary">Small</button>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">States</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <button class="mbtp-btn m primary">Enable</button>
+            <button class="mbtp-btn m primary pressed">Pressed</button>
+            <button class="mbtp-btn m primary disabled">Disable</button>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">With Icon</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <button class="mbtp-btn m primary">⬆ ส่งพัสดุ</button>
+            <button class="mbtp-btn m secondary">ตรวจสอบ ➜</button>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">90 variants</span>
+      <div class="ds-comp-name">mbtp.buttonIcon</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Primary S/M/L</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <button class="mbtp-btn-icon s primary">📦</button>
+            <button class="mbtp-btn-icon m primary">📦</button>
+            <button class="mbtp-btn-icon l primary">📦</button>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Secondary</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <button class="mbtp-btn-icon m secondary">🔍</button>
+            <button class="mbtp-btn-icon m tertiary">✕</button>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Disabled</div>
+          <button class="mbtp-btn-icon m primary disabled">📦</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">6 variants</span>
+      <div class="ds-comp-name">mbtp.textButton</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Show icon</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Enable / Disabled</div>
+          <div style="display:flex;gap:14px;align-items:center">
+            <button class="mbtp-text-btn">ดูทั้งหมด →</button>
+            <button class="mbtp-text-btn s">ดูเพิ่มเติม →</button>
+            <button class="mbtp-text-btn disabled">ไม่สามารถใช้งาน</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">3 variants</span>
+      <div class="ds-comp-name">mbtp.buttonMenu</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Show badge</span></div>
+      <div class="demo-wrap">
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="mbtp-btn m secondary" style="position:relative">☰ เมนู</button>
+          <button class="mbtp-btn m secondary" style="position:relative">☰ เมนู <span style="position:absolute;top:-6px;right:-6px;background:#e1251b;color:#fff;border-radius:99px;font-size:9px;min-width:16px;height:16px;display:flex;align-items:center;justify-content:center;padding:0 3px">3</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─ INPUT FIELD ─ -->
     <div class="ds-cat-title">↳ Input Field</div>
-    <div class="ds-comp-grid">
-      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.textField-withoutLabel</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Show icon left/right</span><span class="ds-comp-prop">Show label/placeholder</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.textArea-withoutLabel</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Show badge 1-8</span><span class="ds-comp-prop">Show placeholder</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.selector-withoutLabel</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Show icon left</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">17 variants</span><div class="ds-comp-name">mbtp.searchContainer</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Collapse</span><span class="ds-comp-prop">Show icon</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.DatePicker-WithoutLabel</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Show placeholder</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.dateRange-withoutLabel</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Placeholder text 1/2</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.textField-withoutLabel-phone</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Country phone</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.DateSpinner</div><div class="ds-comp-props"><span class="ds-comp-prop">Language</span></div></div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">8 variants</span>
+      <div class="ds-comp-name">mbtp.textField-withoutLabel</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span></div>
+      <div class="demo-wrap" style="flex-direction:column;align-items:stretch">
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <div class="demo-col">
+            <div class="demo-label">Default</div>
+            <div class="mbtp-field"><span class="ph">กรอกข้อมูล</span></div>
+          </div>
+          <div class="demo-col">
+            <div class="demo-label">Focus</div>
+            <div class="mbtp-field focus"><span class="ph">กรอกข้อมูล</span></div>
+          </div>
+          <div class="demo-col">
+            <div class="demo-label">Filled</div>
+            <div class="mbtp-field filled">รหัสไปรษณีย์ 10900</div>
+          </div>
+          <div class="demo-col">
+            <div class="demo-label">Error</div>
+            <div class="mbtp-field error"><span class="ph">กรอกข้อมูล</span></div>
+          </div>
+          <div class="demo-col">
+            <div class="demo-label">Disabled</div>
+            <div class="mbtp-field disabled"><span>ไม่สามารถแก้ไข</span></div>
+          </div>
+          <div class="demo-col">
+            <div class="demo-label">Icon Left</div>
+            <div class="mbtp-field"><span>🔍</span><span class="ph">ค้นหา</span></div>
+          </div>
+          <div class="demo-col">
+            <div class="demo-label">Icon Right</div>
+            <div class="mbtp-field"><span class="ph">กรอกข้อมูล</span><span style="margin-left:auto">✕</span></div>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">8 variants</span>
+      <div class="ds-comp-name">mbtp.textArea-withoutLabel</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Default</div>
+          <textarea class="mbtp-area" rows="3">กรอกรายละเอียด...</textarea>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Focus</div>
+          <textarea class="mbtp-area focus" rows="3" style="color:#292c30">มีข้อมูลแล้ว</textarea>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Error</div>
+          <textarea class="mbtp-area error" rows="3">ข้อมูลไม่ถูกต้อง</textarea>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Disabled</div>
+          <textarea class="mbtp-area disabled" rows="3" disabled>ไม่สามารถแก้ไข</textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">8 variants</span>
+      <div class="ds-comp-name">mbtp.selector-withoutLabel</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Default</div>
+          <div class="mbtp-selector"><span class="ph" style="color:#8b96a2">เลือกตัวเลือก</span><span>⌄</span></div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Filled</div>
+          <div class="mbtp-selector filled"><span>กรุงเทพมหานคร</span><span>⌄</span></div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Error</div>
+          <div class="mbtp-selector error"><span style="color:#8b96a2">เลือกตัวเลือก</span><span>⌄</span></div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Disabled</div>
+          <div class="mbtp-selector disabled"><span>ไม่สามารถใช้งาน</span><span>⌄</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">17 variants</span>
+      <div class="ds-comp-name">mbtp.searchContainer</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Collapse</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Default (M)</div>
+          <div class="mbtp-search"><span>🔍</span><span>ค้นหา</span></div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Focus</div>
+          <div class="mbtp-search focus"><span>🔍</span><span style="color:#292c30">EF123456789TH</span><span style="margin-left:auto;cursor:pointer;color:#8b96a2">✕</span></div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Collapsed (S)</div>
+          <div style="width:40px;height:40px;border-radius:8px;border:1.5px solid #d1d5da;background:#fff;display:flex;align-items:center;justify-content:center;font-size:18px">🔍</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">8 variants</span>
+      <div class="ds-comp-name">mbtp.DatePicker-WithoutLabel</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Default</div>
+          <div class="mbtp-selector"><span style="color:#8b96a2">📅 เลือกวันที่</span><span>⌄</span></div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Filled</div>
+          <div class="mbtp-selector filled"><span>📅 25/03/2026</span><span>⌄</span></div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Error</div>
+          <div class="mbtp-selector error"><span style="color:#8b96a2">📅 เลือกวันที่</span><span>⌄</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">8 variants</span>
+      <div class="ds-comp-name">mbtp.dateRange-withoutLabel</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Default</div>
+          <div class="mbtp-field" style="min-width:260px"><span style="color:#8b96a2">📅 วันเริ่มต้น</span><span style="margin:0 8px;color:#d1d5da">—</span><span style="color:#8b96a2">วันสิ้นสุด</span></div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Filled</div>
+          <div class="mbtp-field filled" style="min-width:260px"><span>📅 01/03/2026</span><span style="margin:0 8px;color:#d1d5da">—</span><span>31/03/2026</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">2 variants</span>
+      <div class="ds-comp-name">mbtp.DateSpinner</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Language</span></div>
+      <div class="demo-wrap">
+        <div style="background:#fff;border-radius:12px;padding:12px;font-family:'IBM Plex Sans',sans-serif;min-width:200px;text-align:center">
+          <div style="display:flex;gap:0;justify-content:center">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border-right:1px solid #f0f0f0">
+              <div style="font-size:11px;color:#a2abb5">วันที่</div>
+              <div style="font-size:22px;font-weight:700;color:#292c30">25</div>
+              <div style="font-size:11px;color:#a2abb5">24 &nbsp; 26</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border-right:1px solid #f0f0f0">
+              <div style="font-size:11px;color:#a2abb5">เดือน</div>
+              <div style="font-size:22px;font-weight:700;color:#292c30">มี.ค.</div>
+              <div style="font-size:11px;color:#a2abb5">ก.พ. &nbsp; เม.ย.</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
+              <div style="font-size:11px;color:#a2abb5">ปี</div>
+              <div style="font-size:22px;font-weight:700;color:#292c30">2569</div>
+              <div style="font-size:11px;color:#a2abb5">2568 &nbsp; 2570</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─ SELECTION CONTROLS ─ -->
     <div class="ds-cat-title">↳ Selection Controls</div>
-    <div class="ds-comp-grid">
-      <div class="ds-comp-card"><span class="ds-comp-variants">9 variants</span><div class="ds-comp-name">mbtp.checkbox</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Label text</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">4 variants</span><div class="ds-comp-name">mbtp.toggle</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">24 variants</span><div class="ds-comp-name">mbtp.chips</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">Show icon left/right</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">6 variants</span><div class="ds-comp-name">mbtp.listSelect</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Show border/icon</span><span class="ds-comp-prop">Label text</span></div></div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">9 variants</span>
+      <div class="ds-comp-name">mbtp.checkbox</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Uncheck</div>
+          <label class="mbtp-cb"><div class="mbtp-cb-box"></div>ตัวเลือก</label>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Checked</div>
+          <label class="mbtp-cb"><div class="mbtp-cb-box checked">✓</div>เลือกแล้ว</label>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Indeterminate</div>
+          <label class="mbtp-cb"><div class="mbtp-cb-box indeterminate" style="font-size:14px;font-weight:900;color:#fff">—</div>บางส่วน</label>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Disabled</div>
+          <label class="mbtp-cb disabled"><div class="mbtp-cb-box"></div>ปิดใช้งาน</label>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Disabled Checked</div>
+          <label class="mbtp-cb disabled"><div class="mbtp-cb-box checked" style="opacity:.5">✓</div>ปิด/เลือก</label>
+        </div>
+      </div>
     </div>
 
-    <div class="ds-cat-title">↳ Navigation & Layout</div>
-    <div class="ds-comp-grid">
-      <div class="ds-comp-card"><span class="ds-comp-variants">3 variants</span><div class="ds-comp-name">mbtp.header</div><div class="ds-comp-props"><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">Show button icon 1/2</span><span class="ds-comp-prop">Show status bar</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.tab</div><div class="ds-comp-props"><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Show icon left</span><span class="ds-comp-prop">Show badge noti</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">10 variants</span><div class="ds-comp-name">.mbtp.navBarItem</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Show badge</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">9 variants</span><div class="ds-comp-name">mbtp.stickyButton</div><div class="ds-comp-props"><span class="ds-comp-prop">Direction</span><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Destructive</span><span class="ds-comp-prop">Show text/expand icon</span></div></div>
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">4 variants</span>
+      <div class="ds-comp-name">mbtp.toggle</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Off</div>
+          <label class="mbtp-toggle"><div class="mbtp-toggle-track"><div class="mbtp-toggle-thumb"></div></div>ปิด</label>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">On</div>
+          <label class="mbtp-toggle"><div class="mbtp-toggle-track on"><div class="mbtp-toggle-thumb"></div></div>เปิด</label>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Disabled Off</div>
+          <label class="mbtp-toggle disabled"><div class="mbtp-toggle-track"><div class="mbtp-toggle-thumb"></div></div>ปิด</label>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Disabled On</div>
+          <label class="mbtp-toggle disabled"><div class="mbtp-toggle-track on"><div class="mbtp-toggle-thumb"></div></div>เปิด</label>
+        </div>
+      </div>
     </div>
 
-    <div class="ds-cat-title">↳ Overlay & Feedback</div>
-    <div class="ds-comp-grid">
-      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.bottomSheet</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Show title/content/search</span><span class="ds-comp-prop">Show navBar/handle</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">4 variants</span><div class="ds-comp-name">mbtp.toast</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Show description</span><span class="ds-comp-prop">Show icon left</span><span class="ds-comp-prop">Show close</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.bgOverlay</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.emptyState</div><div class="ds-comp-props"><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Title text</span><span class="ds-comp-prop">Description text</span></div></div>
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">24 variants</span>
+      <div class="ds-comp-name">mbtp.chips</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Style</span></div>
+      <div class="demo-wrap" style="flex-direction:column">
+        <div class="demo-col">
+          <div class="demo-label">Size S / M / L — Unselected</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span class="mbtp-chip s">เอกสาร</span>
+            <span class="mbtp-chip m">เอกสาร</span>
+            <span class="mbtp-chip l">เอกสาร</span>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Size S / M / L — Selected</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span class="mbtp-chip s selected">✓ เอกสาร</span>
+            <span class="mbtp-chip m selected">✓ เอกสาร</span>
+            <span class="mbtp-chip l selected">✓ เอกสาร</span>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">States</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <span class="mbtp-chip m">Enable</span>
+            <span class="mbtp-chip m selected">Selected</span>
+            <span class="mbtp-chip m disabled">Disabled</span>
+            <span class="mbtp-chip m">🏷 With Icon</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="ds-cat-title">↳ Badge & Progress</div>
-    <div class="ds-comp-grid">
-      <div class="ds-comp-card"><span class="ds-comp-variants">15 variants</span><div class="ds-comp-name">mbtp.badge</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Show icon left/right</span><span class="ds-comp-prop">Label text</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">5 variants</span><div class="ds-comp-name">mbtp.badgeNoti</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Size</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">4 variants</span><div class="ds-comp-name">Progress indicator</div><div class="ds-comp-props"><span class="ds-comp-prop">Status</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">12 variants</span><div class="ds-comp-name">.mbtp.stepperItem</div><div class="ds-comp-props"><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Show text button/title/desc</span></div></div>
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">6 variants</span>
+      <div class="ds-comp-name">mbtp.listSelect</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span></div>
+      <div class="demo-wrap">
+        <div style="border:1px solid #e8eaec;border-radius:10px;overflow:hidden;background:#fff;min-width:260px">
+          <div class="mbtp-list-item">📦 ไปรษณีย์ธรรมดา</div>
+          <div class="mbtp-list-item selected">📮 EMS ด่วนพิเศษ ✓</div>
+          <div class="mbtp-list-item">📦 พัสดุลงทะเบียน</div>
+          <div class="mbtp-list-item disabled">🚫 ไม่พร้อมให้บริการ</div>
+        </div>
+      </div>
     </div>
 
-    <div class="ds-cat-title">↳ Card & Information</div>
-    <div class="ds-comp-grid">
-      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.cardInformation.parcellist</div><div class="ds-comp-props"><span class="ds-comp-prop">Status label</span><span class="ds-comp-prop">Title text</span><span class="ds-comp-prop">Show icon 2</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">3 variants</span><div class="ds-comp-name">mbtp.cardInformation.parceldetail</div><div class="ds-comp-props"><span class="ds-comp-prop">Show button set</span><span class="ds-comp-prop">Swap button</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">12 variants</span><div class="ds-comp-name">.mbtp.trackerItem</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">Show line</span></div></div>
+    <!-- ─ NAVIGATION ─ -->
+    <div class="ds-cat-title">↳ Navigation &amp; Layout</div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">3 variants</span>
+      <div class="ds-comp-name">mbtp.header</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Style: white / red / transparent</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">White</div>
+          <div class="mbtp-header white" style="border:1px solid #e8eaec">
+            <span class="mbtp-header-icon">←</span>
+            <span class="mbtp-header-title">หน้าหลัก</span>
+            <span class="mbtp-header-icon">⋯</span>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Red</div>
+          <div class="mbtp-header red">
+            <span class="mbtp-header-icon">←</span>
+            <span class="mbtp-header-title">ติดตามพัสดุ</span>
+            <span class="mbtp-header-icon">⋯</span>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Transparent</div>
+          <div class="mbtp-header transp">
+            <span class="mbtp-header-icon">←</span>
+            <span class="mbtp-header-title">โปร่งใส</span>
+            <span class="mbtp-header-icon">⋯</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="ds-cat-title">↳ Assets · Illustration & Icon</div>
-    <div class="ds-comp-grid">
-      <div class="ds-comp-card"><span class="ds-comp-variants">39 variants</span><div class="ds-comp-name">error illustrate</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Size</span></div><div class="ds-comp-meta">imageillustration page</div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">13 variants</span><div class="ds-comp-name">mascotAction</div><div class="ds-comp-props"><span class="ds-comp-prop">Property 1</span></div><div class="ds-comp-meta">imageillustration page</div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">10 variants</span><div class="ds-comp-name">building</div><div class="ds-comp-props"><span class="ds-comp-prop">Property 1</span></div><div class="ds-comp-meta">imageillustration page</div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">35 variants</span><div class="ds-comp-name">boxTypes</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span></div><div class="ds-comp-meta">iconillustration page</div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">18 variants</span><div class="ds-comp-name">postAction</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span></div><div class="ds-comp-meta">iconillustration page</div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">4 variants</span><div class="ds-comp-name">vehicles</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span></div><div class="ds-comp-meta">iconillustration page</div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">7 variants</span><div class="ds-comp-name">app logo</div><div class="ds-comp-props"><span class="ds-comp-prop">Property 1</span></div><div class="ds-comp-meta">App logo page</div></div>
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">2 variants</span>
+      <div class="ds-comp-name">mbtp.tab</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Show badge noti</span></div>
+      <div class="demo-wrap">
+        <div class="mbtp-tabs">
+          <div class="mbtp-tab active">📦 ทั้งหมด</div>
+          <div class="mbtp-tab" style="position:relative">📮 รอดำเนินการ <span style="position:absolute;top:6px;right:8px;background:#e1251b;color:#fff;font-size:9px;border-radius:99px;min-width:16px;height:16px;padding:0 3px;display:flex;align-items:center;justify-content:center">5</span></div>
+          <div class="mbtp-tab">✅ สำเร็จ</div>
+        </div>
+      </div>
     </div>
 
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">10 variants</span>
+      <div class="ds-comp-name">mbtp.navBarItem</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Show badge</span></div>
+      <div class="demo-wrap">
+        <div class="mbtp-navbar">
+          <div class="mbtp-nav-item active">
+            <div class="nav-icon">🏠</div>
+            <div>หน้าหลัก</div>
+          </div>
+          <div class="mbtp-nav-item" style="position:relative">
+            <div class="nav-icon">📦</div>
+            <div>พัสดุ</div>
+            <div class="mbtp-nav-badge">3</div>
+          </div>
+          <div class="mbtp-nav-item">
+            <div class="nav-icon">📍</div>
+            <div>ติดตาม</div>
+          </div>
+          <div class="mbtp-nav-item">
+            <div class="nav-icon">👤</div>
+            <div>โปรไฟล์</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">9 variants</span>
+      <div class="ds-comp-name">mbtp.stickyButton</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Direction</span><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Destructive</span></div>
+      <div class="demo-wrap" style="flex-direction:column">
+        <div class="demo-col">
+          <div class="demo-label">Single Button</div>
+          <div class="mbtp-sticky"><button class="mbtp-btn m primary" style="flex:1">ส่งพัสดุ</button></div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Two Buttons</div>
+          <div class="mbtp-sticky">
+            <button class="mbtp-btn m secondary" style="flex:1">ยกเลิก</button>
+            <button class="mbtp-btn m primary" style="flex:1">ยืนยัน</button>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Destructive</div>
+          <div class="mbtp-sticky"><button class="mbtp-btn m primary" style="flex:1;background:#e32526">ลบรายการ</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─ OVERLAY ─ -->
+    <div class="ds-cat-title">↳ Overlay &amp; Feedback</div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">4 variants</span>
+      <div class="ds-comp-name">mbtp.toast</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Type: default / success / warning / error</span></div>
+      <div class="demo-wrap" style="flex-direction:column">
+        <div class="mbtp-toast default">
+          <div class="mbtp-toast-icon">ℹ️</div>
+          <div class="mbtp-toast-body"><div class="mbtp-toast-title">แจ้งเตือนทั่วไป</div><div class="mbtp-toast-desc">ข้อมูลของคุณถูกบันทึกแล้ว</div></div>
+          <span style="cursor:pointer;opacity:.6">✕</span>
+        </div>
+        <div class="mbtp-toast success">
+          <div class="mbtp-toast-icon">✅</div>
+          <div class="mbtp-toast-body"><div class="mbtp-toast-title">ส่งพัสดุสำเร็จ</div><div class="mbtp-toast-desc">รหัสพัสดุ EF123456789TH</div></div>
+        </div>
+        <div class="mbtp-toast warning">
+          <div class="mbtp-toast-icon">⚠️</div>
+          <div class="mbtp-toast-body"><div class="mbtp-toast-title">กรุณาตรวจสอบ</div><div class="mbtp-toast-desc">ที่อยู่ปลายทางไม่ครบถ้วน</div></div>
+        </div>
+        <div class="mbtp-toast error">
+          <div class="mbtp-toast-icon">❌</div>
+          <div class="mbtp-toast-body"><div class="mbtp-toast-title">เกิดข้อผิดพลาด</div><div class="mbtp-toast-desc">ไม่สามารถเชื่อมต่อได้</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">2 variants</span>
+      <div class="ds-comp-name">mbtp.bottomSheet</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Show handle/title/content</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">With Handle</div>
+          <div class="mbtp-sheet">
+            <div class="mbtp-sheet-handle"></div>
+            <div class="mbtp-sheet-title">เลือกบริการ</div>
+            <div class="mbtp-sheet-body">เลือกประเภทบริการไปรษณีย์ที่ต้องการ</div>
+            <div style="display:flex;gap:8px;margin-top:12px">
+              <button class="mbtp-btn m secondary" style="flex:1">ยกเลิก</button>
+              <button class="mbtp-btn m primary" style="flex:1">ยืนยัน</button>
+            </div>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Without Handle</div>
+          <div class="mbtp-sheet" style="padding-top:20px">
+            <div class="mbtp-sheet-title">ยืนยันการส่ง</div>
+            <div class="mbtp-sheet-body">กรุณายืนยันข้อมูลก่อนดำเนินการ</div>
+            <div style="margin-top:12px"><button class="mbtp-btn m primary" style="width:100%">ยืนยัน</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">2 variants</span>
+      <div class="ds-comp-name">mbtp.emptyState</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Size: L / S</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Large</div>
+          <div class="mbtp-empty">
+            <div class="mbtp-empty-icon">📭</div>
+            <div class="mbtp-empty-title">ยังไม่มีพัสดุ</div>
+            <div class="mbtp-empty-desc">เริ่มส่งพัสดุเพื่อดูรายการที่นี่</div>
+            <button class="mbtp-btn m primary" style="margin-top:8px">ส่งพัสดุ</button>
+          </div>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">Small</div>
+          <div class="mbtp-empty" style="padding:16px">
+            <div style="font-size:32px">📭</div>
+            <div style="font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:700;color:#292c30">ไม่พบข้อมูล</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─ BADGE & PROGRESS ─ -->
+    <div class="ds-cat-title">↳ Badge &amp; Progress</div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">15 variants</span>
+      <div class="ds-comp-name">mbtp.badge</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Show icon</span></div>
+      <div class="demo-wrap" style="flex-direction:column">
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="mbtp-badge info">📋 รอดำเนินการ</span>
+          <span class="mbtp-badge success">✅ สำเร็จ</span>
+          <span class="mbtp-badge warning">⚠️ รอตรวจสอบ</span>
+          <span class="mbtp-badge error">❌ ไม่สำเร็จ</span>
+          <span class="mbtp-badge neutral">📦 ทั้งหมด</span>
+          <span class="mbtp-badge brand">🏷 ไปรษณีย์ไทย</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="mbtp-badge info">สถานะ</span>
+          <span class="mbtp-badge success">จัดส่งแล้ว →</span>
+          <span class="mbtp-badge warning">ค้างส่ง</span>
+          <span class="mbtp-badge error">ยกเลิก</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">5 variants</span>
+      <div class="ds-comp-name">mbtp.badgeNoti</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Size</span></div>
+      <div class="demo-wrap">
+        <div class="demo-col">
+          <div class="demo-label">Dot</div>
+          <span class="mbtp-badge-noti dot"></span>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">S</div>
+          <span class="mbtp-badge-noti s">3</span>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">M</div>
+          <span class="mbtp-badge-noti m">12</span>
+        </div>
+        <div class="demo-col">
+          <div class="demo-label">L</div>
+          <span class="mbtp-badge-noti l">99+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">4 variants</span>
+      <div class="ds-comp-name">Progress indicator</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Status (step 1–4)</span></div>
+      <div class="demo-wrap" style="flex-direction:column;gap:12px">
+        <div class="demo-col"><div class="demo-label">Step 1 of 4</div><div class="mbtp-progress"><div class="mbtp-progress-dot active"></div><div class="mbtp-progress-dot"></div><div class="mbtp-progress-dot"></div><div class="mbtp-progress-dot"></div></div></div>
+        <div class="demo-col"><div class="demo-label">Step 2 of 4</div><div class="mbtp-progress"><div class="mbtp-progress-dot"></div><div class="mbtp-progress-dot active"></div><div class="mbtp-progress-dot"></div><div class="mbtp-progress-dot"></div></div></div>
+        <div class="demo-col"><div class="demo-label">Step 3 of 4</div><div class="mbtp-progress"><div class="mbtp-progress-dot"></div><div class="mbtp-progress-dot"></div><div class="mbtp-progress-dot active"></div><div class="mbtp-progress-dot"></div></div></div>
+        <div class="demo-col"><div class="demo-label">Step 4 of 4</div><div class="mbtp-progress"><div class="mbtp-progress-dot"></div><div class="mbtp-progress-dot"></div><div class="mbtp-progress-dot"></div><div class="mbtp-progress-dot active"></div></div></div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">12 variants</span>
+      <div class="ds-comp-name">mbtp.stepperItem</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">State: pending/active/done</span></div>
+      <div class="demo-wrap">
+        <div class="mbtp-stepper">
+          <div class="mbtp-step">
+            <div class="mbtp-step-dot done">✓</div>
+            <div class="mbtp-step-content">
+              <div class="mbtp-step-title">รับพัสดุสำเร็จ</div>
+              <div class="mbtp-step-desc">10:30 — ที่ทำการไปรษณีย์บางรัก</div>
+            </div>
+          </div>
+          <div class="mbtp-step-line done"></div>
+          <div class="mbtp-step">
+            <div class="mbtp-step-dot active">2</div>
+            <div class="mbtp-step-content">
+              <div class="mbtp-step-title">กำลังจัดส่ง</div>
+              <div class="mbtp-step-desc">อยู่ระหว่างการขนส่ง</div>
+            </div>
+          </div>
+          <div class="mbtp-step-line"></div>
+          <div class="mbtp-step">
+            <div class="mbtp-step-dot">3</div>
+            <div class="mbtp-step-content">
+              <div class="mbtp-step-title">รอจัดส่ง</div>
+              <div class="mbtp-step-desc">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─ CARD & INFORMATION ─ -->
+    <div class="ds-cat-title">↳ Card &amp; Information</div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">2 variants</span>
+      <div class="ds-comp-name">mbtp.cardInformation.parcellist</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Status label</span><span class="ds-comp-prop">Show icon 2</span></div>
+      <div class="demo-wrap">
+        <div class="mbtp-card">
+          <div class="mbtp-card-status"><span class="mbtp-badge info">📋 รอดำเนินการ</span></div>
+          <div class="mbtp-card-title">EF123456789TH</div>
+          <div class="mbtp-card-sub">ส่งถึง: สุชาติ มีชัย · กรุงเทพฯ 10900</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <span style="font-size:11px;color:#8b96a2">อัพเดต 25/03/2026</span>
+            <span style="font-size:18px">›</span>
+          </div>
+        </div>
+        <div class="mbtp-card">
+          <div class="mbtp-card-status"><span class="mbtp-badge success">✅ จัดส่งแล้ว</span></div>
+          <div class="mbtp-card-title">EF987654321TH</div>
+          <div class="mbtp-card-sub">ส่งถึง: วิชัย ดีมาก · เชียงใหม่ 50000</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <span style="font-size:11px;color:#8b96a2">อัพเดต 24/03/2026</span>
+            <span style="font-size:18px">›</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">3 variants</span>
+      <div class="ds-comp-name">mbtp.cardInformation.parceldetail</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">Show button set</span><span class="ds-comp-prop">Swap button</span></div>
+      <div class="demo-wrap">
+        <div class="mbtp-card" style="width:300px">
+          <div class="mbtp-card-status"><span class="mbtp-badge warning">⚠️ ค้างจัดส่ง</span></div>
+          <div class="mbtp-card-title">EF123456789TH</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;font-family:'IBM Plex Sans',sans-serif">
+            <div><div style="font-size:11px;color:#8b96a2">ผู้ส่ง</div><div style="font-size:13px;color:#292c30;font-weight:600">สุชาติ มีชัย</div></div>
+            <div><div style="font-size:11px;color:#8b96a2">น้ำหนัก</div><div style="font-size:13px;color:#292c30;font-weight:600">1.5 กก.</div></div>
+            <div><div style="font-size:11px;color:#8b96a2">บริการ</div><div style="font-size:13px;color:#292c30;font-weight:600">EMS</div></div>
+            <div><div style="font-size:11px;color:#8b96a2">ค่าบริการ</div><div style="font-size:13px;color:#e1251b;font-weight:700">฿85.00</div></div>
+          </div>
+          <div class="mbtp-card-actions">
+            <button class="mbtp-btn s secondary" style="flex:1">ติดตามพัสดุ</button>
+            <button class="mbtp-btn s primary" style="flex:1">ดูรายละเอียด</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-comp-card" style="margin-bottom:10px">
+      <span class="ds-comp-variants">12 variants</span>
+      <div class="ds-comp-name">mbtp.trackerItem</div>
+      <div class="ds-comp-props"><span class="ds-comp-prop">State: pending/active/done</span><span class="ds-comp-prop">Show line</span></div>
+      <div class="demo-wrap">
+        <div style="min-width:260px">
+          <div class="mbtp-tracker">
+            <div class="mbtp-tracker-line-wrap">
+              <div class="mbtp-tracker-dot done"></div>
+              <div class="mbtp-tracker-vline done"></div>
+            </div>
+            <div><div class="mbtp-tracker-title">รับพัสดุที่ต้นทาง</div><div class="mbtp-tracker-time">25/03/2026 · 08:00</div></div>
+          </div>
+          <div class="mbtp-tracker">
+            <div class="mbtp-tracker-line-wrap">
+              <div class="mbtp-tracker-dot done"></div>
+              <div class="mbtp-tracker-vline done"></div>
+            </div>
+            <div><div class="mbtp-tracker-title">ออกจากศูนย์คัดแยก</div><div class="mbtp-tracker-time">25/03/2026 · 10:30</div></div>
+          </div>
+          <div class="mbtp-tracker">
+            <div class="mbtp-tracker-line-wrap">
+              <div class="mbtp-tracker-dot active"></div>
+              <div class="mbtp-tracker-vline"></div>
+            </div>
+            <div><div class="mbtp-tracker-title" style="color:#e1251b">กำลังจัดส่ง</div><div class="mbtp-tracker-time">25/03/2026 · 13:15</div></div>
+          </div>
+          <div class="mbtp-tracker">
+            <div class="mbtp-tracker-line-wrap">
+              <div class="mbtp-tracker-dot"></div>
+            </div>
+            <div><div class="mbtp-tracker-title" style="color:#8b96a2">จัดส่งสำเร็จ</div><div class="mbtp-tracker-time">—</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─ ASSETS ─ -->
+    <div class="ds-cat-title">↳ Assets · Illustration &amp; Icon</div>
+    <div class="ds-comp-grid">
+      <div class="ds-comp-card">
+        <span class="ds-comp-variants">39 variants</span>
+        <div class="ds-comp-name">error illustrate</div>
+        <div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Size</span></div>
+        <div class="demo-wrap" style="justify-content:center">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px">
+            <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#fff2f2,#ffbebb);display:flex;align-items:center;justify-content:center;font-size:36px">😵</div>
+            <div style="font-family:'IBM Plex Sans',sans-serif;font-size:12px;font-weight:700;color:#292c30">ไม่พบข้อมูล</div>
+            <div style="font-family:'IBM Plex Sans',sans-serif;font-size:11px;color:#8b96a2">network-error · L</div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+            <div style="font-size:28px" title="not-found">🔍</div>
+            <div style="font-size:28px" title="server-error">🖥</div>
+            <div style="font-size:28px" title="no-internet">📡</div>
+            <div style="font-size:28px" title="empty-box">📭</div>
+          </div>
+        </div>
+        <div class="ds-comp-meta">imageillustration page · Type × Size</div>
+      </div>
+      <div class="ds-comp-card">
+        <span class="ds-comp-variants">13 variants</span>
+        <div class="ds-comp-name">mascotAction</div>
+        <div class="ds-comp-props"><span class="ds-comp-prop">Property 1</span></div>
+        <div class="demo-wrap" style="justify-content:center">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+            <div style="font-size:40px" title="happy">🐮</div>
+            <div style="font-size:40px" title="sad">😢</div>
+            <div style="font-size:40px" title="wave">👋</div>
+          </div>
+          <div style="font-size:11px;color:#8b96a2;font-family:'IBM Plex Sans',sans-serif">13 poses</div>
+        </div>
+        <div class="ds-comp-meta">imageillustration page</div>
+      </div>
+      <div class="ds-comp-card">
+        <span class="ds-comp-variants">35 variants</span>
+        <div class="ds-comp-name">boxTypes</div>
+        <div class="ds-comp-props"><span class="ds-comp-prop">Type</span></div>
+        <div class="demo-wrap" style="justify-content:center">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+            <div style="font-size:32px">📦</div>
+            <div style="font-size:32px">🎁</div>
+            <div style="font-size:32px">🗃</div>
+            <div style="font-size:32px">💼</div>
+          </div>
+        </div>
+        <div class="ds-comp-meta">iconillustration page · 35 box types</div>
+      </div>
+      <div class="ds-comp-card">
+        <span class="ds-comp-variants">18 variants</span>
+        <div class="ds-comp-name">postAction</div>
+        <div class="ds-comp-props"><span class="ds-comp-prop">Type</span></div>
+        <div class="demo-wrap" style="justify-content:center">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+            <div style="font-size:32px">📮</div>
+            <div style="font-size:32px">📬</div>
+            <div style="font-size:32px">✉️</div>
+            <div style="font-size:32px">📝</div>
+          </div>
+        </div>
+        <div class="ds-comp-meta">iconillustration page</div>
+      </div>
+      <div class="ds-comp-card">
+        <span class="ds-comp-variants">7 variants</span>
+        <div class="ds-comp-name">app logo</div>
+        <div class="ds-comp-props"><span class="ds-comp-prop">Property 1</span></div>
+        <div class="demo-wrap" style="justify-content:center;gap:12px">
+          <div style="width:48px;height:48px;border-radius:12px;background:#e1251b;display:flex;align-items:center;justify-content:center;font-size:24px">📮</div>
+          <div style="width:48px;height:48px;border-radius:12px;background:#fff;border:1px solid #e8eaec;display:flex;align-items:center;justify-content:center;font-size:24px">📮</div>
+        </div>
+        <div class="ds-comp-meta">App logo page · 7 variants</div>
+      </div>
+    </div>
+
+    <!-- ─ SYSTEM NATIVE ─ -->
     <div class="ds-cat-title">↳ System Native 📱</div>
     <div class="ds-comp-grid">
-      <div class="ds-comp-card"><span class="ds-comp-variants">4 variants</span><div class="ds-comp-name">iOsStatusBar / AndroidStatus Bar</div><div class="ds-comp-props"><span class="ds-comp-prop">isDarkmode</span><span class="ds-comp-prop">hasBackground</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">6 variants</span><div class="ds-comp-name">iOsAlphabeticKeyboard</div><div class="ds-comp-props"><span class="ds-comp-prop">type</span><span class="ds-comp-prop">suggestion</span><span class="ds-comp-prop">isDarkmode</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">AndroidKeyboard</div><div class="ds-comp-props"><span class="ds-comp-prop">Configuration</span><span class="ds-comp-prop">isDarkmode</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">12 variants</span><div class="ds-comp-name">iOsDateTimeSpinner</div><div class="ds-comp-props"><span class="ds-comp-prop">type</span><span class="ds-comp-prop">header</span><span class="ds-comp-prop">isDarkmode</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">6 variants</span><div class="ds-comp-name">AndroidDatePicker</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">isDarkmode</span></div></div>
-      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">iOsAlert / AndroidAlert</div><div class="ds-comp-props"><span class="ds-comp-prop">actionCount</span><span class="ds-comp-prop">isDarkmode</span></div></div>
+      <div class="ds-comp-card">
+        <span class="ds-comp-variants">4 variants</span>
+        <div class="ds-comp-name">iOsStatusBar / AndroidStatus Bar</div>
+        <div class="ds-comp-props"><span class="ds-comp-prop">isDarkmode</span><span class="ds-comp-prop">hasBackground</span></div>
+        <div class="demo-wrap" style="flex-direction:column;gap:6px">
+          <div style="background:#fff;border-radius:6px;padding:6px 12px;display:flex;justify-content:space-between;font-size:11px;color:#292c30;font-family:'IBM Plex Sans',sans-serif">
+            <span>9:41</span><span>📶 WiFi 🔋</span>
+          </div>
+          <div style="background:#292c30;border-radius:6px;padding:6px 12px;display:flex;justify-content:space-between;font-size:11px;color:#fff;font-family:'IBM Plex Sans',sans-serif">
+            <span>9:41</span><span>📶 WiFi 🔋</span>
+          </div>
+        </div>
+      </div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">6 variants</span><div class="ds-comp-name">iOsAlphabeticKeyboard</div><div class="ds-comp-props"><span class="ds-comp-prop">type</span><span class="ds-comp-prop">suggestion</span><span class="ds-comp-prop">isDarkmode</span></div><div class="ds-comp-meta">iOS keyboard · light/dark</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">AndroidKeyboard</div><div class="ds-comp-props"><span class="ds-comp-prop">Configuration</span><span class="ds-comp-prop">isDarkmode</span></div><div class="ds-comp-meta">Android keyboard · light/dark</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">12 variants</span><div class="ds-comp-name">iOsDateTimeSpinner</div><div class="ds-comp-props"><span class="ds-comp-prop">type</span><span class="ds-comp-prop">header</span><span class="ds-comp-prop">isDarkmode</span></div><div class="ds-comp-meta">iOS date/time picker</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">6 variants</span><div class="ds-comp-name">AndroidDatePicker</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">isDarkmode</span></div><div class="ds-comp-meta">Android date picker</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">iOsAlert / AndroidAlert</div><div class="ds-comp-props"><span class="ds-comp-prop">actionCount</span><span class="ds-comp-prop">isDarkmode</span></div><div class="ds-comp-meta">Native alert dialogs</div></div>
     </div>
   </div>
 
