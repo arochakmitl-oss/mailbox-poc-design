@@ -1112,16 +1112,78 @@ body { padding: 0; }
   <div class="page" id="page-doc">
     <div class="page-inner wide">
 <div class="container">
+<style>
+/* ── Design Doc v2 ── */
+.ds-hero { background: linear-gradient(135deg,#0f1a2e,#1a2744); border-radius:14px; padding:32px; margin-bottom:32px; border:1px solid #2e3347; }
+.ds-hero h1 { font-size:22px; font-weight:800; color:#fff; margin-bottom:8px; }
+.ds-hero p { color:#7c8ba1; font-size:13px; margin-bottom:20px; }
+.ds-meta { display:flex; gap:20px; flex-wrap:wrap; }
+.ds-meta-item { background:#1a2744; border:1px solid #2e3347; border-radius:8px; padding:10px 16px; }
+.ds-meta-item span { font-size:10px; color:#7c8ba1; text-transform:uppercase; letter-spacing:.06em; display:block; }
+.ds-meta-item strong { font-size:14px; color:#e2e8f0; font-weight:700; }
+
+.ds-sec { margin-bottom:40px; }
+.ds-sec-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:#7c8ba1; margin-bottom:16px; padding-bottom:8px; border-bottom:1px solid #2e3347; display:flex; align-items:center; gap:8px; }
+.ds-sec-title::before { content:''; width:3px; height:14px; background:var(--blue); border-radius:2px; display:inline-block; }
+
+/* Color tokens */
+.ds-color-groups { display:flex; flex-direction:column; gap:20px; }
+.ds-color-group-name { font-size:11px; font-weight:700; color:#7c8ba1; text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; }
+.ds-swatches { display:flex; flex-wrap:wrap; gap:6px; }
+.ds-swatch { display:flex; flex-direction:column; align-items:center; gap:4px; cursor:default; }
+.ds-swatch-box { width:44px; height:44px; border-radius:8px; border:1px solid rgba(255,255,255,.1); transition:transform .15s; }
+.ds-swatch:hover .ds-swatch-box { transform:scale(1.1); }
+.ds-swatch-label { font-size:9px; color:#7c8ba1; text-align:center; max-width:48px; line-height:1.2; }
+.ds-swatch-hex { font-size:9px; color:#5a6169; font-family:'IBM Plex Mono',monospace; }
+
+/* Typography */
+.ds-type-table { width:100%; border-collapse:collapse; }
+.ds-type-table th { font-size:10px; font-weight:700; color:#7c8ba1; text-transform:uppercase; letter-spacing:.06em; padding:8px 12px; border-bottom:1px solid #2e3347; text-align:left; }
+.ds-type-table td { padding:10px 12px; border-bottom:1px solid #1a1d27; vertical-align:middle; }
+.ds-type-table tr:hover td { background:#1a1d27; }
+.ds-type-name { font-size:11px; font-weight:700; color:#93c5fd; }
+.ds-type-preview { color:#e2e8f0; }
+.ds-type-meta { font-size:11px; color:#7c8ba1; }
+.ds-type-badge { display:inline-block; background:#1e3a5f; color:#93c5fd; font-size:10px; font-weight:700; padding:2px 6px; border-radius:4px; margin-right:4px; }
+
+/* Spacing */
+.ds-space-grid { display:flex; gap:8px; flex-wrap:wrap; align-items:flex-end; }
+.ds-space-item { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.ds-space-bar { background:#3b82f6; border-radius:3px; width:16px; transition:height .2s; }
+.ds-space-val { font-size:10px; color:#7c8ba1; font-family:'IBM Plex Mono',monospace; }
+
+/* Shadows */
+.ds-shadow-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; }
+.ds-shadow-card { background:#1a1d27; border-radius:12px; padding:20px; text-align:center; }
+.ds-shadow-box { width:60px; height:60px; background:#22263a; border-radius:10px; margin:0 auto 12px; }
+.ds-shadow-name { font-size:12px; font-weight:700; color:#e2e8f0; }
+.ds-shadow-meta { font-size:11px; color:#7c8ba1; margin-top:2px; }
+
+/* Components */
+.ds-comp-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:10px; }
+.ds-comp-card { background:#1a1d27; border:1px solid #2e3347; border-radius:10px; padding:14px 16px; transition:border-color .15s; }
+.ds-comp-card:hover { border-color:#3b82f6; }
+.ds-comp-name { font-size:13px; font-weight:700; color:#e2e8f0; margin-bottom:6px; }
+.ds-comp-props { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px; }
+.ds-comp-prop { background:#22263a; color:#7c8ba1; font-size:10px; padding:2px 7px; border-radius:10px; }
+.ds-comp-meta { font-size:11px; color:#5a6169; }
+.ds-comp-variants { background:#1e3a5f; color:#93c5fd; font-size:10px; font-weight:700; padding:2px 8px; border-radius:10px; float:right; }
+
+.ds-cat-title { font-size:13px; font-weight:700; color:#e2e8f0; margin:20px 0 10px; display:flex; align-items:center; gap:8px; }
+.ds-cat-title::after { content:''; flex:1; height:1px; background:#2e3347; }
+</style>
 
   <!-- Hero -->
-  <div class="hero">
-    <h1>Mail Box POC — Interactive Component Design Document</h1>
-    <p class="sub">Reference guide for all interactive components in the design system — variants, states, properties, and token usage</p>
-    <div class="hero-meta">
-      <div><span>Figma File</span><strong>NWByRlb7yAAkftVOeKnIGt</strong></div>
-      <div><span>Version</span><strong>v1.0 — 2026-03-24</strong></div>
-      <div><span>Prefix</span><strong>mbtp.*</strong></div>
-      <div><span>Components</span><strong>13 Interactive</strong></div>
+  <div class="ds-hero">
+    <h1>Mail Box POC — Design System Document v2</h1>
+    <p>ข้อมูล tokens, typography, components และ assets ทั้งหมดจาก Figma · อัพเดตล่าสุด 2026-03-25</p>
+    <div class="ds-meta">
+      <div class="ds-meta-item"><span>Figma File</span><strong>NWByRlb7yAAkftVOeKnIGt</strong></div>
+      <div class="ds-meta-item"><span>Color Tokens</span><strong>233 variables</strong></div>
+      <div class="ds-meta-item"><span>Text Styles</span><strong>39 styles</strong></div>
+      <div class="ds-meta-item"><span>Component Sets</span><strong>86 sets</strong></div>
+      <div class="ds-meta-item"><span>Components</span><strong>651 singles</strong></div>
+      <div class="ds-meta-item"><span>Prefix</span><strong>mbtp.*</strong></div>
     </div>
   </div>
 
@@ -1146,9 +1208,197 @@ body { padding: 0; }
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════
-       1. BUTTON
-  ══════════════════════════════════════════ -->
+  <!-- ════ COLOR TOKENS ════ -->
+  <div class="ds-sec" id="button">
+    <div class="ds-sec-title">Color Tokens · Primitive-Colors (233 variables)</div>
+    <div id="ds-colors"></div>
+  </div>
+
+  <!-- ════ SPACING ════ -->
+  <div class="ds-sec" id="input">
+    <div class="ds-sec-title">Spacing Scale · Primitive-Number (20 tokens)</div>
+    <div class="ds-space-grid" id="ds-spacing"></div>
+  </div>
+
+  <!-- ════ TYPOGRAPHY ════ -->
+  <div class="ds-sec" id="checkbox">
+    <div class="ds-sec-title">Typography · IBM Plex Sans Thai (39 styles)</div>
+    <table class="ds-type-table">
+      <thead><tr><th>Style</th><th>Preview</th><th>Size / Weight / Line Height</th></tr></thead>
+      <tbody id="ds-type-body"></tbody>
+    </table>
+  </div>
+
+  <!-- ════ SHADOWS ════ -->
+  <div class="ds-sec" id="toggle">
+    <div class="ds-sec-title">Effects · Shadows (4 styles)</div>
+    <div class="ds-shadow-grid">
+      <div class="ds-shadow-card"><div class="ds-shadow-box" style="box-shadow:0 2px 8px rgba(0,0,0,.35)"></div><div class="ds-shadow-name">shadow-s</div><div class="ds-shadow-meta">blur 8px</div></div>
+      <div class="ds-shadow-card"><div class="ds-shadow-box" style="box-shadow:0 4px 12px rgba(0,0,0,.35)"></div><div class="ds-shadow-name">shadow-m</div><div class="ds-shadow-meta">blur 12px</div></div>
+      <div class="ds-shadow-card"><div class="ds-shadow-box" style="box-shadow:0 -4px 12px rgba(0,0,0,.35)"></div><div class="ds-shadow-name">shadow-m-up</div><div class="ds-shadow-meta">blur 12px · reversed</div></div>
+      <div class="ds-shadow-card"><div class="ds-shadow-box" style="box-shadow:0 6px 14px rgba(0,0,0,.35)"></div><div class="ds-shadow-name">shadow-l</div><div class="ds-shadow-meta">blur 14px</div></div>
+    </div>
+  </div>
+
+  <!-- ════ COMPONENTS ════ -->
+  <div class="ds-sec" id="chip">
+    <div class="ds-sec-title">Component Sets · 86 sets · 651 singles · prefix mbtp.*</div>
+
+    <div class="ds-cat-title">↳ Button</div>
+    <div class="ds-comp-grid">
+      <div class="ds-comp-card"><span class="ds-comp-variants">81 variants</span><div class="ds-comp-name">mbtp.button</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">Show icon left/right</span><span class="ds-comp-prop">Label text</span></div><div class="ds-comp-meta">Primary/Secondary/Tertiary · S/M/L</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">90 variants</span><div class="ds-comp-name">mbtp.buttonIcon</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">Show badge</span></div><div class="ds-comp-meta">Icon-only button</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">6 variants</span><div class="ds-comp-name">mbtp.textButton</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Show icon left/right</span><span class="ds-comp-prop">Label text</span></div><div class="ds-comp-meta">Text-only button</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">3 variants</span><div class="ds-comp-name">mbtp.buttonMenu</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Show badge</span><span class="ds-comp-prop">Label text</span></div><div class="ds-comp-meta">Menu button</div></div>
+    </div>
+
+    <div class="ds-cat-title">↳ Input Field</div>
+    <div class="ds-comp-grid">
+      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.textField-withoutLabel</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Show icon left/right</span><span class="ds-comp-prop">Show label/placeholder</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.textArea-withoutLabel</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Show badge 1-8</span><span class="ds-comp-prop">Show placeholder</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.selector-withoutLabel</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Show icon left</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">17 variants</span><div class="ds-comp-name">mbtp.searchContainer</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Collapse</span><span class="ds-comp-prop">Show icon</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.DatePicker-WithoutLabel</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Show placeholder</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.dateRange-withoutLabel</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Placeholder text 1/2</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">mbtp.textField-withoutLabel-phone</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Filled</span><span class="ds-comp-prop">Country phone</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.DateSpinner</div><div class="ds-comp-props"><span class="ds-comp-prop">Language</span></div></div>
+    </div>
+
+    <div class="ds-cat-title">↳ Selection Controls</div>
+    <div class="ds-comp-grid">
+      <div class="ds-comp-card"><span class="ds-comp-variants">9 variants</span><div class="ds-comp-name">mbtp.checkbox</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Label text</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">4 variants</span><div class="ds-comp-name">mbtp.toggle</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">24 variants</span><div class="ds-comp-name">mbtp.chips</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">Show icon left/right</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">6 variants</span><div class="ds-comp-name">mbtp.listSelect</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Show border/icon</span><span class="ds-comp-prop">Label text</span></div></div>
+    </div>
+
+    <div class="ds-cat-title">↳ Navigation & Layout</div>
+    <div class="ds-comp-grid">
+      <div class="ds-comp-card"><span class="ds-comp-variants">3 variants</span><div class="ds-comp-name">mbtp.header</div><div class="ds-comp-props"><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">Show button icon 1/2</span><span class="ds-comp-prop">Show status bar</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.tab</div><div class="ds-comp-props"><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Show icon left</span><span class="ds-comp-prop">Show badge noti</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">10 variants</span><div class="ds-comp-name">.mbtp.navBarItem</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Selection</span><span class="ds-comp-prop">Show badge</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">9 variants</span><div class="ds-comp-name">mbtp.stickyButton</div><div class="ds-comp-props"><span class="ds-comp-prop">Direction</span><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Destructive</span><span class="ds-comp-prop">Show text/expand icon</span></div></div>
+    </div>
+
+    <div class="ds-cat-title">↳ Overlay & Feedback</div>
+    <div class="ds-comp-grid">
+      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.bottomSheet</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Show title/content/search</span><span class="ds-comp-prop">Show navBar/handle</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">4 variants</span><div class="ds-comp-name">mbtp.toast</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Show description</span><span class="ds-comp-prop">Show icon left</span><span class="ds-comp-prop">Show close</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.bgOverlay</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.emptyState</div><div class="ds-comp-props"><span class="ds-comp-prop">Size</span><span class="ds-comp-prop">Title text</span><span class="ds-comp-prop">Description text</span></div></div>
+    </div>
+
+    <div class="ds-cat-title">↳ Badge & Progress</div>
+    <div class="ds-comp-grid">
+      <div class="ds-comp-card"><span class="ds-comp-variants">15 variants</span><div class="ds-comp-name">mbtp.badge</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Show icon left/right</span><span class="ds-comp-prop">Label text</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">5 variants</span><div class="ds-comp-name">mbtp.badgeNoti</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Size</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">4 variants</span><div class="ds-comp-name">Progress indicator</div><div class="ds-comp-props"><span class="ds-comp-prop">Status</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">12 variants</span><div class="ds-comp-name">.mbtp.stepperItem</div><div class="ds-comp-props"><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Show text button/title/desc</span></div></div>
+    </div>
+
+    <div class="ds-cat-title">↳ Card & Information</div>
+    <div class="ds-comp-grid">
+      <div class="ds-comp-card"><span class="ds-comp-variants">2 variants</span><div class="ds-comp-name">mbtp.cardInformation.parcellist</div><div class="ds-comp-props"><span class="ds-comp-prop">Status label</span><span class="ds-comp-prop">Title text</span><span class="ds-comp-prop">Show icon 2</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">3 variants</span><div class="ds-comp-name">mbtp.cardInformation.parceldetail</div><div class="ds-comp-props"><span class="ds-comp-prop">Show button set</span><span class="ds-comp-prop">Swap button</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">12 variants</span><div class="ds-comp-name">.mbtp.trackerItem</div><div class="ds-comp-props"><span class="ds-comp-prop">State</span><span class="ds-comp-prop">Style</span><span class="ds-comp-prop">Show line</span></div></div>
+    </div>
+
+    <div class="ds-cat-title">↳ Assets · Illustration & Icon</div>
+    <div class="ds-comp-grid">
+      <div class="ds-comp-card"><span class="ds-comp-variants">39 variants</span><div class="ds-comp-name">error illustrate</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">Size</span></div><div class="ds-comp-meta">imageillustration page</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">13 variants</span><div class="ds-comp-name">mascotAction</div><div class="ds-comp-props"><span class="ds-comp-prop">Property 1</span></div><div class="ds-comp-meta">imageillustration page</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">10 variants</span><div class="ds-comp-name">building</div><div class="ds-comp-props"><span class="ds-comp-prop">Property 1</span></div><div class="ds-comp-meta">imageillustration page</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">35 variants</span><div class="ds-comp-name">boxTypes</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span></div><div class="ds-comp-meta">iconillustration page</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">18 variants</span><div class="ds-comp-name">postAction</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span></div><div class="ds-comp-meta">iconillustration page</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">4 variants</span><div class="ds-comp-name">vehicles</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span></div><div class="ds-comp-meta">iconillustration page</div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">7 variants</span><div class="ds-comp-name">app logo</div><div class="ds-comp-props"><span class="ds-comp-prop">Property 1</span></div><div class="ds-comp-meta">App logo page</div></div>
+    </div>
+
+    <div class="ds-cat-title">↳ System Native 📱</div>
+    <div class="ds-comp-grid">
+      <div class="ds-comp-card"><span class="ds-comp-variants">4 variants</span><div class="ds-comp-name">iOsStatusBar / AndroidStatus Bar</div><div class="ds-comp-props"><span class="ds-comp-prop">isDarkmode</span><span class="ds-comp-prop">hasBackground</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">6 variants</span><div class="ds-comp-name">iOsAlphabeticKeyboard</div><div class="ds-comp-props"><span class="ds-comp-prop">type</span><span class="ds-comp-prop">suggestion</span><span class="ds-comp-prop">isDarkmode</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">AndroidKeyboard</div><div class="ds-comp-props"><span class="ds-comp-prop">Configuration</span><span class="ds-comp-prop">isDarkmode</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">12 variants</span><div class="ds-comp-name">iOsDateTimeSpinner</div><div class="ds-comp-props"><span class="ds-comp-prop">type</span><span class="ds-comp-prop">header</span><span class="ds-comp-prop">isDarkmode</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">6 variants</span><div class="ds-comp-name">AndroidDatePicker</div><div class="ds-comp-props"><span class="ds-comp-prop">Type</span><span class="ds-comp-prop">isDarkmode</span></div></div>
+      <div class="ds-comp-card"><span class="ds-comp-variants">8 variants</span><div class="ds-comp-name">iOsAlert / AndroidAlert</div><div class="ds-comp-props"><span class="ds-comp-prop">actionCount</span><span class="ds-comp-prop">isDarkmode</span></div></div>
+    </div>
+  </div>
+
+  <!-- ════ COMPONENT TOKENS SUMMARY ════ -->
+  <div class="ds-sec" id="listselect">
+    <div class="ds-sec-title">Token Collections</div>
+    <div class="ds-comp-grid">
+      <div class="ds-comp-card"><div class="ds-comp-name">Primitive-Colors</div><div class="ds-comp-meta">233 color variables · Neutral, Brand, Palette, Overlay</div></div>
+      <div class="ds-comp-card"><div class="ds-comp-name">Primitive-Number</div><div class="ds-comp-meta">20 spacing values · 0px → 999px</div></div>
+      <div class="ds-comp-card"><div class="ds-comp-name">Tokens-Component</div><div class="ds-comp-meta">205 component tokens · Button, Input, Colors, Border, Shadow</div></div>
+    </div>
+  </div>
+
+  <!-- ════ FOOTER ════ -->
+  <div style="text-align:center;color:var(--muted);font-size:12px;padding:32px 0 8px;border-top:1px solid var(--border);margin-top:20px">
+    Mail Box POC — Design System v2 · Generated by Claude Code · 2026-03-25 · Figma NWByRlb7yAAkftVOeKnIGt
+  </div>
+
+  <script>
+  // ── Render color swatches ──
+  const colorData = {
+    'Brand — Red': [['0','#fff2f2'],['50','#ffebea'],['100','#ffbebb'],['200','#ff928c'],['300','#ff655d'],['400','#ff392e'],['500','#e1251b'],['600','#bf140b'],['700','#9d0800'],['800','#7b0600'],['900','#590500']],
+    'Brand — Blue': [['0','#f7faff'],['50','#f2f6ff'],['100','#d8e4ff'],['200','#bfd3ff'],['300','#a6c2ff'],['400','#8db0ff'],['500','#739fff'],['600','#4d7ce3'],['700','#2a58bb'],['800','#113992'],['900','#002169']],
+    'Brand — Gray': [['0','#ffffff'],['50','#f8f8f8'],['100','#e4e4e4'],['200','#cfcfcf'],['300','#bbbbbb'],['400','#a7a4a4'],['500','#928e8e'],['600','#7e7878'],['700','#696363'],['800','#554e4e'],['900','#413a3a']],
+    'Brand — Silver Gray': [['0','#ffffff'],['50','#f7f7f7'],['100','#d7d7d7'],['200','#c3c3c3'],['300','#aeaeae'],['400','#98989a'],['500','#828286'],['600','#6c6c71'],['700','#57575d'],['800','#434348'],['900','#252526']],
+    'Brand — Orange': [['0','#fffcfa'],['50','#fff3e8'],['100','#ffd8b6'],['200','#ffbd84'],['300','#ffa252'],['400','#f6821f'],['500','#d4690e'],['600','#b25301'],['700','#904200'],['800','#6e3300'],['900','#4c2300']],
+    'Neutral': [['white','#ffffff'],['grey-50','#f6f8fa'],['grey-100','#e8eaec'],['grey-200','#d1d5da'],['grey-300','#b9c0c7'],['grey-400','#a2abb5'],['grey-500','#8b96a2'],['grey-600','#727c86'],['grey-700','#5a6169'],['grey-800','#41474d'],['grey-900','#292c30'],['black','#000000']],
+    'Palette — Amber': [['50','#fef8e7'],['100','#fdf2ce'],['200','#fbe59e'],['300','#f9d86d'],['400','#f7cb3d'],['500','#f5be0c'],['600','#c4980a'],['700','#937207'],['800','#624c05'],['900','#312602']],
+    'Palette — Blue': [['50','#ebf2fe'],['100','#d8e6fd'],['200','#b1cdfb'],['300','#89b4fa'],['400','#629bf8'],['500','#3b82f6'],['600','#2f69c7'],['700','#235097'],['800','#183668'],['900','#0c1d38']],
+    'Palette — Green': [['50','#e9f6e8'],['100','#d3ecd1'],['200','#a6d9a3'],['300','#7ac776'],['400','#4db448'],['500','#22a119'],['600','#1a8115'],['700','#146110'],['800','#0d400a'],['900','#072005']],
+    'Palette — Red': [['50','#fce9e9'],['100','#f9d3d4'],['200','#f4a8a8'],['300','#ee7c7d'],['400','#e95151'],['500','#e32526'],['600','#b61e1e'],['700','#881617'],['800','#5b0f0f'],['900','#2d0708']],
+    'Palette — Teal': [['50','#dff7f4'],['100','#c9f0ec'],['200','#9ce2da'],['300','#6ed4c9'],['400','#41c6b7'],['500','#14b8a6'],['600','#109385'],['700','#0c6e64'],['800','#084a42'],['900','#042521']],
+    'Palette — Others': [['pink-500','#ec4899'],['violet-500','#d946ef'],['indigo-500','#6366f1'],['sky-500','#0ea5e9'],['cyan-500','#06b6d4'],['lime-500','#84cc16'],['orange-500','#f97316'],['rose-500','#f43f5e'],['brown-500','#d3a074']],
+    'Overlay': [['white-0','rgba(255,255,255,0)'],['white-20','rgba(255,255,255,.2)'],['white-50','rgba(255,255,255,.5)'],['white-80','rgba(255,255,255,.8)'],['white-100','#ffffff'],['black-0','rgba(0,0,0,0)'],['black-20','rgba(0,0,0,.2)'],['black-50','rgba(0,0,0,.5)'],['black-80','rgba(0,0,0,.8)'],['black-100','#000000']],
+  };
+
+  const colWrap = document.getElementById('ds-colors');
+  for (const [group, colors] of Object.entries(colorData)) {
+    const div = document.createElement('div');
+    div.style.marginBottom = '16px';
+    div.innerHTML = `<div class="ds-color-group-name">${group}</div><div class="ds-swatches">${
+      colors.map(([name, hex]) => `<div class="ds-swatch" title="${name}: ${hex}"><div class="ds-swatch-box" style="background:${hex}"></div><div class="ds-swatch-label">${name}</div><div class="ds-swatch-hex">${hex.startsWith('rgba') ? hex.slice(0,16)+'…' : hex}</div></div>`).join('')
+    }</div>`;
+    colWrap.appendChild(div);
+  }
+
+  // ── Render spacing ──
+  const spacingData = [0,2,4,8,12,16,20,24,28,32,36,40,44,48,56,60,72,80,160,999];
+  const spWrap = document.getElementById('ds-spacing');
+  spacingData.forEach(px => {
+    const item = document.createElement('div');
+    item.className = 'ds-space-item';
+    const h = Math.min(Math.round(px / 3), 80);
+    item.innerHTML = `<div class="ds-space-bar" style="height:${h}px"></div><div class="ds-space-val">${px}px</div>`;
+    spWrap.appendChild(item);
+  });
+
+  // ── Render typography ──
+  const typeData = [
+    ['display/m','36px','Bold','60px'],
+    ['heading/xl','32px','Bold','54px'],['heading/l','28px','Bold','46px'],['heading/m','24px','Bold','40px'],['heading/s','20px','Bold','34px'],['heading/xs','16px','Bold','26px'],
+    ['sub-heading/l','24px','Regular','40px'],['sub-heading/m','20px','Regular','34px'],['sub-heading/s','18px','Regular','30px'],
+    ['label/l-bold','20px','Bold','34px'],['label/l','20px','Regular','34px'],['label/m-bold','16px','Bold','26px'],['label/m','16px','Regular','26px'],['label/s-bold','14px','Bold','24px'],['label/s','14px','Regular','24px'],
+    ['body/l-bold','18px','Medium','30px'],['body/l','18px','Regular','30px'],['body/m-bold','16px','Medium','26px'],['body/m','16px','Regular','26px'],['body/s-bold','14px','Medium','24px'],['body/s','14px','Regular','24px'],
+    ['caption/l-bold','14px','Medium','24px'],['caption/l','14px','Regular','24px'],['caption/m-bold','12px','Medium','20px'],['caption/m','12px','Regular','20px'],['caption/s-bold','10px','Medium','18px'],['caption/s','10px','Regular','18px'],
+  ];
+  const tbody = document.getElementById('ds-type-body');
+  typeData.forEach(([name, size, weight, lh]) => {
+    const tr = document.createElement('tr');
+    const fw = weight === 'Bold' ? 700 : weight === 'Medium' ? 500 : 400;
+    tr.innerHTML = `<td><span class="ds-type-name">${name}</span></td><td><span class="ds-type-preview" style="font-size:${size};font-weight:${fw};line-height:${lh};font-family:'IBM Plex Sans',sans-serif">Mail Box POC · ข้อความตัวอย่าง</span></td><td class="ds-type-meta"><span class="ds-type-badge">${size}</span><span class="ds-type-badge">${weight}</span>lh ${lh}</td>`;
+    tbody.appendChild(tr);
+  });
+  </script>
+
+  <!-- ════ OLD CONTENT REMOVED - replaced by DS v2 above ════ -->
+  <!--
   <div class="comp-section" id="button">
     <div class="comp-header">
       <div class="comp-icon">🔘</div>
@@ -2162,11 +2412,7 @@ body { padding: 0; }
     </div>
   </div>
 
-  <!-- Footer -->
-  <div style="text-align:center;color:var(--doc-muted);font-size:12px;padding:32px 0 8px;border-top:1px solid var(--doc-border);margin-top:20px">
-    Mail Box POC — Interactive Component Design Document v1.0 • Generated by Claude Code • 2026-03-24<br>
-    <span style="margin-top:4px;display:block">Paired with: <a href="mailbox-poc-design-system-audit.html">Design System Audit Report</a></span>
-  </div>
+  -->
 
 </div>
     </div>
