@@ -2187,7 +2187,7 @@ body { padding: 0; }
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
         <div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em">อัพเดตล่าสุด</div>
-          <div style="font-size:14px;font-weight:600;color:var(--text)" id="about-last-updated">2026-03-25</div>
+          <div style="font-size:14px;font-weight:600;color:var(--text)" id="about-last-updated">2026-03-25 13:26</div>
         </div>
         <div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em">เวอร์ชัน</div>
@@ -2517,6 +2517,15 @@ function showSnack(msg){
 }
 
 // ═══ Version log ════════════════════════════════
+function renderAboutDate(){
+  const d = new Date(document.lastModified);
+  const pad = n => String(n).padStart(2,'0');
+  const str = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  const el = document.getElementById('about-last-updated');
+  if(el) el.textContent = str;
+}
+renderAboutDate();
+
 function renderVM(){
   const vs=[{run:1,date:'2026-03-24',changes:['อัพเดต typography tokens: extra-weight → bold']}];
   document.getElementById('vm-run').textContent=1;
