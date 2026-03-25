@@ -1869,70 +1869,28 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
 </div>
 <script>
 (function(){
-  var ICONS=["arrow-left-double-sharp", "arrow-right-double-sharp", "arrow-up-double-sharp", "arrow-down-double-sharp", "arrow-up-02-sharp", "arrow-down-02-sharp", "arrow-up-right-01-sharp", "arrow-down-left-01-sharp", "arrow-down-right-01-sharp", "arrow-up-left-01-sharp", "arrow-up-03-sharp", "arrow-down-03-sharp", "arrow-left-03-sharp", "arrow-right-03-sharp", "arrow-turn-backward-sharp", "arrow-turn-forward-sharp", "arrow-turn-up-sharp", "arrow-turn-down-sharp", "arrow-data-transfer-diagonal-sharp", "remove-square ", "cancel-circle ", "time-quarter", "time-half-pass", "time-quarter-pass ", "timer-02", "stop-watch", "hourglass-off", "hourglass", "clock-05", "clock-04", "clock-03", "clock-02", "clock-01", "spam", "checkmark-square-02", "unavailable", "remove-circle-half-dot", "remove-circle ", "cancel-circle-half-dot", "new-releases", "add circle-half-dot", "add-circle ", "label", "label-important", "eraser", "eraser-add", "view-off", "view", "upload-04", "download-04", "unlink-04", "link-04", "logout-03", "login-03", "home-04", "link-square-01", "at", "attchment", "clipboard", "link-forward", "wrench-01", "setup-01", "installing-updates-01", "configuration-01", "account-setting-01", "setting-04", "setting-03", "customize", "filter-reset", "filter-remove", "filter-add", "filter-edit", "sorting-9-1", "sorting-1-9", "sorting-z-a-01", "sorting-a-z-02", "sort-by-down-02", "sort-by-up-02", "search-list-01", "ilter-horizontal", "orting-05", "menu-01", "more-vertical", "delete-01", "delete-throw", "restore-bin", "waste-restore", "delete-04", "waste", "delete-put-back", "shopping-basket-done-01", "shopping-basket-secure-01", "shopping-basket-favorite-01", "shopping-basket-remove-01", "shopping-basket-add-01", "shopping-basket-check-in-01", "shopping-basket-check-out-01", "shopping-basket-01", "auto-conversations", "chart-decrease", "chart-increase", "analytics-02", "analytics-up", "analytics-down", "analytics-01", "android", "apple", "twitter", "google-maps", "google-drive", "google", "facebook-02", "whatsapp", "x", "app-store", "google-sheet", "instagram", "linkedin-01", "tiktok", "line", "chrome", "messenger", "youtube", "zoom", "google-doc", "dropbox", "advertisiment", "wifi-lock", "wifi-unlock", "wifi-off-02", "wifi-disconnected-03", "wifi-02", "cellular-network-offline", "cellular-network", "signal-no-01", "signal-medium-01 ", "signal-low-01", "signal-full-01", "router-02", "router-01", "search-focus", "search-remove", "search-minus", "search-add", "investigation ", "money-01", "money-add-01", "money-remove-01", "money-not-found-01", "money-send-01", "money-receive-01", "money-receive-flow-01", "money-send-flow-01", "money-exchange-01", "money-02", "money-not-found-03", "money-send-02", "money-receive-02", "money-receive-flow-02", "money-send-flow-02", "money-exchange-02", "money-receive-square", "money-send-square", "money-send-circle", "money-receive-circle", "money-bag-02", "master-card", "credit-card", "credit-card-add", "credit-card-not-accept", "credit-card-not-found", "credit-card-accept", "credit-card-change", "atm-02", "atm-01", "invoice", "pay-by-check", "wallet-01", "wallet-02", "wallet-remove-01", "wallet-add-01", "wallet-done-01", "wallet-not-found-01", "wallet-02", "wallet-not-found-02", "wallet-remove-02", "wallet-add-02", "wallet-done-02", "money-safe", "briefcase-dollar", "bitcoin-circle", "coins-bitcoin", "money-security", "coins-01", "chart-ring", "pie-chart", "pie-chart-square", "brochure", "notification-square", "certificate", "news", "invoice-01", "start-up-01", "start-up-02", "flash", "flash-off", "ai-innovation-03", "artificial-intelligence-01", "artificial-intelligence-03", "ai-chat-01", "ai-innovation-02", "artificial-intelligence-04", "chip", "robotic", "radioactive-alert", "cloud-server", "ai-phone-02", "crown", "champion", "medal-01", "medal-first-place", "medal-second-place", "medal-third-place", "award-04", "honour-star", "ranking", "target-03", "target-02", "umbrella", "c", "idea", "fire-pit ", "question", "complaint", "favourite", "heart-check", "heart-remove", "heart-add", "thumbs-up", "thumbs-down", "customer-service-01", "wechat", "notification-bubble", "chatting-01", "bubble-chat-translate", "bubble-chat-question", "bubble-chat-blocked", "comment add-02", "comment add-02", "comment remove-02", "comment block-02", "comment-01", "comment add-01", "comment remove-01", "comment block-01", "star-half", "star", "star-off", "notification-off-02", "notification-snooze-02", "notification-block-02", "briefcase-05", "vision", "ai-folder-01", "loyalty-card", "album-01", "telephone ", "tv-02", "smart-phone-01", "printer", "laptop", "computer-protection", "internet", "taxes", "pin", "stamp-01", "audit-01", "agreement-03", "auction", "qr-code", "tags", "tag-02", "calculator", "discount", "discount ", "discount-tag-01", "coupon-percent", "shopping-cart-02", "shopping-cart-check-out-01", "shopping-cart-check-in-01", "shopping-cart-favorite-01", "shopping-cart-check-01", "shopping-cart-remove-01", "shopping-cart-add-01", "shopping-cart-01", "apple", "money-bag-01", "shirt-01", "piggy-bank", "mailbox-01", "mailbox-02", "mail-setting-01", "mail-secure-01", "mail-unlock-01", "mail-lock-01", "mail-love-01", "mail-search-01", "mail-edit-01", "mail-block-01", "mail-at-sign-01", "mail-account-01", "mail-add-01", "mail-voice-01", "mail-reply-all-01", "mail-reply-01", "mail-remove-01", "mail-minus-01", "mail-receive -01", "mail-send-01", "mail-upload-01", "mail-download-01", "mail-open-02", "mail-open-01", "inbox-unread", "inbox-upload", "inbox-download", "inbox-check", "inbox", "mail-open", "delivery-tracking-01", "delivery-secure-01", "delivery-view-01", "delivery-return-01", "trolley-02", "trolley-01", "safe-delivery-02", "safe-delivery-01", "shipment-tracking", "product-loading", "gift-card", "hologram", "package ", "package-delivered", "package-process", "package-out-of-stock", "package-open ", "package-sent", "package-receive", "package-search", "package-remove ", "package-add ", "pickup-02", "pickup-01", "lift-truck", "helicopter", "drone", "boat", "bicycle", "airplane-landing-02", "airplane-landing-01", "airplane-take-off-02", "airplane-take-off-01", "accident ", "scooter-02", "shipping-truck-01", "truck-delivery", "truck-return", "truck", "delivered-sent ", "container-truck-02", "delivery-delay-02", "delivery-truck-01", "delivery-delay-01", "delivery-sent-01", "cargo-ship", "bookmark-add-02", "bookmark-minus-02", "bookmark-block-02", "bookmark-off-02", "bookmark-check-02", "bookmark-remove-02", "archive", "flag-03", "directions-01", "calendar-download-02", "calendar-download-01", "calendar-upload-02", "calendar-remove-01", "calendar-minus-01", "calendar-add-02", "calendar-add-01", "calendar-lock-02", "calendar-lock-01", "calendar-favorite-02", "calendar-favorite-01", "calendar-block-02", "calendar-block-01", "calendar-check-out-02", "calendar-check-out-01", "calendar-check-in-02", "calendar-check-in-01", "calendar-03", "manager", "labor", "police-badge", "prison-guard", "passport", "passport-valid", "passport-expired", "permanent-job", "user-search-02", "user-settings-02", "edit-user-02", "user-unlock-02", "user-lock-02", "user-check-02", "user-edit-01", "user-list", "user-group", "user-multiple", "user-account", "contact-book", "address-book", "id", "share-08", "agreement-01", "navigation-01", "maps-search", "maps-editing", "maps-off", "location-user-02", "gps-off-01", "global-refresh", "global-search", "global-editing", "global", "location-offline-02", "location-offline-01", "location-star-01", "location-favourite-01", "location-check-01", "location-remove-01", "location-add-01", "mobile-navigator-01", "sent", "maps-global-02", "maps-global-01", "pensive", "angry", "relieved-01", "relieved-02", "circle-lock-remove-01", "circle-lock-minus-01", "circle-lock-add-01", "circle-unlock-02", "finger-print-minus", "finger-print-remove", "finger-print-add", "finger-print-check", "finger-print", "call-unlocked", "call-locked", "call-internal", "call-received", "call-done", "call-end-02", "call-end-01", "call-blocked", "call-paused", "call-disabled", "customer-service", "call-minus", "call-add", "calling", "call-ringing-02", "call-outgoing-02", "call-missed-01", "call-incoming-02", "call", "new-office", "office", "city-01", "church", "house-04", "city-03", "hotel-02", "school", "taj-mahal ", "the-prophets-mosque", "beach", "building-03", "building-06", "island", "china-temple", "torri-gate", "lighthouse", "trulli", "chrysler", "house-03", "borobudur", "hotel-01", "real-estate-02", "factory-02", "ferris-wheel", "lake", "more", "checkmark-badge-01", "hotdog", "fish-food", "natural-food", "apricot", "baseball", "flower", "music-note-03", "mask-theater-01", "saturn", "sleeping", "pine-tree", "security-validation", "translate", "Boxes", "Boxes-1", "favourite-circle", "package-dimensions-02", "hourglass", "notification-01", "notification-01-solid", "bookmark-02-solid", "bookmark-02", "arrow-left-02-sharp", "arrow-right-02-sharp", "arrow-left-01-sharp", "arrow-right-01-sharp", "cancel-01 ", "add-01 ", "pencil-edit-02", "arrow-data-transfer-vertical-sharp", "location-01", "location-filled", "filter", "arrow-data-transfer-horizontal-sharp", "undo", "alert-circle", "arrow-up-01-sharp", "arrow-down-01-sharp", "remove-01 ", "delete-02", "copy-01", "search", "camera-01", "maps", "airplane-02", "shipping-truck-02", "finger-print-scan", "face-id", "user", "calculate", "circle-lock-02", "justice-scale-01", "information-circle ", "help-circle ", "lock-key", "key-01", "notification-02", "Buddhist Holy Day", "gps-01", "bar-code-01", "tag-01", "promotion", "checkmark-circle-02", "alert-02", "mail-01", "telegram", "package-moving", "discount-tag-02", "delivery-box-01", "notification-off-01", "arrow-up-down", "text-align-left", "text-align-center", "text-align-right", "call-02", "question", "list-view", "grid-view", "service", "store-02", "bank", "weight-scale-01", "Fragile", "droplet", "knife-01", "automotive-battery-01", "tree-02", "text-creation", "rotate-top-left", "rotate-top-right", "iris-scan", "scan-image", "repeat"];
   var grid=document.getElementById('icongrid');
   var srch=document.getElementById('iconsearch');
   var cnt=document.getElementById('iconcount');
-  var KW={'arrow':'arrow_forward','mail':'mail','calendar':'calendar_today',
-    'call':'call','shopping':'shopping_cart','wallet':'account_balance_wallet',
-    'package':'inventory_2','user':'person','location':'location_on',
-    'notification':'notifications','delivery':'local_shipping','bookmark':'bookmark',
-    'search':'search','credit':'credit_card','maps':'map','filter':'filter_list',
-    'delete':'delete','wifi':'wifi','ai':'auto_awesome','inbox':'inbox',
-    'airplane':'flight','circle':'circle','remove':'remove_circle',
-    'sort':'sort','analytics':'analytics','signal':'signal_cellular_alt',
-    'clock':'schedule','finger':'fingerprint','phone':'phone',
-    'camera':'photo_camera','image':'image','video':'videocam',
-    'home':'home','settings':'settings','lock':'lock','eye':'visibility',
-    'heart':'favorite','star':'star','share':'share','download':'download',
-    'upload':'upload','edit':'edit','add':'add','close':'close',
-    'check':'check_circle','info':'info','warning':'warning','help':'help',
-    'money':'payments','bank':'account_balance','card':'credit_card',
-    'invoice':'receipt','file':'insert_drive_file','folder':'folder',
-    'link':'link','print':'print','scan':'document_scanner','qr':'qr_code',
-    'truck':'local_shipping','bike':'pedal_bike','car':'directions_car',
-    'bus':'directions_bus','train':'train','ship':'directions_boat',
-    'globe':'language','flag':'flag','tag':'label','chat':'chat',
-    'message':'message','send':'send','zoom':'zoom_in','rotate':'rotate_right',
-    'refresh':'refresh','menu':'menu','grid':'grid_view','list':'list',
-    'chart':'bar_chart','lightning':'bolt','battery':'battery_full',
-    'code':'code','award':'emoji_events','gift':'card_giftcard',
-    'box':'inventory','archive':'archive','trash':'delete',
-    'shield':'security','verified':'verified','key':'key',
-    'droplet':'water_drop','tree':'park','sun':'wb_sunny','moon':'dark_mode',
-    'cloud':'cloud','fire':'local_fire_department','water':'water',
-    'food':'restaurant','coffee':'coffee','iris':'fingerprint',
-    'repeat':'repeat','knife':'kitchen','google':'g_mobiledata',
-    'sorting':'sort','percent':'percent','finger':'fingerprint',
-    'text':'text_fields','comment':'comment','like':'thumb_up',
-    'dislike':'thumb_down','attachment':'attach_file','table':'table_chart',
-    'pie':'pie_chart','bluetooth':'bluetooth','calculator':'calculate',
-    'bold':'format_bold','italic':'format_italic','align':'format_align_left',
-    'number':'format_list_numbered','quote':'format_quote',
-    'terminal':'terminal','bug':'bug_report','ticket':'local_activity',
-    'discount':'discount','sale':'sell','restore':'restore','backup':'backup',
-    'team':'group','organization':'corporate_fare','contact':'contact_page',
-    'passport':'badge','password':'password','login':'login','logout':'logout',
-    'leaf':'eco','flower':'local_florist','rain':'grain','snow':'ac_unit',
-    'wind':'air','temperature':'thermostat','bottle':'wine_bar',
-    'automotive':'directions_car','rotate':'rotate_right','scan':'document_scanner',
-    'default':'crop_square'};
-  function getMS(n){
-    var parts=n.replace(/-sharp$/,'').split('-');
-    for(var i=0;i<parts.length;i++){ if(KW[parts[i]])return KW[parts[i]]; }
-    return KW['default'];
+  var ttl=document.querySelector('#icons .dsec-ttl');
+  var ALL=[];
+
+  function makeSvg(d){
+    return '<svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" xmlns="http://www.w3.org/2000/svg">'
+      +'<path fill-rule="evenodd" clip-rule="evenodd" d="'+d+'"/></svg>';
   }
+
   function render(list){
     grid.innerHTML='';
     var frag=document.createDocumentFragment();
-    list.forEach(function(name){
+    list.forEach(function(item){
       var c=document.createElement('div');
       c.className='icon-card';
       c.title='Click to copy name';
-      c.innerHTML='<span class="ms" style="font-size:22px;color:var(--g500)">'+getMS(name)+'</span>'
-        +'<div class="icon-lbl">'+name.replace(/-sharp$/,'')+'</div>';
+      c.innerHTML='<div style="color:var(--g700);display:flex;align-items:center;justify-content:center;width:28px;height:28px">'+makeSvg(item.d)+'</div>'
+        +'<div class="icon-lbl">'+item.name+'</div>';
       c.addEventListener('click',function(){
-        navigator.clipboard&&navigator.clipboard.writeText(name);
+        navigator.clipboard&&navigator.clipboard.writeText(item.name);
         var lbl=c.querySelector('.icon-lbl');
         var prev=lbl.textContent; lbl.textContent='copied!'; lbl.style.color='#22a119';
         setTimeout(function(){ lbl.textContent=prev; lbl.style.color=''; },900);
@@ -1942,11 +1900,26 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
     grid.appendChild(frag);
     cnt.textContent=list.length+' icons';
   }
+
   srch.addEventListener('input',function(){
     var q=this.value.toLowerCase().trim();
-    render(q ? ICONS.filter(function(n){ return n.includes(q); }) : ICONS);
+    render(q ? ALL.filter(function(i){ return i.name.toLowerCase().includes(q); }) : ALL);
   });
-  render(ICONS);
+
+  cnt.textContent='loading…';
+  fetch('./icons.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      ALL=Object.keys(data)
+        .filter(function(k){ return k!=='Default'; })
+        .map(function(k){ return {name:k.trim(), d:data[k]}; });
+      if(ttl) ttl.textContent='Foundation — Icons · '+ALL.length+' icons (HugeIcons Sharp)';
+      render(ALL);
+    })
+    .catch(function(e){
+      cnt.textContent='Error';
+      grid.innerHTML='<div style="padding:20px;color:var(--red);font-size:13px">ไม่สามารถโหลด icons.json ได้: '+e.message+'</div>';
+    });
 })();
 </script>
 
