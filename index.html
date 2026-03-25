@@ -755,6 +755,11 @@ body { padding: 0; }
       About
     </button>
 
+    <button class="sidebar-item" id="si-thpost" onclick="switchPage('thpost')">
+      <span class="sidebar-item-icon">📱</span>
+      THPost Home
+    </button>
+
   </nav>
 
   <div class="sidebar-footer">
@@ -2221,6 +2226,291 @@ body { padding: 0; }
   </div>
 </div><!-- /page-about -->
 
+<!-- ══ PAGE: THPost Home ════════════════════════════════════════════ -->
+<div class="page" id="page-thpost">
+  <style>
+    /* ── THPost design tokens ── */
+    .tp { font-family: 'IBM Plex Sans', 'IBM Plex Sans Thai', sans-serif; }
+    .tp-phone {
+      width: 375px; min-height: 812px;
+      background: #f7f7f7;
+      border-radius: 44px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,.45);
+      position: relative;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    .tp-wrap {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
+      padding: 40px 0 60px;
+      min-height: 100%;
+    }
+
+    /* status bar */
+    .tp-status {
+      height: 44px; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 28px;
+      position: relative; z-index: 2;
+    }
+    .tp-status-time { font-size: 17px; font-weight: 600; color: #fff; }
+    .tp-status-icons { display: flex; gap: 6px; align-items: center; }
+    .tp-status-icons span { font-size: 12px; color: #fff; }
+
+    /* header red zone */
+    .tp-header {
+      background: #e1251b;
+      width: 100%; padding: 0 20px 20px;
+      position: relative; overflow: hidden;
+    }
+    .tp-date-day { font-size: 32px; font-weight: 700; color: #fff; line-height: 1.1; }
+    .tp-date-sub { font-size: 14px; color: rgba(255,255,255,.85); margin-top: 2px; }
+    .tp-stamp {
+      position: absolute; right: -8px; top: -12px;
+      width: 140px; height: 110px;
+      background: #fff;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      box-shadow: 0 4px 16px rgba(0,0,0,.2);
+      transform: rotate(3deg);
+      overflow: hidden;
+    }
+    .tp-stamp::before {
+      content: '';
+      position: absolute; inset: 0;
+      border: 4px solid #e1251b;
+      border-radius: 6px;
+    }
+    .tp-stamp-num { font-size: 36px; font-weight: 900; color: #e1251b; line-height: 1; }
+    .tp-stamp-unit { font-size: 11px; font-weight: 700; color: #e1251b; }
+    .tp-stamp-sub { font-size: 9px; color: #333; text-align: center; line-height: 1.3; }
+    .tp-wave {
+      position: absolute; bottom: -1px; left: 0; right: 0; height: 28px;
+    }
+
+    /* white card area */
+    .tp-card {
+      background: #fff;
+      border-radius: 20px 20px 0 0;
+      margin-top: -20px;
+      padding: 20px 16px 0;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+
+    /* service grid */
+    .tp-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-bottom: 12px;
+    }
+    .tp-service {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 6px; padding: 12px 8px;
+      background: #f8f8f8; border-radius: 12px;
+      cursor: pointer; transition: background .15s;
+      border: 1px solid #ebebeb;
+    }
+    .tp-service:hover { background: #f0f0f0; }
+    .tp-service-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: #fff; display: flex; align-items: center;
+      justify-content: center; font-size: 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    }
+    .tp-service-label {
+      font-size: 12px; font-weight: 600; color: #292c30;
+      text-align: center; line-height: 1.3;
+    }
+
+    /* login banner */
+    .tp-banner {
+      background: #fff3f0; border-radius: 14px;
+      padding: 14px 16px;
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 12px; border: 1px solid #ffd6d3;
+    }
+    .tp-mascot {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, #e1251b, #ff6b35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; flex-shrink: 0;
+    }
+    .tp-banner-text { flex: 1; }
+    .tp-banner-title { font-size: 13px; font-weight: 600; color: #292c30; line-height: 1.4; }
+    .tp-login-btn {
+      background: #1a1a1a; color: #fff;
+      border: none; border-radius: 8px;
+      padding: 8px 14px; font-size: 13px; font-weight: 700;
+      cursor: pointer; white-space: nowrap; margin-top: 8px;
+      font-family: inherit;
+    }
+
+    /* EMS banner */
+    .tp-ems {
+      height: 80px; border-radius: 14px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px; overflow: hidden; position: relative;
+    }
+    .tp-ems-text {
+      font-size: 28px; font-weight: 900;
+      color: #fff; letter-spacing: 1px;
+    }
+    .tp-ems-text span { color: #f97316; }
+
+    /* search bar */
+    .tp-search {
+      display: flex; align-items: center; gap: 10px;
+      background: #fff; border: 1px solid #c3c3c3;
+      border-radius: 10px; padding: 12px 14px;
+      margin-bottom: 16px;
+    }
+    .tp-search-icon { font-size: 18px; color: #727c86; }
+    .tp-search-placeholder { font-size: 14px; color: #727c86; flex: 1; }
+    .tp-search-cam { font-size: 20px; color: #727c86; }
+
+    /* bottom nav */
+    .tp-bottom-nav {
+      width: 100%; background: #fff;
+      border-top: 1px solid #e5e7eb;
+      display: flex; align-items: center;
+      padding: 8px 0 20px;
+    }
+    .tp-nav-item {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; gap: 3px;
+      cursor: pointer; padding: 4px 0;
+    }
+    .tp-nav-icon { font-size: 22px; }
+    .tp-nav-label { font-size: 10px; font-weight: 600; color: #727c86; }
+    .tp-nav-item.active .tp-nav-label { color: #e1251b; }
+    .tp-nav-item.active .tp-nav-icon { filter: none; }
+
+    /* page label */
+    .tp-page-label {
+      font-size: 12px; color: var(--muted);
+      margin-bottom: 16px; text-align: center;
+    }
+  </style>
+
+  <div class="tp-wrap">
+    <p class="tp-page-label">THPost — Home Screen · node 4417:34738</p>
+
+    <div class="tp-phone tp">
+
+      <!-- Status Bar -->
+      <div class="tp-status" style="background:#e1251b">
+        <span class="tp-status-time">9:41</span>
+        <div class="tp-status-icons">
+          <span>▐▐▐</span>
+          <span>🛜</span>
+          <span>🔋</span>
+        </div>
+      </div>
+
+      <!-- Red Header -->
+      <div class="tp-header">
+        <div style="position:relative;z-index:2;padding-top:8px;padding-bottom:24px">
+          <div class="tp-date-day">วันจันทร์</div>
+          <div class="tp-date-sub">8 ส.ค. 2568</div>
+        </div>
+        <!-- Stamp decoration -->
+        <div class="tp-stamp" style="top:8px;right:16px">
+          <div class="tp-stamp-num">142</div>
+          <div class="tp-stamp-unit">ปี</div>
+          <div class="tp-stamp-sub">ไปรษณีย์ไทย</div>
+        </div>
+        <!-- Wave bottom -->
+        <svg class="tp-wave" viewBox="0 0 375 28" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0 14 Q47 0 94 14 Q141 28 188 14 Q235 0 282 14 Q329 28 375 14 L375 28 L0 28 Z" fill="#fff"/>
+        </svg>
+      </div>
+
+      <!-- White Card -->
+      <div class="tp-card">
+
+        <!-- Service Grid Row 1 -->
+        <div class="tp-grid">
+          <div class="tp-service">
+            <div class="tp-service-icon">📦</div>
+            <div class="tp-service-label">ส่งไปรษณีย์</div>
+          </div>
+          <div class="tp-service">
+            <div class="tp-service-icon">🚚</div>
+            <div class="tp-service-label">รับของถึงที่</div>
+          </div>
+          <div class="tp-service">
+            <div class="tp-service-icon">🧮</div>
+            <div class="tp-service-label">คำนวณราคา</div>
+          </div>
+        </div>
+
+        <!-- Service Grid Row 2 -->
+        <div class="tp-grid">
+          <div class="tp-service">
+            <div class="tp-service-icon" style="background:#e1251b;color:#fff">W</div>
+            <div class="tp-service-label">Wallet@POST</div>
+          </div>
+          <div class="tp-service">
+            <div class="tp-service-icon">🧳</div>
+            <div class="tp-service-label">Travel Lite</div>
+          </div>
+          <div class="tp-service">
+            <div class="tp-service-icon">⋯</div>
+            <div class="tp-service-label">บริการทั้งหมด</div>
+          </div>
+        </div>
+
+        <!-- Login Banner -->
+        <div class="tp-banner">
+          <div class="tp-mascot">🦸</div>
+          <div class="tp-banner-text">
+            <div class="tp-banner-title">พี่ไปรฯ ทำได้มากกว่าที่คุณคิด</div>
+            <button class="tp-login-btn">เข้าสู่ระบบ / สมัครสมาชิก</button>
+          </div>
+        </div>
+
+        <!-- EMS Banner -->
+        <div class="tp-ems">
+          <div class="tp-ems-text">EMS <span>พัสดุใจ</span></div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="tp-search">
+          <span class="tp-search-icon">🔍</span>
+          <span class="tp-search-placeholder">หาพัสดุ? กรอกเลข 13 หลักเลย</span>
+          <span class="tp-search-cam">📷</span>
+        </div>
+
+      </div><!-- /tp-card -->
+
+      <!-- Bottom Nav -->
+      <div class="tp-bottom-nav">
+        <div class="tp-nav-item active">
+          <span class="tp-nav-icon">🏠</span>
+          <span class="tp-nav-label" style="color:#e1251b">หน้าหลัก</span>
+        </div>
+        <div class="tp-nav-item">
+          <span class="tp-nav-icon">📦</span>
+          <span class="tp-nav-label">พัสดุของฉัน</span>
+        </div>
+        <div class="tp-nav-item">
+          <span class="tp-nav-icon">💬</span>
+          <span class="tp-nav-label">ข้อความ</span>
+        </div>
+        <div class="tp-nav-item">
+          <span class="tp-nav-icon">👤</span>
+          <span class="tp-nav-label">โปรไฟล์</span>
+        </div>
+      </div>
+
+    </div><!-- /tp-phone -->
+  </div>
+</div><!-- /page-thpost -->
+
 </main>
 
 <div class="snack" id="snack"></div>
@@ -2591,6 +2881,10 @@ const PAGE_META = {
   about: {
     title: 'About',
     anchors: []
+  },
+  thpost: {
+    title: 'THPost — Home Screen',
+    anchors: []
   }
 };
 
@@ -2834,6 +3128,7 @@ document.addEventListener('keydown', e => {
   if (e.altKey && e.key === '1') switchPage('audit');
   if (e.altKey && e.key === '2') switchPage('doc');
   if (e.altKey && e.key === '3') switchPage('about');
+  if (e.altKey && e.key === '4') switchPage('thpost');
   if (e.altKey && e.key === 'b') toggleSidebar();
 });
 
