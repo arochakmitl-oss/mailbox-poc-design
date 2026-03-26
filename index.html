@@ -722,6 +722,8 @@ body { padding: 0; }
     .dot.green{background:#22c55e}.dot.yellow{background:#eab308}.dot.red{background:#ef4444}.dot.grey{background:#9ca3af}.dot.blue{background:#3b82f6}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+<script>window.addEventListener('DOMContentLoaded',function(){var p=new URLSearchParams(location.search).get('p');if(p&&window.switchPage)window.switchPage(p);else if(p)setTimeout(function(){window.switchPage&&window.switchPage(p);},800);});</script>
 <style>
 /* ── Flatpickr theme overrides ── */
 .flatpickr-calendar{font-family:var(--font,'IBM Plex Sans Thai'),sans-serif;border-radius:12px;border:1px solid var(--g100,#e5e7eb);box-shadow:0 8px 24px rgba(0,0,0,.12)}
@@ -1146,6 +1148,7 @@ body { padding: 0; }
 /* ── Component demo tokens ─────────────────────────────────── */
 :root{
   --red:#e1251b; --red-p:#bf2015; --red-s:#fff2f2;
+  --brand-blue:#2a58bb; --brand-blue-p:#113992; --brand-blue-s:#edf2fb;
   --w:#fff;
   --g50:#f6f8fa; --g100:#e8eaec; --g200:#d1d5da; --g300:#b9c0c7;
   --g400:#a2abb5; --g500:#8b96a2; --g600:#727c86; --g700:#5a6169;
@@ -1181,10 +1184,10 @@ body { padding: 0; }
 .dprop{font-size:10px;color:#93c5fd;background:#0d2040;border:1px solid #1a4070;border-radius:5px;padding:3px 9px;font-family:'IBM Plex Mono',monospace}
 
 /* ── Preview canvas — LIGHT (mobile components) ─────────── */
-.demo{background:#f5f7fa;border:1px solid #dee1e6;border-radius:10px;padding:22px;display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
+.demo{background:#edf0f5;border:1px solid #d0d5de;border-radius:10px;padding:18px;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start}
 /* Dark canvas — token/swatch sections */
 .demo.dark{background:#090c14;border-color:#1a2030}
-.dc{display:flex;flex-direction:column;gap:9px;align-items:flex-start}
+.dc{display:flex;flex-direction:column;gap:9px;align-items:flex-start;background:#fff;border-radius:8px;padding:12px 14px;border:1px solid #e4e7ee}
 .dl{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a9bb5}
 
 /* ── Callout notes ───────────────────────────────────────── */
@@ -1468,9 +1471,11 @@ body { padding: 0; }
 .ds-rad-name{font-size:10px;font-weight:700;color:#7d9ab8;font-family:'IBM Plex Mono',monospace}
 .ds-rad-val{font-size:9px;color:#3a5268}
 
-.ds-shadow-row{display:flex;align-items:center;gap:16px;padding:12px 16px;border-bottom:1px solid #192235}
+.ds-shadow-row{display:flex;align-items:center;gap:0;border-bottom:1px solid #192235}
 .ds-shadow-row:last-child{border-bottom:none}
-.ds-shadow-box{width:52px;height:52px;background:#fff;border-radius:8px;flex-shrink:0}
+.ds-shadow-stage{width:110px;min-height:90px;flex-shrink:0;background:#c9cdd6;display:flex;align-items:center;justify-content:center}
+.ds-shadow-box{width:56px;height:56px;background:#fff;border-radius:8px;flex-shrink:0}
+.ds-shadow-meta{padding:12px 16px}
 .ds-shadow-name{font-size:11px;font-weight:700;color:#7d9ab8;font-family:'IBM Plex Mono',monospace}
 .ds-shadow-desc{font-size:10px;color:#3a5268;margin-top:2px}
 
@@ -1488,6 +1493,13 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
 .ms{font-family:'Material Symbols Outlined';font-weight:300;font-style:normal;font-size:20px;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-smoothing:antialiased;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;user-select:none}
 .ms.s{font-size:18px}.ms.m{font-size:20px}.ms.l{font-size:24px}
 </style>
+
+<!-- HugeIcons reusable symbols -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="hi-default" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M9.93768 19.9896C11.2904 20.3388 12.71 20.3388 14.0627 19.9896C14.254 19.9433 14.4563 19.9742 14.6252 20.0755C14.7938 20.1768 14.9158 20.3411 14.965 20.5316C15.0141 20.722 14.9864 20.9248 14.8879 21.095C14.7892 21.2651 14.6273 21.3896 14.4377 21.4417C12.839 21.8541 11.1614 21.854 9.56268 21.4417C9.46612 21.4183 9.37515 21.3755 9.2951 21.3167C9.21513 21.2579 9.147 21.184 9.09588 21.0989C9.04483 21.0138 9.01154 20.9188 8.99725 20.8206C8.98302 20.7224 8.98812 20.6218 9.01287 20.5257C9.03773 20.4294 9.08169 20.3383 9.14178 20.2591C9.20187 20.18 9.27751 20.1136 9.36346 20.0638C9.44937 20.0141 9.5443 19.9818 9.64275 19.9691C9.74133 19.9563 9.84182 19.9632 9.93768 19.9896ZM20.8732 13.6878C20.9683 13.7141 21.0583 13.7589 21.1359 13.8196C21.2135 13.8804 21.2779 13.9565 21.3263 14.0423C21.3748 14.1281 21.4063 14.2228 21.4181 14.3206C21.4299 14.4185 21.4224 14.5186 21.3957 14.6136C20.9533 16.2032 20.1144 17.6552 18.9582 18.8323C18.8893 18.9025 18.8064 18.9579 18.716 18.9964C18.6254 19.0349 18.5282 19.056 18.4299 19.0569C18.3316 19.0578 18.2339 19.0389 18.1428 19.0023C18.0515 18.9654 17.9678 18.9109 17.8976 18.8421C17.8274 18.7732 17.7712 18.6905 17.7326 18.5999C17.6941 18.5095 17.6741 18.412 17.673 18.3138C17.6721 18.2153 17.691 18.1169 17.7277 18.0257C17.7646 17.9344 17.8189 17.8508 17.8879 17.7806C18.8665 16.7846 19.5764 15.5564 19.9504 14.2112C19.9766 14.1163 20.0216 14.0272 20.0822 13.9495C20.1428 13.8718 20.2182 13.8067 20.3039 13.7581C20.3895 13.7097 20.4835 13.6784 20.5812 13.6663C20.6789 13.6543 20.7785 13.6615 20.8732 13.6878ZM3.41912 13.6644C3.51683 13.6763 3.61175 13.7077 3.69744 13.7562C3.78298 13.8045 3.85857 13.8692 3.91912 13.9466C3.97968 14.0241 4.02464 14.1135 4.05096 14.2083C4.42582 15.5525 5.1351 16.7806 6.11248 17.7767C6.25175 17.9184 6.32997 18.1101 6.3283 18.3089C6.32644 18.5076 6.24537 18.6979 6.10369 18.8372C5.96191 18.9765 5.77024 19.0536 5.57146 19.0521C5.37278 19.0504 5.18257 18.97 5.04314 18.8284C3.88725 17.651 3.04852 16.1991 2.60564 14.6097C2.57933 14.5149 2.57224 14.4153 2.58416 14.3177C2.59613 14.2199 2.62655 14.125 2.67498 14.0394C2.72346 13.9536 2.78878 13.8783 2.86639 13.8177C2.94399 13.757 3.03321 13.7123 3.12811 13.6859C3.22274 13.6597 3.32165 13.6525 3.41912 13.6644ZM18.4289 4.94952C18.5272 4.95038 18.6245 4.97072 18.715 5.00909C18.8055 5.04751 18.8883 5.1031 18.9572 5.17316C20.1135 6.35034 20.9523 7.80226 21.3947 9.39191C21.421 9.48669 21.4282 9.58627 21.4162 9.6839C21.4042 9.78157 21.3738 9.87656 21.3254 9.96222C21.2769 10.0479 21.2115 10.1232 21.134 10.1839C21.0564 10.2445 20.9671 10.2894 20.8722 10.3157C20.7776 10.3419 20.6786 10.3491 20.5812 10.3372C20.4835 10.3252 20.3886 10.2938 20.3029 10.2454C20.2174 10.1971 20.1418 10.1324 20.0812 10.055C20.0206 9.97745 19.9758 9.88807 19.9494 9.79327C19.575 8.44916 18.8655 7.22041 17.8879 6.22491C17.8189 6.15478 17.7636 6.07192 17.7267 5.98077C17.6898 5.88955 17.6712 5.79109 17.6721 5.69269C17.6729 5.59444 17.6934 5.49703 17.7316 5.40655C17.7701 5.31589 17.8264 5.23342 17.8967 5.16437C17.9669 5.09536 18.0505 5.04112 18.1418 5.00421C18.233 4.96737 18.3305 4.94869 18.4289 4.94952ZM5.56268 4.97003C5.75524 4.97266 5.93969 5.04919 6.07732 5.1839C6.21485 5.31866 6.29624 5.50122 6.30291 5.69366C6.30946 5.88606 6.24137 6.0742 6.11346 6.21808C5.13497 7.21449 4.42507 8.44291 4.05096 9.78839C3.99783 9.97999 3.87046 10.1436 3.69744 10.2415C3.52455 10.3393 3.31954 10.3647 3.12811 10.3118C2.9366 10.2589 2.774 10.1311 2.67596 9.95831C2.57798 9.78529 2.55264 9.57963 2.60564 9.388C3.04824 7.7984 3.88701 6.34656 5.04314 5.16925C5.18423 5.03848 5.37032 4.96757 5.56268 4.97003ZM9.56268 2.5589C11.1614 2.14657 12.8389 2.14656 14.4377 2.5589C14.6147 2.60428 14.7695 2.71247 14.8722 2.86359C14.9748 3.01472 15.0183 3.19897 14.9953 3.38019C14.9721 3.56126 14.8843 3.72839 14.7472 3.84894C14.61 3.96957 14.4329 4.03578 14.2502 4.03546C14.187 4.03513 14.1238 4.02686 14.0627 4.01105C12.7098 3.66213 11.2905 3.66215 9.93768 4.01105C9.74551 4.06061 9.5414 4.03149 9.37029 3.93097C9.19927 3.83036 9.07474 3.66591 9.02459 3.47394C8.99978 3.37862 8.99442 3.27853 9.00799 3.18097C9.02162 3.08353 9.05384 2.98942 9.10369 2.9046C9.15366 2.81962 9.22029 2.7452 9.299 2.68585C9.37766 2.62657 9.46731 2.58356 9.56268 2.5589Z"/>
+  </symbol>
+</svg>
 
 <div class="dw">
 
@@ -1760,27 +1772,37 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
   </div>
 
   <!-- Shadow -->
-  <div class="dcard" id="shadow" style="padding:0;overflow:hidden">
-    <div style="font-size:11px;font-weight:700;color:var(--g700);padding:10px 16px;border-bottom:1px solid var(--g100);background:var(--g50)">Shadow Scale</div>
+  <div class="dcard" id="shadow" style="padding:0;overflow:visible">
+    <div style="font-size:11px;font-weight:700;color:var(--g700);padding:10px 16px;border-bottom:1px solid var(--g100);background:var(--g50);border-radius:14px 14px 0 0">Shadow Scale</div>
     <div class="ds-shadow-row">
-      <div class="ds-shadow-box" style="box-shadow:none;border:1px solid var(--g100)"></div>
-      <div><div class="ds-shadow-name">none</div><div class="ds-shadow-desc">no shadow</div></div>
+      <div class="ds-shadow-stage">
+        <div class="ds-shadow-box" style="box-shadow:none;border:1px dashed #b0b5be"></div>
+      </div>
+      <div class="ds-shadow-meta"><div class="ds-shadow-name">none</div><div class="ds-shadow-desc">no shadow</div></div>
     </div>
     <div class="ds-shadow-row">
-      <div class="ds-shadow-box" style="box-shadow:0 4px 8px -2px rgba(0,0,0,.15)"></div>
-      <div><div class="ds-shadow-name">shadow/s</div><div class="ds-shadow-desc">0 4px 8px -2px rgba(0,0,0,.15) — cards</div></div>
+      <div class="ds-shadow-stage">
+        <div class="ds-shadow-box" style="box-shadow:0 4px 8px -2px rgba(0,0,0,.28)"></div>
+      </div>
+      <div class="ds-shadow-meta"><div class="ds-shadow-name">shadow-s</div><div class="ds-shadow-desc">0 4px 8px -2px rgba(0,0,0,.10) — cards</div></div>
     </div>
     <div class="ds-shadow-row">
-      <div class="ds-shadow-box" style="box-shadow:0 6px 12px -4px rgba(0,0,0,.15)"></div>
-      <div><div class="ds-shadow-name">shadow/m</div><div class="ds-shadow-desc">0 6px 12px -4px rgba(0,0,0,.15) — elevated btn, modals</div></div>
+      <div class="ds-shadow-stage">
+        <div class="ds-shadow-box" style="box-shadow:0 6px 12px -4px rgba(0,0,0,.32)"></div>
+      </div>
+      <div class="ds-shadow-meta"><div class="ds-shadow-name">shadow-m</div><div class="ds-shadow-desc">0 6px 12px -4px rgba(0,0,0,.10) — elevated btn, modals</div></div>
     </div>
     <div class="ds-shadow-row">
-      <div class="ds-shadow-box" style="box-shadow:0 -2px 12px -4px rgba(0,0,0,.15)"></div>
-      <div><div class="ds-shadow-name">shadow/m-reverse</div><div class="ds-shadow-desc">0 -2px 12px -4px rgba(0,0,0,.15) — sticky bottom</div></div>
+      <div class="ds-shadow-stage">
+        <div class="ds-shadow-box" style="box-shadow:0 -4px 12px -2px rgba(0,0,0,.28)"></div>
+      </div>
+      <div class="ds-shadow-meta"><div class="ds-shadow-name">shadow-m-up</div><div class="ds-shadow-desc">0 -2px 12px -4px rgba(0,0,0,.10) — sticky bottom</div></div>
     </div>
     <div class="ds-shadow-row">
-      <div class="ds-shadow-box" style="box-shadow:0 8px 14px -6px rgba(0,0,0,.15)"></div>
-      <div><div class="ds-shadow-name">shadow/l</div><div class="ds-shadow-desc">0 8px 14px -6px rgba(0,0,0,.15) — sheets, popovers</div></div>
+      <div class="ds-shadow-stage">
+        <div class="ds-shadow-box" style="box-shadow:0 8px 14px -6px rgba(0,0,0,.36)"></div>
+      </div>
+      <div class="ds-shadow-meta"><div class="ds-shadow-name">shadow-l</div><div class="ds-shadow-desc">0 8px 14px -6px rgba(0,0,0,.10) — sheets, popovers</div></div>
     </div>
   </div>
 </div>
@@ -2042,19 +2064,96 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
       <span class="dcname">mbtp.textButton</span><span class="dcnt">6 variants</span>
     </div>
     <div class="dprops"><span class="dprop">State</span><span class="dprop">Size</span></div>
+    <!-- Examples -->
+    <div style="background:var(--g50);border-radius:8px;padding:16px 20px;margin-bottom:12px">
+      <div class="dl" style="margin-bottom:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g600)">Examples</div>
+      <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start">
+        <!-- Text only -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <span style="font-family:var(--font);font-size:16px;font-weight:700;color:var(--brand-blue);cursor:pointer">Button</span>
+          <span style="font-size:10px;color:var(--g500)">Text only</span>
+        </div>
+        <!-- With leading icon -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <span style="font-family:var(--font);font-size:16px;font-weight:700;color:var(--brand-blue);cursor:pointer;display:inline-flex;align-items:center;gap:4px">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+            Button
+          </span>
+          <span style="font-size:10px;color:var(--g500)">With leading icon</span>
+        </div>
+        <!-- With trailing icon -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <span style="font-family:var(--font);font-size:16px;font-weight:700;color:var(--brand-blue);cursor:pointer;display:inline-flex;align-items:center;gap:4px">
+            Button
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+          </span>
+          <span style="font-size:10px;color:var(--g500)">With trailing icon</span>
+        </div>
+      </div>
+    </div>
+    <!-- Variant matrix -->
     <div class="demo">
       <div class="dc">
-        <div class="dl">Enable M / S</div>
-        <div style="display:flex;gap:12px;align-items:center">
-          <span style="font-family:var(--font);font-size:16px;font-weight:700;color:var(--red);cursor:pointer;text-decoration:underline">Text Button</span>
-          <span style="font-family:var(--font);font-size:14px;font-weight:700;color:var(--red);cursor:pointer;text-decoration:underline">Small</span>
+        <div class="dl">default / isDisable: false</div>
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <span style="font-family:var(--font);font-size:16px;font-weight:700;color:var(--brand-blue);cursor:pointer;display:inline-flex;align-items:center;gap:4px">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+              Button
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+            </span>
+            <span style="font-size:10px;color:var(--g500)">m</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <span style="font-family:var(--font);font-size:14px;font-weight:700;color:var(--brand-blue);cursor:pointer;display:inline-flex;align-items:center;gap:3px">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+              Button
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+            </span>
+            <span style="font-size:10px;color:var(--g500)">s</span>
+          </div>
         </div>
       </div>
       <div class="dc">
-        <div class="dl">Pressed / Disable</div>
-        <div style="display:flex;gap:12px;align-items:center">
-          <span style="font-family:var(--font);font-size:16px;font-weight:700;color:var(--red-p);cursor:pointer;text-decoration:underline">Pressed</span>
-          <span style="font-family:var(--font);font-size:16px;font-weight:700;color:var(--g400);cursor:not-allowed;text-decoration:underline">Disabled</span>
+        <div class="dl">default / isDisable: true</div>
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <span style="font-family:var(--font);font-size:16px;font-weight:700;color:var(--g400);cursor:not-allowed;display:inline-flex;align-items:center;gap:4px">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+              Button
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+            </span>
+            <span style="font-size:10px;color:var(--g500)">m</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <span style="font-family:var(--font);font-size:14px;font-weight:700;color:var(--g400);cursor:not-allowed;display:inline-flex;align-items:center;gap:3px">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+              Button
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+            </span>
+            <span style="font-size:10px;color:var(--g500)">s</span>
+          </div>
+        </div>
+      </div>
+      <div class="dc">
+        <div class="dl">onPress / isDisable: false</div>
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <span style="font-family:var(--font);font-size:16px;font-weight:700;color:var(--brand-blue-p);cursor:pointer;display:inline-flex;align-items:center;gap:4px">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+              Button
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+            </span>
+            <span style="font-size:10px;color:var(--g500)">m</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <span style="font-family:var(--font);font-size:14px;font-weight:700;color:var(--brand-blue-p);cursor:pointer;display:inline-flex;align-items:center;gap:3px">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+              Button
+              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17 5.25C17.2145 5.25 17.4507 5.24883 17.6485 5.27539C17.8678 5.30489 18.148 5.38043 18.3838 5.61621C18.6196 5.852 18.6951 6.13226 18.7246 6.35156C18.7512 6.54929 18.75 6.78555 18.75 7V13C18.75 13.4142 18.4142 13.7499 18 13.75C17.5858 13.75 17.25 13.4142 17.25 13V7.81055L6.5303 18.5303C6.23742 18.8231 5.76264 18.823 5.46975 18.5303C5.17693 18.2374 5.1769 17.7626 5.46975 17.4697L16.1895 6.75H11C10.5858 6.75 10.25 6.4142 10.25 6C10.25 5.58579 10.5858 5.25 11 5.25H17Z"/></svg>
+            </span>
+            <span style="font-size:10px;color:var(--g500)">s</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2130,24 +2229,24 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
       <div class="dc">
         <div class="dl">Default — Medium</div>
         <div style="display:flex;gap:6px">
-          <span class="chip m">✦ Label</span>
-          <span class="chip m sel">✦ Label</span>
-          <span class="chip m dis">✦ Label</span>
+          <span class="chip m"><svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;opacity:.5"><use href="#hi-default"/></svg> Label</span>
+          <span class="chip m sel"><svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;opacity:.5"><use href="#hi-default"/></svg> Label</span>
+          <span class="chip m dis"><svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;opacity:.5"><use href="#hi-default"/></svg> Label</span>
         </div>
       </div>
       <div class="dc">
         <div class="dl">Default — Large</div>
         <div style="display:flex;gap:6px">
-          <span class="chip l">✦ Label</span>
-          <span class="chip l sel">✦ Label</span>
+          <span class="chip l"><svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;opacity:.5"><use href="#hi-default"/></svg> Label</span>
+          <span class="chip l sel"><svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;opacity:.5"><use href="#hi-default"/></svg> Label</span>
         </div>
       </div>
       <div class="dc">
         <div class="dl">Color style</div>
         <div style="display:flex;gap:6px">
-          <span class="chip m col">✦ Label</span>
-          <span class="chip m col sel">✦ Label</span>
-          <span class="chip m col dis">✦ Label</span>
+          <span class="chip m col"><svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;opacity:.5"><use href="#hi-default"/></svg> Label</span>
+          <span class="chip m col sel"><svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;opacity:.5"><use href="#hi-default"/></svg> Label</span>
+          <span class="chip m col dis"><svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;opacity:.5"><use href="#hi-default"/></svg> Label</span>
         </div>
       </div>
     </div>
@@ -2410,27 +2509,27 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
       <div class="dc">
         <div class="dl">primary (white)</div>
         <div class="hdr primary">
-          <div class="hic"><span class="ms s">arrow_back</span></div>
+          <div class="hic"><svg width="20" height="20" viewBox="0 0 24 24"><use href="#hi-default"/></svg></div>
           <div class="htitle">หน้าหลัก</div>
-          <div class="hic"><span class="ms s">more_vert</span></div>
-          <div class="hic"><span class="ms s">more_vert</span></div>
+          <div class="hic"><svg width="20" height="20" viewBox="0 0 24 24"><use href="#hi-default"/></svg></div>
+          <div class="hic"><svg width="20" height="20" viewBox="0 0 24 24"><use href="#hi-default"/></svg></div>
         </div>
       </div>
       <div class="dc">
         <div class="dl">secondary (red)</div>
         <div class="hdr secondary">
-          <div class="hic"><span class="ms s">arrow_back</span></div>
+          <div class="hic"><svg width="20" height="20" viewBox="0 0 24 24"><use href="#hi-default"/></svg></div>
           <div class="htitle">ติดตามพัสดุ</div>
-          <div class="hic"><span class="ms s">more_vert</span></div>
-          <div class="hic"><span class="ms s">more_vert</span></div>
+          <div class="hic"><svg width="20" height="20" viewBox="0 0 24 24"><use href="#hi-default"/></svg></div>
+          <div class="hic"><svg width="20" height="20" viewBox="0 0 24 24"><use href="#hi-default"/></svg></div>
         </div>
       </div>
       <div class="dc">
         <div class="dl">tertiary (grey)</div>
         <div class="hdr tertiary">
-          <div class="hic"><span class="ms s">arrow_back</span></div>
+          <div class="hic"><svg width="20" height="20" viewBox="0 0 24 24"><use href="#hi-default"/></svg></div>
           <div class="htitle">โปร่งใส</div>
-          <div class="hic"><span class="ms s">more_vert</span></div>
+          <div class="hic"><svg width="20" height="20" viewBox="0 0 24 24"><use href="#hi-default"/></svg></div>
         </div>
       </div>
     </div>
@@ -2446,16 +2545,16 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
       <div class="dc">
         <div class="dl">2 Tabs</div>
         <div class="tabs">
-          <div class="tab sel">⊙ ส่ง <span class="bnoti" style="font-size:9px;min-width:16px;height:16px">3</span></div>
-          <div class="tab">⊙ รับ</div>
+          <div class="tab sel" style="display:inline-flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#hi-default"/></svg> ส่ง <span class="bnoti" style="font-size:9px;min-width:16px;height:16px">3</span></div>
+          <div class="tab" style="display:inline-flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#hi-default"/></svg> รับ</div>
         </div>
       </div>
       <div class="dc">
         <div class="dl">3 Tabs</div>
         <div class="tabs" style="width:320px">
-          <div class="tab sel">⊙ ห้องปกติ</div>
-          <div class="tab">⊙ ห้องพิเศษ</div>
-          <div class="tab">⊙ ประกอบ <span class="bnoti" style="font-size:9px;min-width:16px;height:16px">9</span></div>
+          <div class="tab sel" style="display:inline-flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#hi-default"/></svg> ห้องปกติ</div>
+          <div class="tab" style="display:inline-flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#hi-default"/></svg> ห้องพิเศษ</div>
+          <div class="tab" style="display:inline-flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#hi-default"/></svg> ประกอบ <span class="bnoti" style="font-size:9px;min-width:16px;height:16px">9</span></div>
         </div>
       </div>
     </div>
@@ -2656,26 +2755,26 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
         <div class="navbar" data-navbar>
           <div class="navi act">
             <div class="navi-ic">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.0003 17.25C14.4144 17.2502 14.7503 17.5859 14.7503 18C14.7503 18.4141 14.4144 18.7498 14.0003 18.75H10.0003C9.58613 18.75 9.25034 18.4142 9.25034 18C9.25034 17.5858 9.58613 17.25 10.0003 17.25H14.0003Z M12.0003 1.25C12.8663 1.25007 13.6411 1.52709 14.4769 1.99609C15.2951 2.45537 16.2341 3.13602 17.4183 3.99219L18.8587 5.0332C19.8098 5.72091 20.5685 6.26831 21.139 6.77441C21.7214 7.2912 22.1576 7.80704 22.4339 8.45508C22.7109 9.10458 22.7778 9.77051 22.7406 10.5381C22.7043 11.2877 22.5642 12.1941 22.39 13.3271L22.0892 15.2861C21.842 16.8944 21.6475 18.1727 21.3597 19.166C21.0653 20.1819 20.6497 20.9889 19.9085 21.6055C19.1705 22.2191 18.291 22.4926 17.2171 22.623C16.1618 22.7512 14.8274 22.75 13.139 22.75H10.8617C9.17332 22.75 7.83887 22.7512 6.78354 22.623C5.70965 22.4927 4.83019 22.2191 4.09213 21.6055C3.35091 20.9889 2.93535 20.182 2.64096 19.166C2.35317 18.1727 2.15861 16.8944 1.91147 15.2861L1.61069 13.3271C1.43656 12.194 1.29639 11.2877 1.2601 10.5381C1.22293 9.77045 1.28969 9.10463 1.56674 8.45508C1.84319 7.80704 2.27918 7.29122 2.86167 6.77441C3.43217 6.26832 4.1908 5.72091 5.14194 5.0332L6.58237 3.99219C7.7665 3.13601 8.70547 2.45534 9.52377 1.99609C10.3595 1.52712 11.1343 1.25 12.0003 1.25ZM12.0003 2.75C11.4834 2.75 10.9665 2.90626 10.2581 3.30371C9.53231 3.71103 8.67292 4.33123 7.4603 5.20801L6.02084 6.24902C5.04545 6.95427 4.35829 7.45157 3.85678 7.89648C3.36725 8.33083 3.10449 8.67386 2.94663 9.04395C2.78943 9.41261 2.72739 9.8304 2.75815 10.4658C2.78981 11.1193 2.91427 11.9358 3.09311 13.0996L3.39389 15.0586C3.64715 16.7067 3.82801 17.8712 4.08237 18.749C4.33014 19.604 4.62455 20.0974 5.05112 20.4521C5.48079 20.8094 6.0393 21.0214 6.9642 21.1338C7.90816 21.2483 9.13568 21.25 10.8617 21.25H13.139C14.865 21.25 16.0925 21.2484 17.0365 21.1338C17.9614 21.0214 18.5199 20.8095 18.9496 20.4521C19.3761 20.0974 19.6705 19.6039 19.9183 18.749C20.1726 17.8712 20.3536 16.7067 20.6068 15.0586L20.9076 13.0996C21.0865 11.9358 21.2108 11.1193 21.2425 10.4658C21.2733 9.83047 21.2112 9.41258 21.054 9.04395C20.8962 8.67386 20.6333 8.3308 20.1439 7.89648C19.6423 7.45156 18.9552 6.95427 17.9798 6.24902L16.5404 5.20801C15.3278 4.33125 14.4684 3.71105 13.7425 3.30371C13.0342 2.90624 12.5172 2.75007 12.0003 2.75Z"/></svg>
             </div>
             <div>หน้าหลัก</div>
           </div>
           <div class="navi">
             <div class="navi-ic" style="position:relative">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 1.25C16.453 1.25 17.2275 1.24902 17.8564 1.31738C18.5037 1.38777 19.0661 1.53726 19.5801 1.87988C20.0939 2.22244 20.4479 2.6837 20.7617 3.25391C21.0668 3.80824 21.3639 4.5245 21.7305 5.4043L22.6924 7.71191L22.75 7.84961V10.5C22.75 10.9142 22.4142 11.25 22 11.25C21.5858 11.25 21.25 10.9142 21.25 10.5V8.75H2.75V13.4287C2.75 15.4707 2.75149 16.9241 2.90527 18.0273C3.05569 19.1061 3.33872 19.7388 3.82227 20.2051C4.30962 20.675 4.97655 20.9529 6.1084 21.0996C7.25918 21.2488 8.77318 21.25 10.8887 21.25H12.5C12.9142 21.25 13.25 21.5858 13.25 22C13.25 22.4142 12.9142 22.75 12.5 22.75H10.8887C8.81427 22.75 7.18565 22.7515 5.91602 22.5869C4.62742 22.4199 3.59562 22.0695 2.78125 21.2842C1.96319 20.4952 1.59493 19.4896 1.41992 18.2344C1.24837 17.0036 1.25 15.4268 1.25 13.4287V7.84961L1.30762 7.71191L2.26953 5.4043C2.63612 4.52449 2.9332 3.80825 3.23828 3.25391C3.55214 2.6837 3.90609 2.22244 4.41992 1.87988C4.93388 1.53724 5.49628 1.38777 6.14355 1.31738C6.77252 1.24902 7.54705 1.25 8.5 1.25H15.5ZM8.5 2.75C7.51443 2.75 6.83497 2.75107 6.30566 2.80859C5.79456 2.86417 5.49377 2.96672 5.25195 3.12793C5.01014 3.28914 4.79964 3.52712 4.55176 3.97754C4.2951 4.44394 4.0333 5.07087 3.6543 5.98047L3.125 7.25H11.25V2.75H8.5ZM12.75 7.25H20.875L20.3457 5.98047C19.9667 5.07088 19.7049 4.44394 19.4482 3.97754C19.2005 3.52714 18.9899 3.28914 18.748 3.12793C18.5063 2.96672 18.2054 2.86417 17.6943 2.80859C17.165 2.75107 16.4856 2.75 15.5 2.75H12.75V7.25Z M18.0088 15.25C18.423 15.25 18.7588 15.5858 18.7588 16C18.7588 16.4142 18.423 16.75 18.0088 16.75H18C17.5858 16.75 17.25 16.4142 17.25 16C17.25 15.5858 17.5858 15.25 18 15.25H18.0088Z M18 11.25C20.6303 11.25 22.7498 13.4017 22.75 16.04C22.75 17.5589 22.1352 18.7473 20.9971 19.7559C20.3615 20.3191 19.576 21.3127 19.0566 22.1074C18.858 22.4114 18.5047 22.75 17.9932 22.75C17.4733 22.7499 17.1221 22.4019 16.9307 22.0879C16.4537 21.3055 15.6473 20.3269 15.0029 19.7559C13.8648 18.7473 13.25 17.5589 13.25 16.04C13.2502 13.4017 15.3697 11.25 18 11.25ZM18 12.75C16.2122 12.75 14.7502 14.2159 14.75 16.04C14.75 17.0729 15.1355 17.8692 15.9971 18.6328C16.6724 19.2312 17.4529 20.1563 18.0039 20.9834C18.5564 20.1828 19.3178 19.24 20.0029 18.6328C20.8645 17.8692 21.25 17.0729 21.25 16.04C21.2498 14.2159 19.7878 12.75 18 12.75Z M12 11.25C12.4142 11.25 12.75 11.5858 12.75 12C12.75 12.4142 12.4142 12.75 12 12.75H10C9.58579 12.75 9.25 12.4142 9.25 12C9.25 11.5858 9.58579 11.25 10 11.25H12Z"/></svg>
               <div class="navbdg">3</div>
             </div>
             <div>พัสดุของฉัน</div>
           </div>
           <div class="navi">
             <div class="navi-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.07984 2.78742C11.0327 2.73835 12.9668 2.73835 14.9197 2.78742C16.4712 2.82639 17.717 2.8553 18.7126 3.02863C19.7421 3.20792 20.579 3.55248 21.2859 4.26203C21.9897 4.9686 22.3317 5.7932 22.5076 6.80597C22.6771 7.78297 22.7019 8.99929 22.7341 10.5091C22.7554 11.505 22.7554 12.4955 22.7341 13.4915C22.7019 15.0013 22.6772 16.2177 22.5076 17.1946C22.3316 18.2073 21.9896 19.0321 21.2859 19.7386C20.5791 20.4479 19.742 20.7927 18.7126 20.972C17.717 21.1452 16.4711 21.1742 14.9197 21.2132C12.9668 21.2623 11.0327 21.2623 9.07984 21.2132C7.52837 21.1742 6.28252 21.1453 5.28687 20.972C4.25748 20.7927 3.42044 20.448 2.71362 19.7386C2.00985 19.0321 1.66783 18.2073 1.49194 17.1946C1.32231 16.2177 1.29758 15.0013 1.26538 13.4915C1.24415 12.4955 1.24416 11.505 1.26538 10.5091C1.29758 8.99936 1.32235 7.78295 1.49194 6.80597C1.66779 5.79335 2.00999 4.96853 2.71362 4.26203C3.42042 3.55256 4.25753 3.20793 5.28687 3.02863C6.28252 2.85528 7.52838 2.82639 9.07984 2.78742ZM15.4568 10.5696C14.1637 11.3023 13.112 11.7503 11.9998 11.7503C10.8874 11.7502 9.83586 11.3024 8.54273 10.5696L2.91968 7.38312C2.81616 8.17495 2.79447 9.17636 2.76538 10.5403C2.7446 11.5153 2.74459 12.4853 2.76538 13.4603C2.79855 15.0151 2.82378 16.0985 2.96948 16.9378C3.10907 17.7414 3.34904 18.2512 3.77612 18.68C4.20031 19.1058 4.71643 19.3493 5.5437 19.4935C6.4048 19.6434 7.52069 19.6741 9.11694 19.7142C11.0448 19.7626 12.9547 19.7626 14.8826 19.7142C16.4788 19.6741 17.5948 19.6433 18.4558 19.4935C19.283 19.3493 19.7992 19.1056 20.2234 18.68C20.6504 18.2513 20.8905 17.7413 21.03 16.9378C21.1757 16.0985 21.201 15.0151 21.2341 13.4603C21.2549 12.4853 21.2549 11.5152 21.2341 10.5403C21.205 9.17625 21.1823 8.17498 21.0789 7.38312L15.4568 10.5696ZM14.8826 4.28644C12.9547 4.23801 11.0448 4.238 9.11694 4.28644C7.52069 4.32655 6.40481 4.35718 5.5437 4.50714C4.71648 4.65127 4.20031 4.89483 3.77612 5.32062C3.60247 5.49501 3.4601 5.68331 3.34253 5.89875L9.28296 9.26496C10.5378 9.97592 11.2997 10.2502 11.9998 10.2503C12.6998 10.2503 13.4617 9.97587 14.7166 9.26496L20.656 5.89875C20.5384 5.68337 20.3971 5.49499 20.2234 5.32062C19.7992 4.89477 19.2832 4.65126 18.4558 4.50714C17.5947 4.35721 16.4788 4.32655 14.8826 4.28644Z"/></svg>
             </div>
             <div>ข้อความ</div>
           </div>
           <div class="navi">
             <div class="navi-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.19433 14.8369C9.74812 12.7211 14.2518 12.7212 17.8057 14.8369C18.4315 15.2096 19.8502 15.9243 20.7568 16.8115C21.2185 17.2634 21.6576 17.8593 21.7373 18.5889C21.8221 19.3646 21.4836 20.0924 20.8047 20.7393C19.6332 21.8552 18.2274 22.75 16.4092 22.75H7.59081C5.77258 22.75 4.36672 21.8552 3.1953 20.7393C2.51648 20.0924 2.17793 19.3645 2.26269 18.5889C2.34244 17.8593 2.78152 17.2634 3.24316 16.8115C4.14975 15.9244 5.56836 15.2096 6.19433 14.8369ZM17.0391 16.126C13.9579 14.2914 10.0421 14.2913 6.96093 16.126C6.17219 16.5956 5.02885 17.1625 4.29198 17.8838C3.93191 18.2362 3.77847 18.5273 3.7539 18.752C3.73446 18.9302 3.78004 19.2242 4.23046 19.6533C5.26622 20.6401 6.3185 21.25 7.59081 21.25H16.4092C17.6814 21.25 18.7337 20.6401 19.7695 19.6533C20.22 19.2242 20.2655 18.9303 20.2461 18.752C20.2215 18.5273 20.0681 18.2363 19.708 17.8838C18.9711 17.1625 17.8277 16.5956 17.0391 16.126Z M12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.10055 11.7499 6.74999 9.39946 6.74999 6.5C6.74999 3.60054 9.10055 1.25007 12 1.25ZM12 2.75C9.92898 2.75007 8.24999 4.42897 8.24999 6.5C8.24999 8.57103 9.92898 10.2499 12 10.25C14.0711 10.25 15.75 8.57107 15.75 6.5C15.75 4.42893 14.0711 2.75 12 2.75Z"/></svg>
             </div>
             <div>โปรไฟล์</div>
           </div>
@@ -2686,25 +2785,25 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
         <div class="navbar" data-navbar>
           <div class="navi">
             <div class="navi-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.0003 17.25C14.4144 17.2502 14.7503 17.5859 14.7503 18C14.7503 18.4141 14.4144 18.7498 14.0003 18.75H10.0003C9.58613 18.75 9.25034 18.4142 9.25034 18C9.25034 17.5858 9.58613 17.25 10.0003 17.25H14.0003Z M12.0003 1.25C12.8663 1.25007 13.6411 1.52709 14.4769 1.99609C15.2951 2.45537 16.2341 3.13602 17.4183 3.99219L18.8587 5.0332C19.8098 5.72091 20.5685 6.26831 21.139 6.77441C21.7214 7.2912 22.1576 7.80704 22.4339 8.45508C22.7109 9.10458 22.7778 9.77051 22.7406 10.5381C22.7043 11.2877 22.5642 12.1941 22.39 13.3271L22.0892 15.2861C21.842 16.8944 21.6475 18.1727 21.3597 19.166C21.0653 20.1819 20.6497 20.9889 19.9085 21.6055C19.1705 22.2191 18.291 22.4926 17.2171 22.623C16.1618 22.7512 14.8274 22.75 13.139 22.75H10.8617C9.17332 22.75 7.83887 22.7512 6.78354 22.623C5.70965 22.4927 4.83019 22.2191 4.09213 21.6055C3.35091 20.9889 2.93535 20.182 2.64096 19.166C2.35317 18.1727 2.15861 16.8944 1.91147 15.2861L1.61069 13.3271C1.43656 12.194 1.29639 11.2877 1.2601 10.5381C1.22293 9.77045 1.28969 9.10463 1.56674 8.45508C1.84319 7.80704 2.27918 7.29122 2.86167 6.77441C3.43217 6.26832 4.1908 5.72091 5.14194 5.0332L6.58237 3.99219C7.7665 3.13601 8.70547 2.45534 9.52377 1.99609C10.3595 1.52712 11.1343 1.25 12.0003 1.25ZM12.0003 2.75C11.4834 2.75 10.9665 2.90626 10.2581 3.30371C9.53231 3.71103 8.67292 4.33123 7.4603 5.20801L6.02084 6.24902C5.04545 6.95427 4.35829 7.45157 3.85678 7.89648C3.36725 8.33083 3.10449 8.67386 2.94663 9.04395C2.78943 9.41261 2.72739 9.8304 2.75815 10.4658C2.78981 11.1193 2.91427 11.9358 3.09311 13.0996L3.39389 15.0586C3.64715 16.7067 3.82801 17.8712 4.08237 18.749C4.33014 19.604 4.62455 20.0974 5.05112 20.4521C5.48079 20.8094 6.0393 21.0214 6.9642 21.1338C7.90816 21.2483 9.13568 21.25 10.8617 21.25H13.139C14.865 21.25 16.0925 21.2484 17.0365 21.1338C17.9614 21.0214 18.5199 20.8095 18.9496 20.4521C19.3761 20.0974 19.6705 19.6039 19.9183 18.749C20.1726 17.8712 20.3536 16.7067 20.6068 15.0586L20.9076 13.0996C21.0865 11.9358 21.2108 11.1193 21.2425 10.4658C21.2733 9.83047 21.2112 9.41258 21.054 9.04395C20.8962 8.67386 20.6333 8.3308 20.1439 7.89648C19.6423 7.45156 18.9552 6.95427 17.9798 6.24902L16.5404 5.20801C15.3278 4.33125 14.4684 3.71105 13.7425 3.30371C13.0342 2.90624 12.5172 2.75007 12.0003 2.75Z"/></svg>
             </div>
             <div>หน้าหลัก</div>
           </div>
           <div class="navi act">
             <div class="navi-ic">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.07-.44.18-.87.18-1.32C18 2.99 16.01 1 13.68 1c-1.36 0-2.56.68-3.32 1.72L10 3.4l-.36-.68C8.88 1.68 7.68 1 6.32 1 4 1 2 2.99 2 5.32c0 .45.11.88.18 1.32H0v14c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 1.25C16.453 1.25 17.2275 1.24902 17.8564 1.31738C18.5037 1.38777 19.0661 1.53726 19.5801 1.87988C20.0939 2.22244 20.4479 2.6837 20.7617 3.25391C21.0668 3.80824 21.3639 4.5245 21.7305 5.4043L22.6924 7.71191L22.75 7.84961V10.5C22.75 10.9142 22.4142 11.25 22 11.25C21.5858 11.25 21.25 10.9142 21.25 10.5V8.75H2.75V13.4287C2.75 15.4707 2.75149 16.9241 2.90527 18.0273C3.05569 19.1061 3.33872 19.7388 3.82227 20.2051C4.30962 20.675 4.97655 20.9529 6.1084 21.0996C7.25918 21.2488 8.77318 21.25 10.8887 21.25H12.5C12.9142 21.25 13.25 21.5858 13.25 22C13.25 22.4142 12.9142 22.75 12.5 22.75H10.8887C8.81427 22.75 7.18565 22.7515 5.91602 22.5869C4.62742 22.4199 3.59562 22.0695 2.78125 21.2842C1.96319 20.4952 1.59493 19.4896 1.41992 18.2344C1.24837 17.0036 1.25 15.4268 1.25 13.4287V7.84961L1.30762 7.71191L2.26953 5.4043C2.63612 4.52449 2.9332 3.80825 3.23828 3.25391C3.55214 2.6837 3.90609 2.22244 4.41992 1.87988C4.93388 1.53724 5.49628 1.38777 6.14355 1.31738C6.77252 1.24902 7.54705 1.25 8.5 1.25H15.5ZM8.5 2.75C7.51443 2.75 6.83497 2.75107 6.30566 2.80859C5.79456 2.86417 5.49377 2.96672 5.25195 3.12793C5.01014 3.28914 4.79964 3.52712 4.55176 3.97754C4.2951 4.44394 4.0333 5.07087 3.6543 5.98047L3.125 7.25H11.25V2.75H8.5ZM12.75 7.25H20.875L20.3457 5.98047C19.9667 5.07088 19.7049 4.44394 19.4482 3.97754C19.2005 3.52714 18.9899 3.28914 18.748 3.12793C18.5063 2.96672 18.2054 2.86417 17.6943 2.80859C17.165 2.75107 16.4856 2.75 15.5 2.75H12.75V7.25Z M18.0088 15.25C18.423 15.25 18.7588 15.5858 18.7588 16C18.7588 16.4142 18.423 16.75 18.0088 16.75H18C17.5858 16.75 17.25 16.4142 17.25 16C17.25 15.5858 17.5858 15.25 18 15.25H18.0088Z M18 11.25C20.6303 11.25 22.7498 13.4017 22.75 16.04C22.75 17.5589 22.1352 18.7473 20.9971 19.7559C20.3615 20.3191 19.576 21.3127 19.0566 22.1074C18.858 22.4114 18.5047 22.75 17.9932 22.75C17.4733 22.7499 17.1221 22.4019 16.9307 22.0879C16.4537 21.3055 15.6473 20.3269 15.0029 19.7559C13.8648 18.7473 13.25 17.5589 13.25 16.04C13.2502 13.4017 15.3697 11.25 18 11.25ZM18 12.75C16.2122 12.75 14.7502 14.2159 14.75 16.04C14.75 17.0729 15.1355 17.8692 15.9971 18.6328C16.6724 19.2312 17.4529 20.1563 18.0039 20.9834C18.5564 20.1828 19.3178 19.24 20.0029 18.6328C20.8645 17.8692 21.25 17.0729 21.25 16.04C21.2498 14.2159 19.7878 12.75 18 12.75Z M12 11.25C12.4142 11.25 12.75 11.5858 12.75 12C12.75 12.4142 12.4142 12.75 12 12.75H10C9.58579 12.75 9.25 12.4142 9.25 12C9.25 11.5858 9.58579 11.25 10 11.25H12Z"/></svg>
             </div>
             <div>พัสดุของฉัน</div>
           </div>
           <div class="navi">
             <div class="navi-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.07984 2.78742C11.0327 2.73835 12.9668 2.73835 14.9197 2.78742C16.4712 2.82639 17.717 2.8553 18.7126 3.02863C19.7421 3.20792 20.579 3.55248 21.2859 4.26203C21.9897 4.9686 22.3317 5.7932 22.5076 6.80597C22.6771 7.78297 22.7019 8.99929 22.7341 10.5091C22.7554 11.505 22.7554 12.4955 22.7341 13.4915C22.7019 15.0013 22.6772 16.2177 22.5076 17.1946C22.3316 18.2073 21.9896 19.0321 21.2859 19.7386C20.5791 20.4479 19.742 20.7927 18.7126 20.972C17.717 21.1452 16.4711 21.1742 14.9197 21.2132C12.9668 21.2623 11.0327 21.2623 9.07984 21.2132C7.52837 21.1742 6.28252 21.1453 5.28687 20.972C4.25748 20.7927 3.42044 20.448 2.71362 19.7386C2.00985 19.0321 1.66783 18.2073 1.49194 17.1946C1.32231 16.2177 1.29758 15.0013 1.26538 13.4915C1.24415 12.4955 1.24416 11.505 1.26538 10.5091C1.29758 8.99936 1.32235 7.78295 1.49194 6.80597C1.66779 5.79335 2.00999 4.96853 2.71362 4.26203C3.42042 3.55256 4.25753 3.20793 5.28687 3.02863C6.28252 2.85528 7.52838 2.82639 9.07984 2.78742ZM15.4568 10.5696C14.1637 11.3023 13.112 11.7503 11.9998 11.7503C10.8874 11.7502 9.83586 11.3024 8.54273 10.5696L2.91968 7.38312C2.81616 8.17495 2.79447 9.17636 2.76538 10.5403C2.7446 11.5153 2.74459 12.4853 2.76538 13.4603C2.79855 15.0151 2.82378 16.0985 2.96948 16.9378C3.10907 17.7414 3.34904 18.2512 3.77612 18.68C4.20031 19.1058 4.71643 19.3493 5.5437 19.4935C6.4048 19.6434 7.52069 19.6741 9.11694 19.7142C11.0448 19.7626 12.9547 19.7626 14.8826 19.7142C16.4788 19.6741 17.5948 19.6433 18.4558 19.4935C19.283 19.3493 19.7992 19.1056 20.2234 18.68C20.6504 18.2513 20.8905 17.7413 21.03 16.9378C21.1757 16.0985 21.201 15.0151 21.2341 13.4603C21.2549 12.4853 21.2549 11.5152 21.2341 10.5403C21.205 9.17625 21.1823 8.17498 21.0789 7.38312L15.4568 10.5696ZM14.8826 4.28644C12.9547 4.23801 11.0448 4.238 9.11694 4.28644C7.52069 4.32655 6.40481 4.35718 5.5437 4.50714C4.71648 4.65127 4.20031 4.89483 3.77612 5.32062C3.60247 5.49501 3.4601 5.68331 3.34253 5.89875L9.28296 9.26496C10.5378 9.97592 11.2997 10.2502 11.9998 10.2503C12.6998 10.2503 13.4617 9.97587 14.7166 9.26496L20.656 5.89875C20.5384 5.68337 20.3971 5.49499 20.2234 5.32062C19.7992 4.89477 19.2832 4.65126 18.4558 4.50714C17.5947 4.35721 16.4788 4.32655 14.8826 4.28644Z"/></svg>
             </div>
             <div>ข้อความ</div>
           </div>
           <div class="navi">
             <div class="navi-ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.19433 14.8369C9.74812 12.7211 14.2518 12.7212 17.8057 14.8369C18.4315 15.2096 19.8502 15.9243 20.7568 16.8115C21.2185 17.2634 21.6576 17.8593 21.7373 18.5889C21.8221 19.3646 21.4836 20.0924 20.8047 20.7393C19.6332 21.8552 18.2274 22.75 16.4092 22.75H7.59081C5.77258 22.75 4.36672 21.8552 3.1953 20.7393C2.51648 20.0924 2.17793 19.3645 2.26269 18.5889C2.34244 17.8593 2.78152 17.2634 3.24316 16.8115C4.14975 15.9244 5.56836 15.2096 6.19433 14.8369ZM17.0391 16.126C13.9579 14.2914 10.0421 14.2913 6.96093 16.126C6.17219 16.5956 5.02885 17.1625 4.29198 17.8838C3.93191 18.2362 3.77847 18.5273 3.7539 18.752C3.73446 18.9302 3.78004 19.2242 4.23046 19.6533C5.26622 20.6401 6.3185 21.25 7.59081 21.25H16.4092C17.6814 21.25 18.7337 20.6401 19.7695 19.6533C20.22 19.2242 20.2655 18.9303 20.2461 18.752C20.2215 18.5273 20.0681 18.2363 19.708 17.8838C18.9711 17.1625 17.8277 16.5956 17.0391 16.126Z M12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.10055 11.7499 6.74999 9.39946 6.74999 6.5C6.74999 3.60054 9.10055 1.25007 12 1.25ZM12 2.75C9.92898 2.75007 8.24999 4.42897 8.24999 6.5C8.24999 8.57103 9.92898 10.2499 12 10.25C14.0711 10.25 15.75 8.57107 15.75 6.5C15.75 4.42893 14.0711 2.75 12 2.75Z"/></svg>
             </div>
             <div>โปรไฟล์</div>
           </div>
@@ -2961,8 +3060,8 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
             <div class="tcard-id">REG000001TH</div>
             <span class="bdg tertiary">กำลังเดินทาง</span>
           </div>
-          <div class="tcard-row"><div class="ico-sm">🚶</div>จัดส่งทางเดิน</div>
-          <div class="tcard-row"><div class="ico-sm">📍</div>บางรัก → พระนคร</div>
+          <div class="tcard-row"><div class="ico-sm"><svg width="14" height="14" viewBox="0 0 24 24" style="color:var(--g500)"><use href="#hi-default"/></svg></div>จัดส่งทางเดิน</div>
+          <div class="tcard-row"><div class="ico-sm"><svg width="14" height="14" viewBox="0 0 24 24" style="color:var(--g500)"><use href="#hi-default"/></svg></div>บางรัก → พระนคร</div>
           <div class="tcard-tags">
             <span class="ctag primary">ไปรษณีย์ธรรมดา</span>
           </div>
@@ -2975,8 +3074,8 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
             <div class="tcard-id">EMS000002TH</div>
             <span class="bdg primary">รอรับ</span>
           </div>
-          <div class="tcard-row"><div class="ico-sm">🚲</div>จัดส่งทางจักรยาน</div>
-          <div class="tcard-row"><div class="ico-sm">📍</div>ลาดพร้าว → วังทองหลาง</div>
+          <div class="tcard-row"><div class="ico-sm"><svg width="14" height="14" viewBox="0 0 24 24" style="color:var(--g500)"><use href="#hi-default"/></svg></div>จัดส่งทางจักรยาน</div>
+          <div class="tcard-row"><div class="ico-sm"><svg width="14" height="14" viewBox="0 0 24 24" style="color:var(--g500)"><use href="#hi-default"/></svg></div>ลาดพร้าว → วังทองหลาง</div>
           <div class="tcard-tags">
             <span class="ctag red">EMS</span>
             <span class="ctag amber">COD</span>
@@ -2990,8 +3089,8 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
             <div class="tcard-id">EX000003TH</div>
             <span class="bdg success">จัดส่งแล้ว</span>
           </div>
-          <div class="tcard-row"><div class="ico-sm">🚐</div>รถขนส่งด่วน</div>
-          <div class="tcard-row"><div class="ico-sm">📍</div>จตุจักร → ดอนเมือง</div>
+          <div class="tcard-row"><div class="ico-sm"><svg width="14" height="14" viewBox="0 0 24 24" style="color:var(--g500)"><use href="#hi-default"/></svg></div>รถขนส่งด่วน</div>
+          <div class="tcard-row"><div class="ico-sm"><svg width="14" height="14" viewBox="0 0 24 24" style="color:var(--g500)"><use href="#hi-default"/></svg></div>จตุจักร → ดอนเมือง</div>
           <div class="tcard-tags">
             <span class="ctag blue">Express</span>
             <span class="ctag green">จัดส่งสำเร็จ</span>
@@ -3058,9 +3157,9 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
         <div class="bsheet">
           <div class="bhandle"></div>
           <div class="bsttl">เลือกประเภท</div>
-          <div class="bsitem"><span class="ms s" style="color:var(--g500)">local_shipping</span> ไปรษณีย์ธรรมดา</div>
-          <div class="bsitem" style="color:var(--red);font-weight:700"><span class="ms s" style="color:var(--g500)">local_shipping</span> EMS ด่วนพิเศษ <span style="margin-left:auto;font-size:16px">✓</span></div>
-          <div class="bsitem"><span class="ms s" style="color:var(--g500)">local_shipping</span> พัสดุลงทะเบียน</div>
+          <div class="bsitem"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--g500);flex-shrink:0"><use href="#hi-default"/></svg> ไปรษณีย์ธรรมดา</div>
+          <div class="bsitem" style="color:var(--red);font-weight:700"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--g500);flex-shrink:0"><use href="#hi-default"/></svg> EMS ด่วนพิเศษ <span style="margin-left:auto;font-size:16px">✓</span></div>
+          <div class="bsitem"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--g500);flex-shrink:0"><use href="#hi-default"/></svg> พัสดุลงทะเบียน</div>
         </div>
       </div>
       <div class="dc">
@@ -3068,10 +3167,10 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
         <div class="bsheet">
           <div class="bhandle"></div>
           <div class="bsttl">ค้นหา</div>
-          <div class="bssrch"><span class="ms s" style="color:var(--g500)">search</span> Search...</div>
-          <div class="bsitem"><span class="ms s" style="color:var(--g500)">location_on</span> กรุงเทพมหานคร</div>
-          <div class="bsitem"><span class="ms s" style="color:var(--g500)">location_on</span> เชียงใหม่</div>
-          <div class="bsitem"><span class="ms s" style="color:var(--g500)">location_on</span> ขอนแก่น</div>
+          <div class="bssrch"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--g500)"><use href="#hi-default"/></svg> Search...</div>
+          <div class="bsitem"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--g500);flex-shrink:0"><use href="#hi-default"/></svg> กรุงเทพมหานคร</div>
+          <div class="bsitem"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--g500);flex-shrink:0"><use href="#hi-default"/></svg> เชียงใหม่</div>
+          <div class="bsitem"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--g500);flex-shrink:0"><use href="#hi-default"/></svg> ขอนแก่น</div>
         </div>
       </div>
     </div>
@@ -3290,7 +3389,62 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
   .pg-modal input:focus,.pg-modal select:focus{border-color:var(--red)}
   .pg-modal-row{display:flex;flex-direction:column;gap:6px}
   .pg-loading{display:flex;justify-content:center;padding:40px 0;color:var(--g400);font-size:13px;font-family:var(--font)}
+  /* tab badge */
+  .tab-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;
+    padding:0 5px;border-radius:9px;background:var(--red);color:#fff;font-size:10px;font-weight:700;
+    font-family:'IBM Plex Sans Thai',sans-serif;line-height:1;margin-left:4px;vertical-align:middle}
+  .tab:not(.sel) .tab-badge{background:var(--g300)}
+  /* toolbar */
+  .pg-toolbar{display:flex;justify-content:flex-end;align-items:center;gap:4px;
+    padding:0 12px;background:#fff;border-bottom:1px solid var(--g100);height:44px;flex-shrink:0}
+  .pg-tbtn{background:none;border:1.5px solid var(--g200);border-radius:8px;width:36px;height:36px;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--g600)}
+  .pg-tbtn:hover{border-color:var(--red);color:var(--red)}
+  .pg-tbtn.active{border-color:var(--red);color:var(--red);background:var(--red-s,#fff2f2)}
+  /* search row (collapsed by default) */
+  .pg-search-row{background:#fff;padding:8px 16px;border-bottom:1px solid var(--g100);flex-shrink:0}
+  /* prompt snippet card */
+  .pg-prompt-card{width:375px;background:#1e1e2e;border-radius:16px;overflow:hidden;margin-top:24px;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.65;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+  .pg-prompt-hdr{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 16px;background:#2a2a3e;border-bottom:1px solid rgba(255,255,255,.08)}
+  .pg-prompt-hdr-left{display:flex;align-items:center;gap:8px}
+  .pg-prompt-dots{display:flex;gap:5px}
+  .pg-prompt-dots span{width:10px;height:10px;border-radius:50%;display:block}
+  .pg-prompt-ttl{font-size:11px;color:rgba(255,255,255,.45);font-family:'IBM Plex Sans Thai',sans-serif}
+  .pg-prompt-copy{background:none;border:1px solid rgba(255,255,255,.2);border-radius:6px;color:rgba(255,255,255,.5);
+    font-size:11px;font-family:'IBM Plex Sans Thai',sans-serif;padding:3px 10px;cursor:pointer}
+  .pg-prompt-copy:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+  .pg-prompt-body{padding:16px;overflow-x:auto;white-space:pre;color:#cdd6f4}
+  .pg-prompt-body .pk{color:#89b4fa}   /* key */
+  .pg-prompt-body .pv{color:#a6e3a1}   /* value */
+  .pg-prompt-body .pc{color:#6c7086}   /* comment */
+  .pg-prompt-body .ps{color:#f38ba8}   /* story */
+  .pg-prompt-body .pa{color:#fab387}   /* ac bullet */
 </style>
+
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  PROMPT ที่ใช้สร้าง UI นี้ใน Figma                                   ║
+  ╠══════════════════════════════════════════════════════════════════════╣
+  ║  Figma file    : https://www.figma.com/design/y7bUa8c2YxFNXlknLFKipp/Wireflow
+  ║  Design system : Mail Box POC for feature (NWByRlb7yAAkftVOeKnIGt)  ║
+  ║                                                                      ║
+  ║  User Story                                                          ║
+  ║  As a user I want to เห็นรายการพัสดุของฉัน แยกตามประเภท ส่ง/รับ    ║
+  ║  So that ฉันสามารถเลือกพัสดุที่ต้องการดูรายละเอียดได้               ║
+  ║                                                                      ║
+  ║  Acceptance Criteria:                                                ║
+  ║  · แสดงรายการพัสดุทั้งหมดของ user ที่ login อยู่                    ║
+  ║  · มี Tabs หรือ Chips แยกประเภท ส่ง / รับ / ทั้งหมด                ║
+  ║  · แต่ละ item แสดง เลขพัสดุ, ประเภท, label, สถานะ                  ║
+  ║  · กด item แล้วไปหน้า ViewItemDetailScreen                          ║
+  ║  · ถ้าไม่มีพัสดุให้แสดง Empty State                                 ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+  Figma frames: ListParcelScreen + ListParcelScreen — Empty State
+  Components  : mbtp.header · mbtp.tab · mbtp.button · mbtp.cardInformation.parcellist
+                mbtp.emptyState · iOsWebNavbar
+-->
 
 <p class="pg-label">Playground · พัสดุของฉัน — เชื่อม Firebase จริง</p>
 
@@ -3305,6 +3459,13 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
     <div class="pg-modal-row">
       <label>ชื่อ / หมายเหตุ</label>
       <input id="pg-inp-lbl" type="text" placeholder="เช่น พัสดุจากแม่">
+    </div>
+    <div class="pg-modal-row">
+      <label>ทิศทาง</label>
+      <select id="pg-inp-dir">
+        <option value="recv">รับพัสดุ</option>
+        <option value="send">ส่งพัสดุ</option>
+      </select>
     </div>
     <div class="pg-modal-row">
       <label>ประเภท</label>
@@ -3348,33 +3509,39 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
       <div class="hic" style="color:#fff"><span class="ms s">more_vert</span></div>
     </div>
 
-    <!-- Tabs -->
+    <!-- Tabs: ทั้งหมด / ส่ง / รับ -->
     <div class="tabs" id="pg-tabs" style="border-bottom:1.5px solid var(--g100)">
-      <div class="tab sel" onclick="pgSetTab(0,this)">ทั้งหมด</div>
-      <div class="tab" onclick="pgSetTab(1,this)">กำลังส่ง</div>
-      <div class="tab" onclick="pgSetTab(2,this)">รอรับ</div>
-      <div class="tab" onclick="pgSetTab(3,this)">จัดส่งแล้ว</div>
+      <div class="tab sel" onclick="pgSetTab('all',this)">ทั้งหมด<span class="tab-badge" id="pg-cnt-all"></span></div>
+      <div class="tab" onclick="pgSetTab('send',this)">ส่ง<span class="tab-badge" id="pg-cnt-send"></span></div>
+      <div class="tab" onclick="pgSetTab('recv',this)">รับ<span class="tab-badge" id="pg-cnt-recv"></span></div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="pg-toolbar">
+      <button class="pg-tbtn" id="pg-btn-filter" title="Filter" onclick="pgToggleFilter()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="18" x2="12" y2="18" stroke-linecap="round"/></svg>
+      </button>
+      <button class="pg-tbtn" id="pg-btn-sort" title="Sort" onclick="pgToggleSort()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M6 12h12M9 18h6"/></svg>
+      </button>
+      <button class="pg-tbtn" id="pg-btn-search" title="Search" onclick="pgToggleSearch()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      </button>
+    </div>
+
+    <!-- Search row (collapsed by default) -->
+    <div class="pg-search-row" id="pg-search-row" style="display:none">
+      <div class="srch" onclick="document.getElementById('pg-search').focus()">
+        <span class="ms s" style="color:var(--g400)">search</span>
+        <input id="pg-search" type="text" placeholder="ค้นหาด้วยเลขพัสดุ หรือ label"
+          style="border:none;outline:none;background:transparent;font-family:var(--font);font-size:14px;color:var(--g900);flex:1;min-width:0"
+          oninput="pgRender()">
+      </div>
     </div>
 
     <!-- Body -->
     <div class="pg-body">
       <div class="pg-scroll">
-
-        <!-- Search -->
-        <div class="srch" onclick="document.getElementById('pg-search').focus()">
-          <span class="ms s" style="color:var(--g400)">search</span>
-          <input id="pg-search" type="text" placeholder="ค้นหาด้วยเลขพัสดุ"
-            style="border:none;outline:none;background:transparent;font-family:var(--font);font-size:14px;color:var(--g900);flex:1;min-width:0"
-            oninput="pgRender()">
-        </div>
-
-        <!-- Chips -->
-        <div class="pg-chips" id="pg-chips">
-          <span class="chip m sel" onclick="pgSetChip('all',this)">ทั้งหมด</span>
-          <span class="chip m" onclick="pgSetChip('ems',this)">EMS ด่วนพิเศษ</span>
-          <span class="chip m" onclick="pgSetChip('reg',this)">ลงทะเบียน</span>
-          <span class="chip m" onclick="pgSetChip('normal',this)">ธรรมดา</span>
-        </div>
 
         <!-- List -->
         <div id="pg-list" style="display:flex;flex-direction:column;gap:8px;flex:1"></div>
@@ -3386,43 +3553,98 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
     <div class="navbar">
       <div class="navi">
         <div class="navi-ic">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.0003 17.25C14.4144 17.2502 14.7503 17.5859 14.7503 18C14.7503 18.4141 14.4144 18.7498 14.0003 18.75H10.0003C9.58613 18.75 9.25034 18.4142 9.25034 18C9.25034 17.5858 9.58613 17.25 10.0003 17.25H14.0003Z M12.0003 1.25C12.8663 1.25007 13.6411 1.52709 14.4769 1.99609C15.2951 2.45537 16.2341 3.13602 17.4183 3.99219L18.8587 5.0332C19.8098 5.72091 20.5685 6.26831 21.139 6.77441C21.7214 7.2912 22.1576 7.80704 22.4339 8.45508C22.7109 9.10458 22.7778 9.77051 22.7406 10.5381C22.7043 11.2877 22.5642 12.1941 22.39 13.3271L22.0892 15.2861C21.842 16.8944 21.6475 18.1727 21.3597 19.166C21.0653 20.1819 20.6497 20.9889 19.9085 21.6055C19.1705 22.2191 18.291 22.4926 17.2171 22.623C16.1618 22.7512 14.8274 22.75 13.139 22.75H10.8617C9.17332 22.75 7.83887 22.7512 6.78354 22.623C5.70965 22.4927 4.83019 22.2191 4.09213 21.6055C3.35091 20.9889 2.93535 20.182 2.64096 19.166C2.35317 18.1727 2.15861 16.8944 1.91147 15.2861L1.61069 13.3271C1.43656 12.194 1.29639 11.2877 1.2601 10.5381C1.22293 9.77045 1.28969 9.10463 1.56674 8.45508C1.84319 7.80704 2.27918 7.29122 2.86167 6.77441C3.43217 6.26832 4.1908 5.72091 5.14194 5.0332L6.58237 3.99219C7.7665 3.13601 8.70547 2.45534 9.52377 1.99609C10.3595 1.52712 11.1343 1.25 12.0003 1.25ZM12.0003 2.75C11.4834 2.75 10.9665 2.90626 10.2581 3.30371C9.53231 3.71103 8.67292 4.33123 7.4603 5.20801L6.02084 6.24902C5.04545 6.95427 4.35829 7.45157 3.85678 7.89648C3.36725 8.33083 3.10449 8.67386 2.94663 9.04395C2.78943 9.41261 2.72739 9.8304 2.75815 10.4658C2.78981 11.1193 2.91427 11.9358 3.09311 13.0996L3.39389 15.0586C3.64715 16.7067 3.82801 17.8712 4.08237 18.749C4.33014 19.604 4.62455 20.0974 5.05112 20.4521C5.48079 20.8094 6.0393 21.0214 6.9642 21.1338C7.90816 21.2483 9.13568 21.25 10.8617 21.25H13.139C14.865 21.25 16.0925 21.2484 17.0365 21.1338C17.9614 21.0214 18.5199 20.8095 18.9496 20.4521C19.3761 20.0974 19.6705 19.6039 19.9183 18.749C20.1726 17.8712 20.3536 16.7067 20.6068 15.0586L20.9076 13.0996C21.0865 11.9358 21.2108 11.1193 21.2425 10.4658C21.2733 9.83047 21.2112 9.41258 21.054 9.04395C20.8962 8.67386 20.6333 8.3308 20.1439 7.89648C19.6423 7.45156 18.9552 6.95427 17.9798 6.24902L16.5404 5.20801C15.3278 4.33125 14.4684 3.71105 13.7425 3.30371C13.0342 2.90624 12.5172 2.75007 12.0003 2.75Z"/></svg>
         </div>
         <div>หน้าหลัก</div>
       </div>
       <div class="navi act">
         <div class="navi-ic">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 1.25C16.453 1.25 17.2275 1.24902 17.8564 1.31738C18.5037 1.38777 19.0661 1.53726 19.5801 1.87988C20.0939 2.22244 20.4479 2.6837 20.7617 3.25391C21.0668 3.80824 21.3639 4.5245 21.7305 5.4043L22.6924 7.71191L22.75 7.84961V10.5C22.75 10.9142 22.4142 11.25 22 11.25C21.5858 11.25 21.25 10.9142 21.25 10.5V8.75H2.75V13.4287C2.75 15.4707 2.75149 16.9241 2.90527 18.0273C3.05569 19.1061 3.33872 19.7388 3.82227 20.2051C4.30962 20.675 4.97655 20.9529 6.1084 21.0996C7.25918 21.2488 8.77318 21.25 10.8887 21.25H12.5C12.9142 21.25 13.25 21.5858 13.25 22C13.25 22.4142 12.9142 22.75 12.5 22.75H10.8887C8.81427 22.75 7.18565 22.7515 5.91602 22.5869C4.62742 22.4199 3.59562 22.0695 2.78125 21.2842C1.96319 20.4952 1.59493 19.4896 1.41992 18.2344C1.24837 17.0036 1.25 15.4268 1.25 13.4287V7.84961L1.30762 7.71191L2.26953 5.4043C2.63612 4.52449 2.9332 3.80825 3.23828 3.25391C3.55214 2.6837 3.90609 2.22244 4.41992 1.87988C4.93388 1.53724 5.49628 1.38777 6.14355 1.31738C6.77252 1.24902 7.54705 1.25 8.5 1.25H15.5ZM8.5 2.75C7.51443 2.75 6.83497 2.75107 6.30566 2.80859C5.79456 2.86417 5.49377 2.96672 5.25195 3.12793C5.01014 3.28914 4.79964 3.52712 4.55176 3.97754C4.2951 4.44394 4.0333 5.07087 3.6543 5.98047L3.125 7.25H11.25V2.75H8.5ZM12.75 7.25H20.875L20.3457 5.98047C19.9667 5.07088 19.7049 4.44394 19.4482 3.97754C19.2005 3.52714 18.9899 3.28914 18.748 3.12793C18.5063 2.96672 18.2054 2.86417 17.6943 2.80859C17.165 2.75107 16.4856 2.75 15.5 2.75H12.75V7.25Z M18.0088 15.25C18.423 15.25 18.7588 15.5858 18.7588 16C18.7588 16.4142 18.423 16.75 18.0088 16.75H18C17.5858 16.75 17.25 16.4142 17.25 16C17.25 15.5858 17.5858 15.25 18 15.25H18.0088Z M18 11.25C20.6303 11.25 22.7498 13.4017 22.75 16.04C22.75 17.5589 22.1352 18.7473 20.9971 19.7559C20.3615 20.3191 19.576 21.3127 19.0566 22.1074C18.858 22.4114 18.5047 22.75 17.9932 22.75C17.4733 22.7499 17.1221 22.4019 16.9307 22.0879C16.4537 21.3055 15.6473 20.3269 15.0029 19.7559C13.8648 18.7473 13.25 17.5589 13.25 16.04C13.2502 13.4017 15.3697 11.25 18 11.25ZM18 12.75C16.2122 12.75 14.7502 14.2159 14.75 16.04C14.75 17.0729 15.1355 17.8692 15.9971 18.6328C16.6724 19.2312 17.4529 20.1563 18.0039 20.9834C18.5564 20.1828 19.3178 19.24 20.0029 18.6328C20.8645 17.8692 21.25 17.0729 21.25 16.04C21.2498 14.2159 19.7878 12.75 18 12.75Z M12 11.25C12.4142 11.25 12.75 11.5858 12.75 12C12.75 12.4142 12.4142 12.75 12 12.75H10C9.58579 12.75 9.25 12.4142 9.25 12C9.25 11.5858 9.58579 11.25 10 11.25H12Z"/></svg>
         </div>
         <div>พัสดุของฉัน</div>
       </div>
       <div class="navi">
         <div class="navi-ic">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.07984 2.78742C11.0327 2.73835 12.9668 2.73835 14.9197 2.78742C16.4712 2.82639 17.717 2.8553 18.7126 3.02863C19.7421 3.20792 20.579 3.55248 21.2859 4.26203C21.9897 4.9686 22.3317 5.7932 22.5076 6.80597C22.6771 7.78297 22.7019 8.99929 22.7341 10.5091C22.7554 11.505 22.7554 12.4955 22.7341 13.4915C22.7019 15.0013 22.6772 16.2177 22.5076 17.1946C22.3316 18.2073 21.9896 19.0321 21.2859 19.7386C20.5791 20.4479 19.742 20.7927 18.7126 20.972C17.717 21.1452 16.4711 21.1742 14.9197 21.2132C12.9668 21.2623 11.0327 21.2623 9.07984 21.2132C7.52837 21.1742 6.28252 21.1453 5.28687 20.972C4.25748 20.7927 3.42044 20.448 2.71362 19.7386C2.00985 19.0321 1.66783 18.2073 1.49194 17.1946C1.32231 16.2177 1.29758 15.0013 1.26538 13.4915C1.24415 12.4955 1.24416 11.505 1.26538 10.5091C1.29758 8.99936 1.32235 7.78295 1.49194 6.80597C1.66779 5.79335 2.00999 4.96853 2.71362 4.26203C3.42042 3.55256 4.25753 3.20793 5.28687 3.02863C6.28252 2.85528 7.52838 2.82639 9.07984 2.78742ZM15.4568 10.5696C14.1637 11.3023 13.112 11.7503 11.9998 11.7503C10.8874 11.7502 9.83586 11.3024 8.54273 10.5696L2.91968 7.38312C2.81616 8.17495 2.79447 9.17636 2.76538 10.5403C2.7446 11.5153 2.74459 12.4853 2.76538 13.4603C2.79855 15.0151 2.82378 16.0985 2.96948 16.9378C3.10907 17.7414 3.34904 18.2512 3.77612 18.68C4.20031 19.1058 4.71643 19.3493 5.5437 19.4935C6.4048 19.6434 7.52069 19.6741 9.11694 19.7142C11.0448 19.7626 12.9547 19.7626 14.8826 19.7142C16.4788 19.6741 17.5948 19.6433 18.4558 19.4935C19.283 19.3493 19.7992 19.1056 20.2234 18.68C20.6504 18.2513 20.8905 17.7413 21.03 16.9378C21.1757 16.0985 21.201 15.0151 21.2341 13.4603C21.2549 12.4853 21.2549 11.5152 21.2341 10.5403C21.205 9.17625 21.1823 8.17498 21.0789 7.38312L15.4568 10.5696ZM14.8826 4.28644C12.9547 4.23801 11.0448 4.238 9.11694 4.28644C7.52069 4.32655 6.40481 4.35718 5.5437 4.50714C4.71648 4.65127 4.20031 4.89483 3.77612 5.32062C3.60247 5.49501 3.4601 5.68331 3.34253 5.89875L9.28296 9.26496C10.5378 9.97592 11.2997 10.2502 11.9998 10.2503C12.6998 10.2503 13.4617 9.97587 14.7166 9.26496L20.656 5.89875C20.5384 5.68337 20.3971 5.49499 20.2234 5.32062C19.7992 4.89477 19.2832 4.65126 18.4558 4.50714C17.5947 4.35721 16.4788 4.32655 14.8826 4.28644Z"/></svg>
         </div>
         <div>ข้อความ</div>
       </div>
       <div class="navi">
         <div class="navi-ic">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.19433 14.8369C9.74812 12.7211 14.2518 12.7212 17.8057 14.8369C18.4315 15.2096 19.8502 15.9243 20.7568 16.8115C21.2185 17.2634 21.6576 17.8593 21.7373 18.5889C21.8221 19.3646 21.4836 20.0924 20.8047 20.7393C19.6332 21.8552 18.2274 22.75 16.4092 22.75H7.59081C5.77258 22.75 4.36672 21.8552 3.1953 20.7393C2.51648 20.0924 2.17793 19.3645 2.26269 18.5889C2.34244 17.8593 2.78152 17.2634 3.24316 16.8115C4.14975 15.9244 5.56836 15.2096 6.19433 14.8369ZM17.0391 16.126C13.9579 14.2914 10.0421 14.2913 6.96093 16.126C6.17219 16.5956 5.02885 17.1625 4.29198 17.8838C3.93191 18.2362 3.77847 18.5273 3.7539 18.752C3.73446 18.9302 3.78004 19.2242 4.23046 19.6533C5.26622 20.6401 6.3185 21.25 7.59081 21.25H16.4092C17.6814 21.25 18.7337 20.6401 19.7695 19.6533C20.22 19.2242 20.2655 18.9303 20.2461 18.752C20.2215 18.5273 20.0681 18.2363 19.708 17.8838C18.9711 17.1625 17.8277 16.5956 17.0391 16.126Z M12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.10055 11.7499 6.74999 9.39946 6.74999 6.5C6.74999 3.60054 9.10055 1.25007 12 1.25ZM12 2.75C9.92898 2.75007 8.24999 4.42897 8.24999 6.5C8.24999 8.57103 9.92898 10.2499 12 10.25C14.0711 10.25 15.75 8.57107 15.75 6.5C15.75 4.42893 14.0711 2.75 12 2.75Z"/></svg>
         </div>
         <div>โปรไฟล์</div>
       </div>
     </div>
 
   </div><!-- /pg-phone -->
+
+  <!-- Prompt Snippet Card -->
+  <div class="pg-prompt-card">
+    <div class="pg-prompt-hdr">
+      <div class="pg-prompt-hdr-left">
+        <div class="pg-prompt-dots">
+          <span style="background:#ff5f57"></span>
+          <span style="background:#ffbd2e"></span>
+          <span style="background:#28c840"></span>
+        </div>
+        <span class="pg-prompt-ttl">prompt ที่ใช้สร้าง UI นี้ใน Figma</span>
+      </div>
+      <button class="pg-prompt-copy" onclick="pgCopyPrompt(this)">copy</button>
+    </div>
+    <div class="pg-prompt-body" id="pg-prompt-text"><span class="pk">Figma file</span>    : <span class="pv">https://www.figma.com/design/y7bUa8c2YxFNXlknLFKipp/Wireflow</span>
+<span class="pk">Design system</span> : <span class="pv">Mail Box POC for feature (NWByRlb7yAAkftVOeKnIGt)</span>
+
+<span class="pk">User Story</span>
+<span class="ps">As a user I want to เห็นรายการพัสดุของฉัน แยกตามประเภท ส่ง/รับ</span>
+<span class="ps">So that ฉันสามารถเลือกพัสดุที่ต้องการดูรายละเอียดได้</span>
+
+<span class="pk">Acceptance Criteria</span><span class="pc">:</span>
+<span class="pa">·</span> แสดงรายการพัสดุทั้งหมดของ user ที่ login อยู่
+<span class="pa">·</span> มี Tabs หรือ Chips แยกประเภท ส่ง / รับ / ทั้งหมด
+<span class="pa">·</span> แต่ละ item แสดง เลขพัสดุ, ประเภท, label, สถานะ
+<span class="pa">·</span> กด item แล้วไปหน้า ViewItemDetailScreen
+<span class="pa">·</span> ถ้าไม่มีพัสดุให้แสดง Empty State</div>
+  </div>
+
 </div><!-- /pg-wrap -->
+
+<script>
+window.pgCopyPrompt = function(btn){
+  var text = [
+    'Figma file    : https://www.figma.com/design/y7bUa8c2YxFNXlknLFKipp/Wireflow',
+    'Design system : Mail Box POC for feature (NWByRlb7yAAkftVOeKnIGt)',
+    '',
+    'User Story',
+    'As a user I want to เห็นรายการพัสดุของฉัน แยกตามประเภท ส่ง/รับ',
+    'So that ฉันสามารถเลือกพัสดุที่ต้องการดูรายละเอียดได้',
+    '',
+    'Acceptance Criteria:',
+    '· แสดงรายการพัสดุทั้งหมดของ user ที่ login อยู่',
+    '· มี Tabs หรือ Chips แยกประเภท ส่ง / รับ / ทั้งหมด',
+    '· แต่ละ item แสดง เลขพัสดุ, ประเภท, label, สถานะ',
+    '· กด item แล้วไปหน้า ViewItemDetailScreen',
+    '· ถ้าไม่มีพัสดุให้แสดง Empty State'
+  ].join('\n');
+  navigator.clipboard.writeText(text).then(function(){
+    btn.textContent = 'copied!';
+    setTimeout(function(){ btn.textContent = 'copy'; }, 1800);
+  }).catch(function(){
+    btn.textContent = 'error';
+    setTimeout(function(){ btn.textContent = 'copy'; }, 1800);
+  });
+};
+</script>
 
 <script>
 (function(){
   var PARCELS_URL = 'https://pocai-65f31-default-rtdb.firebaseio.com/parcels.json';
   var parcels = {};
-  var pgTab = 0;
-  var pgChip = 'all';
+  var pgTab = 'all';  // 'all' | 'send' | 'recv'
   var pgPollTimer = null;
 
-  var TAB_STATUS = [null, 'transit', 'pending', 'delivered'];
-  var TYPE_LABEL = {ems:'EMS', reg:'ลงทะเบียน', normal:'ธรรมดา'};
+  var DIR_LABEL   = {send:'ส่ง', recv:'รับ'};
+  var TYPE_LABEL  = {ems:'EMS', reg:'ลงทะเบียน', normal:'ธรรมดา'};
   var STATUS_LABEL = {transit:'กำลังส่ง', pending:'รอรับ', delivered:'จัดส่งแล้ว'};
   var STATUS_CLASS = {transit:'tertiary', pending:'warning', delivered:'success'};
 
@@ -3447,68 +3669,103 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
   // render
   window.pgRender = function(){
     var list = document.getElementById('pg-list');
-    var q = (document.getElementById('pg-search')||{}).value||''
+    var q = (document.getElementById('pg-search')||{}).value||'';
     q = q.toLowerCase().trim();
-    var statusFilter = TAB_STATUS[pgTab];
-    var keys = Object.keys(parcels).filter(function(k){
+
+    var allKeys  = Object.keys(parcels).filter(function(k){ return !!parcels[k]; });
+    var sendKeys = allKeys.filter(function(k){ return (parcels[k].direction||'recv') === 'send'; });
+    var recvKeys = allKeys.filter(function(k){ return (parcels[k].direction||'recv') === 'recv'; });
+
+    // update badges
+    function setBadge(id, n){ var el=document.getElementById(id); if(el){ el.textContent=n||''; el.style.display=n?'':'none'; } }
+    setBadge('pg-cnt-all',  allKeys.length);
+    setBadge('pg-cnt-send', sendKeys.length);
+    setBadge('pg-cnt-recv', recvKeys.length);
+
+    var keys = allKeys.filter(function(k){
       var p = parcels[k];
-      if(!p) return false;
-      if(statusFilter && p.status !== statusFilter) return false;
-      if(pgChip !== 'all' && p.type !== pgChip) return false;
+      if(pgTab === 'send' && (p.direction||'recv') !== 'send') return false;
+      if(pgTab === 'recv' && (p.direction||'recv') !== 'recv') return false;
       if(q && !(p.trackingNo||p.no||k).toLowerCase().includes(q) && !(p.label||'').toLowerCase().includes(q)) return false;
       return true;
     });
 
     if(keys.length === 0){
+      var isFiltered = pgTab !== 'all' || q;
       list.innerHTML = '<div class="empty" style="background:#fff;border:1px solid var(--g100);border-radius:12px;padding:40px 20px">'+
         '<div class="e-stamp">'+
         '<svg width="90" height="105" viewBox="0 0 110 128" fill="none"><path d="M8,0 Q8,4 4,4 Q0,4 0,8 L0,120 Q0,124 4,124 Q8,124 8,128 L102,128 Q102,124 106,124 Q110,124 110,120 L110,8 Q110,4 106,4 Q102,4 102,0 Z" fill="#4A6FBB"/><rect x="14" y="14" width="82" height="100" rx="4" fill="#8498C8"/></svg>'+
         '</div>'+
-        '<div class="e-ttl">ยังไม่มีพัสดุในรายการ</div>'+
-        '<div class="e-dsc">เพิ่มเลขพัสดุเพื่อเริ่มติดตามสถานะ</div>'+
-        '<button class="btn primary m" style="margin-top:8px" onclick="pgOpenModal()">'+
-        '<span class="ms s">add</span>เพิ่มพัสดุ</button></div>';
+        '<div class="e-ttl">'+(isFiltered?'ไม่พบพัสดุในหมวดนี้':'ยังไม่มีรายการพัสดุ')+'</div>'+
+        '<div class="e-dsc">'+(isFiltered?'ลองเปลี่ยน tab หรือล้างคำค้นหา':'พัสดุที่คุณส่งหรือรับจะปรากฏที่นี่')+'</div>'+
+        (!isFiltered?'<button class="btn primary m" style="margin-top:8px" onclick="pgOpenModal()"><span class="ms s">add</span>เพิ่มพัสดุ</button>':'')+
+        '</div>';
       return;
     }
 
     var html = '';
     keys.slice().reverse().forEach(function(k){
       var p = parcels[k];
-      var no = p.trackingNo || p.no || k;
-      var lbl = p.label || '';
-      var type = p.type || 'normal';
+      var no     = p.trackingNo || p.no || k;
+      var lbl    = p.label || '';
+      var type   = p.type || 'normal';
       var status = p.status || 'transit';
-      var date = p.addedAt ? new Date(p.addedAt).toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'}) : '';
-      html += '<div class="pg-pcard">'+
+      var dir    = p.direction || 'recv';
+      var timeAgo = p.addedAt ? pgTimeAgo(new Date(p.addedAt)) : '';
+      html += '<div class="pg-pcard" onclick="pgOpenModal()">'+
         '<div class="pg-pcard-left">'+
-        '<div class="pg-pcard-no">'+no+'</div>'+
-        (lbl?'<div class="pg-pcard-lbl">'+lbl+'</div>':'') +
-        (date?'<div class="pg-pcard-date">'+date+'</div>':'') +
+        '<div style="display:flex;align-items:center;gap:6px">'+
+        '<span class="pg-pcard-no">'+no+'</span>'+
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g400)" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'+
+        '</div>'+
+        '<div class="pg-pcard-lbl" style="display:flex;align-items:center;gap:4px;margin-top:3px">'+
+        '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.5">'+
+        (dir==='send'?'<line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>':'<line x1="17" y1="7" x2="7" y2="17"/><polyline points="17 17 7 17 7 7"/>')+
+        '</svg>'+
+        '<span style="color:var(--g500)">'+TYPE_LABEL[type]+' · '+timeAgo+'</span>'+
+        '</div>'+
+        (lbl?'<div class="pg-pcard-date">'+lbl+'</div>':'')+
         '</div>'+
         '<div class="pg-pcard-right">'+
         '<span class="bdg '+STATUS_CLASS[status]+'">'+STATUS_LABEL[status]+'</span>'+
-        '<span class="bdg primary">'+TYPE_LABEL[type]+'</span>'+
-        '<button class="pg-pcard-del ms s" title="ลบ" onclick="pgDelete(\''+ k +'\')">delete</button>'+
+        '<button class="pg-pcard-del ms s" title="ลบ" onclick="event.stopPropagation();pgDelete(\''+k+'\')">delete</button>'+
         '</div>'+
         '</div>';
     });
     list.innerHTML = html;
   };
 
+  // time ago helper
+  function pgTimeAgo(date){
+    var diff = Math.floor((Date.now()-date)/1000);
+    if(diff < 3600)  return Math.floor(diff/60)+' นาทีที่แล้ว';
+    if(diff < 86400) return Math.floor(diff/3600)+' ชม.ที่แล้ว';
+    return Math.floor(diff/86400)+' วันที่แล้ว';
+  }
+
   // tab
-  window.pgSetTab = function(i, el){
-    pgTab = i;
+  window.pgSetTab = function(v, el){
+    pgTab = v;
     document.querySelectorAll('#pg-tabs .tab').forEach(function(t){ t.classList.remove('sel'); });
     el.classList.add('sel');
     pgRender();
   };
 
-  // chip
-  window.pgSetChip = function(v, el){
-    pgChip = v;
-    document.querySelectorAll('#pg-chips .chip').forEach(function(c){ c.classList.remove('sel'); });
-    el.classList.add('sel');
-    pgRender();
+  // toolbar toggles
+  window.pgToggleSearch = function(){
+    var row = document.getElementById('pg-search-row');
+    var btn = document.getElementById('pg-btn-search');
+    var isOpen = row.style.display !== 'none';
+    row.style.display = isOpen ? 'none' : 'block';
+    btn.classList.toggle('active', !isOpen);
+    if(!isOpen) setTimeout(function(){ var el=document.getElementById('pg-search'); if(el) el.focus(); }, 50);
+    else { var el=document.getElementById('pg-search'); if(el){ el.value=''; pgRender(); } }
+  };
+  window.pgToggleFilter = function(){
+    document.getElementById('pg-btn-filter').classList.toggle('active');
+  };
+  window.pgToggleSort = function(){
+    document.getElementById('pg-btn-sort').classList.toggle('active');
   };
 
   // modal
@@ -3516,6 +3773,7 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
     document.getElementById('pg-modal').style.display='flex';
     document.getElementById('pg-inp-no').value='';
     document.getElementById('pg-inp-lbl').value='';
+    document.getElementById('pg-inp-dir').value='recv';
     setTimeout(function(){ document.getElementById('pg-inp-no').focus(); }, 100);
   };
   window.pgCloseModal = function(){
@@ -3530,6 +3788,7 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
     var item = {
       trackingNo: no,
       label: document.getElementById('pg-inp-lbl').value.trim(),
+      direction: document.getElementById('pg-inp-dir').value,
       type: document.getElementById('pg-inp-type').value,
       status: document.getElementById('pg-inp-status').value,
       addedAt: new Date().toISOString()
