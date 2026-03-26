@@ -3252,7 +3252,6 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
 <!-- ══ PAGE: THPost Home ════════════════════════════════════════════ -->
 <div class="page" id="page-thpost">
 <style>
-  /* ── Playground phone frame ─────────────────────────── */
   .pg-wrap{display:flex;flex-direction:column;align-items:center;padding:40px 0 60px}
   .pg-label{font-size:11px;color:var(--muted);margin-bottom:20px;text-align:center;font-family:var(--font,sans-serif)}
   .pg-phone{width:375px;height:812px;background:#f6f8fa;border-radius:44px;overflow:hidden;
@@ -3263,24 +3262,78 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
   .pg-status-icons{display:flex;gap:4px;align-items:center}
   .pg-body{flex:1;overflow-y:auto;display:flex;flex-direction:column;background:#f6f8fa}
   .pg-scroll{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column;gap:10px}
-  /* override fixed widths inside phone */
   .pg-phone .hdr{width:100%;border-radius:0;border:none;flex-shrink:0}
   .pg-phone .tabs{width:100%;background:#fff}
   .pg-phone .navbar{width:100%;border-radius:0;box-shadow:none;flex-shrink:0}
   .pg-phone .srch{width:100%;box-sizing:border-box}
-  /* chip row scroll */
   .pg-chips{display:flex;gap:8px;overflow-x:auto}
   .pg-chips::-webkit-scrollbar{display:none}
+  /* parcel card */
+  .pg-pcard{background:#fff;border:1px solid var(--g100);border-radius:12px;padding:12px 14px;
+    display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+  .pg-pcard-left{flex:1;min-width:0}
+  .pg-pcard-no{font-size:13px;font-weight:700;color:var(--g900);font-family:'IBM Plex Mono',monospace;letter-spacing:.3px}
+  .pg-pcard-lbl{font-size:12px;color:var(--g600);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pg-pcard-date{font-size:11px;color:var(--g400);margin-top:4px}
+  .pg-pcard-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+  .pg-pcard-del{background:none;border:none;cursor:pointer;color:var(--g300);font-size:16px;line-height:1;padding:0;margin-left:4px}
+  .pg-pcard-del:hover{color:var(--red)}
+  /* add modal */
+  .pg-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9000;display:flex;align-items:flex-end;justify-content:center}
+  .pg-modal{background:#fff;border-radius:20px 20px 0 0;padding:24px 20px 32px;width:375px;max-width:100%;
+    display:flex;flex-direction:column;gap:14px;animation:slideUp .22s ease}
+  @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  .pg-modal-ttl{font-size:16px;font-weight:700;color:var(--g900);font-family:var(--font)}
+  .pg-modal label{font-size:12px;font-weight:600;color:var(--g600);font-family:var(--font)}
+  .pg-modal input,.pg-modal select{width:100%;height:44px;border:1.5px solid var(--g200);border-radius:8px;
+    padding:0 12px;font-family:var(--font);font-size:14px;color:var(--g900);box-sizing:border-box;outline:none}
+  .pg-modal input:focus,.pg-modal select:focus{border-color:var(--red)}
+  .pg-modal-row{display:flex;flex-direction:column;gap:6px}
+  .pg-loading{display:flex;justify-content:center;padding:40px 0;color:var(--g400);font-size:13px;font-family:var(--font)}
 </style>
 
-<p class="pg-label">Playground · ใช้ component จาก Design System</p>
+<p class="pg-label">Playground · พัสดุของฉัน — เชื่อม Firebase จริง</p>
+
+<!-- Add Modal -->
+<div class="pg-modal-bg" id="pg-modal" style="display:none" onclick="if(event.target===this)pgCloseModal()">
+  <div class="pg-modal">
+    <div class="pg-modal-ttl">เพิ่มพัสดุใหม่</div>
+    <div class="pg-modal-row">
+      <label>เลขพัสดุ *</label>
+      <input id="pg-inp-no" type="text" placeholder="EF123456789TH" maxlength="30">
+    </div>
+    <div class="pg-modal-row">
+      <label>ชื่อ / หมายเหตุ</label>
+      <input id="pg-inp-lbl" type="text" placeholder="เช่น พัสดุจากแม่">
+    </div>
+    <div class="pg-modal-row">
+      <label>ประเภท</label>
+      <select id="pg-inp-type">
+        <option value="ems">EMS ด่วนพิเศษ</option>
+        <option value="reg">ลงทะเบียน</option>
+        <option value="normal">ธรรมดา</option>
+      </select>
+    </div>
+    <div class="pg-modal-row">
+      <label>สถานะ</label>
+      <select id="pg-inp-status">
+        <option value="transit">กำลังส่ง</option>
+        <option value="pending">รอรับ</option>
+        <option value="delivered">จัดส่งแล้ว</option>
+      </select>
+    </div>
+    <button class="btn primary m" style="width:100%;margin-top:4px" onclick="pgSaveParcel()">
+      <span class="ms s">add</span>บันทึก
+    </button>
+  </div>
+</div>
 
 <div class="pg-wrap">
   <div class="pg-phone">
 
-    <!-- ① Status Bar -->
+    <!-- Status Bar -->
     <div class="pg-status">
-      <span class="pg-status-time">9:41</span>
+      <span class="pg-status-time" id="pg-clock">9:41</span>
       <div class="pg-status-icons">
         <span class="ms s" style="font-size:16px;color:#fff">signal_cellular_alt</span>
         <span class="ms s" style="font-size:16px;color:#fff">wifi</span>
@@ -3288,63 +3341,49 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
       </div>
     </div>
 
-    <!-- ② Header — mbtp.header (secondary = red) -->
+    <!-- Header -->
     <div class="hdr secondary">
       <div class="hic" style="color:#fff"><span class="ms s">arrow_back</span></div>
       <div class="htitle">พัสดุของฉัน</div>
       <div class="hic" style="color:#fff"><span class="ms s">more_vert</span></div>
     </div>
 
-    <!-- ③ Tabs — mbtp.tabs -->
-    <div class="tabs" style="border-bottom:1.5px solid var(--g100)">
-      <div class="tab sel">ทั้งหมด</div>
-      <div class="tab">กำลังส่ง</div>
-      <div class="tab">รอรับ</div>
-      <div class="tab">จัดส่งแล้ว</div>
+    <!-- Tabs -->
+    <div class="tabs" id="pg-tabs" style="border-bottom:1.5px solid var(--g100)">
+      <div class="tab sel" onclick="pgSetTab(0,this)">ทั้งหมด</div>
+      <div class="tab" onclick="pgSetTab(1,this)">กำลังส่ง</div>
+      <div class="tab" onclick="pgSetTab(2,this)">รอรับ</div>
+      <div class="tab" onclick="pgSetTab(3,this)">จัดส่งแล้ว</div>
     </div>
 
-    <!-- Scrollable area -->
+    <!-- Body -->
     <div class="pg-body">
       <div class="pg-scroll">
 
-        <!-- ④ Search — mbtp.textField (search variant) -->
-        <div class="srch">
+        <!-- Search -->
+        <div class="srch" onclick="document.getElementById('pg-search').focus()">
           <span class="ms s" style="color:var(--g400)">search</span>
-          <span style="flex:1;color:var(--g500);font-size:14px">ค้นหาด้วยเลขพัสดุ</span>
+          <input id="pg-search" type="text" placeholder="ค้นหาด้วยเลขพัสดุ"
+            style="border:none;outline:none;background:transparent;font-family:var(--font);font-size:14px;color:var(--g900);flex:1;min-width:0"
+            oninput="pgRender()">
         </div>
 
-        <!-- Chip filter row — mbtp.chip -->
-        <div class="pg-chips">
-          <span class="chip m sel">ทั้งหมด</span>
-          <span class="chip m">EMS ด่วนพิเศษ</span>
-          <span class="chip m">ลงทะเบียน</span>
-          <span class="chip m">ธรรมดา</span>
+        <!-- Chips -->
+        <div class="pg-chips" id="pg-chips">
+          <span class="chip m sel" onclick="pgSetChip('all',this)">ทั้งหมด</span>
+          <span class="chip m" onclick="pgSetChip('ems',this)">EMS ด่วนพิเศษ</span>
+          <span class="chip m" onclick="pgSetChip('reg',this)">ลงทะเบียน</span>
+          <span class="chip m" onclick="pgSetChip('normal',this)">ธรรมดา</span>
         </div>
 
-        <!-- ⑤ Empty State — mbtp.emptyState -->
-        <div class="empty" style="flex:1;background:#fff;border:1px solid var(--g100);border-radius:12px;margin-top:4px;padding:40px 20px">
-          <div class="e-stamp">
-            <svg width="90" height="105" viewBox="0 0 110 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8,0 Q8,4 4,4 Q0,4 0,8 L0,120 Q0,124 4,124 Q8,124 8,128 L102,128 Q102,124 106,124 Q110,124 110,120 L110,8 Q110,4 106,4 Q102,4 102,0 Z" fill="#4A6FBB"/>
-              <circle cx="14" cy="0" r="4.5" fill="white"/><circle cx="26" cy="0" r="4.5" fill="white"/><circle cx="38" cy="0" r="4.5" fill="white"/><circle cx="50" cy="0" r="4.5" fill="white"/><circle cx="62" cy="0" r="4.5" fill="white"/><circle cx="74" cy="0" r="4.5" fill="white"/><circle cx="86" cy="0" r="4.5" fill="white"/><circle cx="96" cy="0" r="4.5" fill="white"/>
-              <circle cx="14" cy="128" r="4.5" fill="white"/><circle cx="26" cy="128" r="4.5" fill="white"/><circle cx="38" cy="128" r="4.5" fill="white"/><circle cx="50" cy="128" r="4.5" fill="white"/><circle cx="62" cy="128" r="4.5" fill="white"/><circle cx="74" cy="128" r="4.5" fill="white"/><circle cx="86" cy="128" r="4.5" fill="white"/><circle cx="96" cy="128" r="4.5" fill="white"/>
-              <circle cx="0" cy="16" r="4.5" fill="white"/><circle cx="0" cy="30" r="4.5" fill="white"/><circle cx="0" cy="44" r="4.5" fill="white"/><circle cx="0" cy="58" r="4.5" fill="white"/><circle cx="0" cy="72" r="4.5" fill="white"/><circle cx="0" cy="86" r="4.5" fill="white"/><circle cx="0" cy="100" r="4.5" fill="white"/><circle cx="0" cy="112" r="4.5" fill="white"/>
-              <circle cx="110" cy="16" r="4.5" fill="white"/><circle cx="110" cy="30" r="4.5" fill="white"/><circle cx="110" cy="44" r="4.5" fill="white"/><circle cx="110" cy="58" r="4.5" fill="white"/><circle cx="110" cy="72" r="4.5" fill="white"/><circle cx="110" cy="86" r="4.5" fill="white"/><circle cx="110" cy="100" r="4.5" fill="white"/><circle cx="110" cy="112" r="4.5" fill="white"/>
-              <rect x="14" y="14" width="82" height="100" rx="4" fill="#8498C8"/>
-            </svg>
-          </div>
-          <div class="e-ttl">ยังไม่มีพัสดุในรายการ</div>
-          <div class="e-dsc">เพิ่มเลขพัสดุเพื่อเริ่มติดตามสถานะ</div>
-          <button class="btn primary m" style="margin-top:8px">
-            <span class="ms s">add</span>เพิ่มพัสดุ
-          </button>
-        </div>
+        <!-- List -->
+        <div id="pg-list" style="display:flex;flex-direction:column;gap:8px;flex:1"></div>
 
       </div>
     </div><!-- /pg-body -->
 
-    <!-- ⑥ Navbar — mbtp.navBar -->
-    <div class="navbar" data-navbar>
+    <!-- Navbar -->
+    <div class="navbar">
       <div class="navi">
         <div class="navi-ic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
@@ -3352,7 +3391,7 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
         <div>หน้าหลัก</div>
       </div>
       <div class="navi act">
-        <div class="navi-ic" style="position:relative">
+        <div class="navi-ic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
         </div>
         <div>พัสดุของฉัน</div>
@@ -3373,6 +3412,159 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
 
   </div><!-- /pg-phone -->
 </div><!-- /pg-wrap -->
+
+<script>
+(function(){
+  var PARCELS_URL = 'https://pocai-65f31-default-rtdb.firebaseio.com/parcels.json';
+  var parcels = {};
+  var pgTab = 0;
+  var pgChip = 'all';
+  var pgPollTimer = null;
+
+  var TAB_STATUS = [null, 'transit', 'pending', 'delivered'];
+  var TYPE_LABEL = {ems:'EMS', reg:'ลงทะเบียน', normal:'ธรรมดา'};
+  var STATUS_LABEL = {transit:'กำลังส่ง', pending:'รอรับ', delivered:'จัดส่งแล้ว'};
+  var STATUS_CLASS = {transit:'tertiary', pending:'warning', delivered:'success'};
+
+  // clock
+  function pgTick(){
+    var t=new Date();
+    var el=document.getElementById('pg-clock');
+    if(el) el.textContent=t.getHours()+':'+String(t.getMinutes()).padStart(2,'0');
+  }
+  pgTick(); setInterval(pgTick, 1000);
+
+  // fetch
+  async function pgFetch(){
+    try{
+      var r = await fetch(PARCELS_URL);
+      var d = await r.json();
+      parcels = d || {};
+      pgRender();
+    }catch(e){ console.warn('pgFetch err',e); }
+  }
+
+  // render
+  window.pgRender = function(){
+    var list = document.getElementById('pg-list');
+    var q = (document.getElementById('pg-search')||{}).value||''
+    q = q.toLowerCase().trim();
+    var statusFilter = TAB_STATUS[pgTab];
+    var keys = Object.keys(parcels).filter(function(k){
+      var p = parcels[k];
+      if(!p) return false;
+      if(statusFilter && p.status !== statusFilter) return false;
+      if(pgChip !== 'all' && p.type !== pgChip) return false;
+      if(q && !(p.trackingNo||p.no||k).toLowerCase().includes(q) && !(p.label||'').toLowerCase().includes(q)) return false;
+      return true;
+    });
+
+    if(keys.length === 0){
+      list.innerHTML = '<div class="empty" style="background:#fff;border:1px solid var(--g100);border-radius:12px;padding:40px 20px">'+
+        '<div class="e-stamp">'+
+        '<svg width="90" height="105" viewBox="0 0 110 128" fill="none"><path d="M8,0 Q8,4 4,4 Q0,4 0,8 L0,120 Q0,124 4,124 Q8,124 8,128 L102,128 Q102,124 106,124 Q110,124 110,120 L110,8 Q110,4 106,4 Q102,4 102,0 Z" fill="#4A6FBB"/><rect x="14" y="14" width="82" height="100" rx="4" fill="#8498C8"/></svg>'+
+        '</div>'+
+        '<div class="e-ttl">ยังไม่มีพัสดุในรายการ</div>'+
+        '<div class="e-dsc">เพิ่มเลขพัสดุเพื่อเริ่มติดตามสถานะ</div>'+
+        '<button class="btn primary m" style="margin-top:8px" onclick="pgOpenModal()">'+
+        '<span class="ms s">add</span>เพิ่มพัสดุ</button></div>';
+      return;
+    }
+
+    var html = '';
+    keys.slice().reverse().forEach(function(k){
+      var p = parcels[k];
+      var no = p.trackingNo || p.no || k;
+      var lbl = p.label || '';
+      var type = p.type || 'normal';
+      var status = p.status || 'transit';
+      var date = p.addedAt ? new Date(p.addedAt).toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'}) : '';
+      html += '<div class="pg-pcard">'+
+        '<div class="pg-pcard-left">'+
+        '<div class="pg-pcard-no">'+no+'</div>'+
+        (lbl?'<div class="pg-pcard-lbl">'+lbl+'</div>':'') +
+        (date?'<div class="pg-pcard-date">'+date+'</div>':'') +
+        '</div>'+
+        '<div class="pg-pcard-right">'+
+        '<span class="bdg '+STATUS_CLASS[status]+'">'+STATUS_LABEL[status]+'</span>'+
+        '<span class="bdg primary">'+TYPE_LABEL[type]+'</span>'+
+        '<button class="pg-pcard-del ms s" title="ลบ" onclick="pgDelete(\''+ k +'\')">delete</button>'+
+        '</div>'+
+        '</div>';
+    });
+    list.innerHTML = html;
+  };
+
+  // tab
+  window.pgSetTab = function(i, el){
+    pgTab = i;
+    document.querySelectorAll('#pg-tabs .tab').forEach(function(t){ t.classList.remove('sel'); });
+    el.classList.add('sel');
+    pgRender();
+  };
+
+  // chip
+  window.pgSetChip = function(v, el){
+    pgChip = v;
+    document.querySelectorAll('#pg-chips .chip').forEach(function(c){ c.classList.remove('sel'); });
+    el.classList.add('sel');
+    pgRender();
+  };
+
+  // modal
+  window.pgOpenModal = function(){
+    document.getElementById('pg-modal').style.display='flex';
+    document.getElementById('pg-inp-no').value='';
+    document.getElementById('pg-inp-lbl').value='';
+    setTimeout(function(){ document.getElementById('pg-inp-no').focus(); }, 100);
+  };
+  window.pgCloseModal = function(){
+    document.getElementById('pg-modal').style.display='none';
+  };
+
+  // save
+  window.pgSaveParcel = async function(){
+    var no = document.getElementById('pg-inp-no').value.trim().toUpperCase();
+    if(!no){ document.getElementById('pg-inp-no').focus(); return; }
+    var key = 'p_'+Date.now();
+    var item = {
+      trackingNo: no,
+      label: document.getElementById('pg-inp-lbl').value.trim(),
+      type: document.getElementById('pg-inp-type').value,
+      status: document.getElementById('pg-inp-status').value,
+      addedAt: new Date().toISOString()
+    };
+    // optimistic
+    parcels[key] = item;
+    pgRender();
+    pgCloseModal();
+    // write to firebase
+    try{
+      await fetch('https://pocai-65f31-default-rtdb.firebaseio.com/parcels/'+key+'.json', {
+        method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(item)
+      });
+    }catch(e){ console.warn('save err',e); }
+  };
+
+  // delete
+  window.pgDelete = async function(key){
+    delete parcels[key];
+    pgRender();
+    try{
+      await fetch('https://pocai-65f31-default-rtdb.firebaseio.com/parcels/'+key+'.json',{method:'DELETE'});
+    }catch(e){ console.warn('delete err',e); }
+  };
+
+  // FAB — "เพิ่มพัสดุ" accessible outside empty state
+  document.getElementById('page-thpost').addEventListener('click', function(e){
+    if(e.target.closest('.btn.primary') && e.target.closest('.empty')) pgOpenModal();
+  });
+
+  // initial load + poll
+  pgFetch();
+  pgPollTimer = setInterval(pgFetch, 10000);
+})();
+</script>
 </div><!-- /page-thpost -->
 
 </main>
