@@ -3206,7 +3206,16 @@ code.tk{background:#0d2040;border:1px solid #1a4070;padding:2px 7px;border-radiu
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
         <div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em">อัพเดตล่าสุด</div>
-          <div style="font-size:14px;font-weight:600;color:var(--text)" id="about-last-updated">2026-03-26 02:31</div>
+          <div style="font-size:14px;font-weight:600;color:var(--text)" id="about-last-updated"></div>
+<script>
+(function(){
+  var d=new Date();
+  var pad=function(n){return String(n).padStart(2,'0');};
+  document.getElementById('about-last-updated').textContent=
+    d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+
+    ' '+pad(d.getHours())+':'+pad(d.getMinutes());
+})();
+</script>
         </div>
         <div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em">เวอร์ชัน</div>
